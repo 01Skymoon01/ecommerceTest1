@@ -10,6 +10,7 @@ if (isset($_GET['id'])) {
 
    if($test == true)
    {
+     $json['count']= $panier->count();
      $json['message']= 'bien Supprimer';
    }
     if($test == false){
@@ -21,4 +22,5 @@ if (isset($_GET['id'])) {
 }
 
 echo json_encode($json);
+
 ?>

@@ -175,7 +175,140 @@ for ($i=0; $i < $taille ; $i++) {
 	         }
 	 	}
 
+function SupprimerCommandeSesDetails($cin){
 
+
+
+	$sql="DELETE FROM commande_details WHERE id_Commande=:cin";
+	$db = config::getConnexion();
+			$req=$db->prepare($sql);
+	$req->bindValue(':cin',$cin);
+	try{
+					$req->execute();
+				 // header('Location: index.php');
+			}
+			catch (Exception $e){
+					die('Erreur: '.$e->getMessage());
+			}
+}
+function SupprimerCommande($cin){
+
+
+
+	$sql="DELETE FROM commande WHERE id_commande=:cin";
+	$db = config::getConnexion();
+			$req=$db->prepare($sql);
+	$req->bindValue(':cin',$cin);
+	try{
+					$req->execute();
+				 // header('Location: index.php');
+			}
+			catch (Exception $e){
+					die('Erreur: '.$e->getMessage());
+			}
+}
+
+function ModifierEtatCommande($cin,$etat){
+
+$etat =(int)$etat;
+if($etat == 1) $etat =0;
+else if($etat == 0) $etat=1;
+	$sql="update commande set etat_commande=:etat where id_commande=:cin";
+	$db = config::getConnexion();
+			$req=$db->prepare($sql);
+	$req->bindValue(':cin',$cin);
+	$req->bindValue(':etat',$etat);
+	try{
+					$req->execute();
+				 // header('Location: index.php');
+			}
+			catch (Exception $e){
+					die('Erreur: '.$e->getMessage());
+			}
+}
+
+function RechercheCommande($haja){
+
+
+	$sql="SELECT * FROM commande WHERE date_commande LIKE '%$haja%' OR id_commande=$haja OR id_client=$haja";
+
+
+	$db = config::getConnexion();
+	try{
+	$liste=$db->query($sql);
+	return $liste;
+
+	}
+			 catch (Exception $e){
+					 die('Erreur: '.$e->getMessage());
+			 }
+}
+function ClientPlusFidele(){
+
+
+	$sql="select id_client ,COUNT(id_commande) FROM commande GROUP BY id_client ASC LIMIT 1  ";
+
+
+	$db = config::getConnexion();
+	try{
+	$liste=$db->query($sql);
+	return $liste;
+
+	}
+			 catch (Exception $e){
+					 die('Erreur: '.$e->getMessage());
+			 }
+}
+function ProduitBestSaler(){
+
+
+	$sql="select Nom_Produit ,COUNT(id_commande) FROM commande_details GROUP BY id_produit ASC LIMIT 1   ";
+
+
+	$db = config::getConnexion();
+	try{
+	$liste=$db->query($sql);
+	return $liste;
+
+	}
+			 catch (Exception $e){
+					 die('Erreur: '.$e->getMessage());
+			 }
+}
+
+function RevenueParJour(){
+
+
+	$sql="SELECT FORMAT(SUM(totalPrix_commande),2) revenue FROM commande WHERE date_commande IN (SELECT date_commande FROM commande WHERE DATE(date_commande)=DATE(NOW()) ) and etat_commande=1  ";
+
+
+	$db = config::getConnexion();
+	try{
+	$liste=$db->query($sql);
+	return $liste;
+
+	}
+			 catch (Exception $e){
+					 die('Erreur: '.$e->getMessage());
+			 }
+}
+
+function NombreDuCommandeNonPayees(){
+
+
+	$sql="SELECT COUNT(id_commande) nbr FROM commande WHERE etat_commande=0 ";
+
+
+	$db = config::getConnexion();
+	try{
+	$liste=$db->query($sql);
+	return $liste;
+
+	}
+			 catch (Exception $e){
+					 die('Erreur: '.$e->getMessage());
+			 }
+}
 
 }
 

@@ -24,6 +24,10 @@ CREATE TABLE commande_details (
   FOREIGN KEY(id_Commande) REFERENCES commande(id_commande), 
   PRIMARY KEY (id_CommandeDetails)
  )
+alter table commande
+add(
+    etat INT DEFAULT 0 not null CHECK(etat IN (0,1))
+)
 <---------------------------------------------------------------->
 
 SELECT COUNT(MOD(totalPrix_commande,50)) PTS_FIDELITE FROM commande WHERE id_client=2
@@ -42,3 +46,4 @@ WHERE date_commande IN (SELECT date_commande FROM commande WHERE DAYOFMONTH(date
 
 SELECT FORMAT(SUM(totalPrix_commande),2) Dakhl FROM commande WHERE date_commande IN (SELECT date_commande FROM commande WHERE DAYOFMONTH(date_commande)=DAYOFMONTH(NOW()))
 
+SELECT DAYOFMONTH(NOW()), FORMAT(SUM(totalPrix_commande),2) Dakhl FROM commande WHERE date_commande IN (SELECT date_commande FROM commande WHERE DAYOFMONTH(date_commande)=DAYOFMONTH(NOW()))

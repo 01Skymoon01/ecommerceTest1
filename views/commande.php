@@ -110,7 +110,7 @@ $total = 0; ?>
 
       <tr>
 
-        <td>QUANTITE: </td>
+        <td>NOMBRE DE CTLG: </td>
 
       </tr>
       <tr>

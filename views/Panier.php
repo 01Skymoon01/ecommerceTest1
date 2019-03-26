@@ -70,11 +70,11 @@ $panier= new panier();
 						      </span>
 						    </div>
 						</li>
-<!-- Debut Total Des Produits -------------------------------------->
+						<!-- Debut Total Des Produits -------------------------------------->
 
-						<li class="shopping-cart"><a href="Panier.php"><i class="icon-shopping-cart"></i></a></li>
+						<li class="shopping-cart"><a href="Panier.php" name="TotalProduits" class="cart" ><span><small><span id="countcart"><?php echo $panier->count(); ?></span></small><i class="icon-shopping-cart"></i></span></a></li>
 
-					<!-- FIN Total Des Produits -------------------------------------->
+											<!-- FIN Total Des Produits -------------------------------------->
 					</ul>
 				</div>
 			</div>

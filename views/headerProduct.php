@@ -91,7 +91,7 @@ var_dump($_SESSION);
 						</li>
 						<!-- Debut Total Des Produits -------------------------------------->
 
-						<li class="shopping-cart"><a href="Panier.php" name="TotalProduits" class="cart"><span><small></small><i class="icon-shopping-cart"></i></span></a></li>
+						<li class="shopping-cart"><a href="Panier.php" name="TotalProduits" class="cart"><span><small><?php echo $panier->count(); ?></small><i class="icon-shopping-cart"></i></span></a></li>
 
 											<!-- FIN Total Des Produits -------------------------------------->
 					</ul>
