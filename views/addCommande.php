@@ -6,7 +6,7 @@ $panier= new panier();
 $listeC1=array();
 $listeC=array();
 if (isset($_POST["panier"]["qte"])) {
-var_dump($_POST);
+//var_dump($_POST);
  $totalPrix=$panier->recalculer($_POST["panier"]["qte"]);
 
  $nbProduit=$panier->Total_nb($_POST["panier"]["qte"]);
@@ -66,7 +66,7 @@ $commande1C->ajouterDetailsCommande($commandeD1,(int)$nbProduit_commande);
 ?><p>**************************</p><?php
 $panier->addCommandeVirtuelle($listeC1);
 //var_dump($listeC1);
-//header('location:commande.php');
+header('location:commande.php');
 }
 //header('location:commande.php');
 

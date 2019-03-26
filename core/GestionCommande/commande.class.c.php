@@ -102,7 +102,6 @@ for ($i=0; $i < $taille ; $i++) {
 				var_dump($NomProduit);
 
 					$IdProduit=$commande->get_IdProduit()[$i];
-					?><p>***************Class detail ID P***********</p><?php
 				var_dump($IdProduit);
 
 					$PrixProduits=$commande->get_PrixProduits()[$i];
@@ -110,7 +109,6 @@ for ($i=0; $i < $taille ; $i++) {
 				var_dump($PrixProduits);
 
 					$QTEProduits=$commande->get_QTEProduits()[$i];
-					?><p>***************Class detail QTE***********</p><?php
 				var_dump($QTEProduits);
 
 
@@ -126,9 +124,7 @@ for ($i=0; $i < $taille ; $i++) {
 	            echo 'Erreur: '.$e->getMessage();
 	        }
 
-					?><p>***************Class detail commande***********</p><?php
-				var_dump($commande);
-				?><p>***************nbr total produits***********</p><?php
+
 				var_dump($i);
 		}
 

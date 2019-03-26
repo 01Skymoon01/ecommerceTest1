@@ -121,23 +121,14 @@ var_dump($_SESSION);
 			<div class="container">
 
 				<!-- DeBut Produit a Ajouter EXEMPLE ------------------------------->
-
-					<?php
-
-		$query = "SELECT * FROM products ";
-		$db = config::getConnexion();
-		$liste=$db->query($query);
-
-	foreach($liste as $row){
-		?>
-		<form>
+<form >
 				<div class="col-md-4 text-center ">
 
 					<div class="product">
-						<div class="product-grid" style="background-image:url(images/<?php echo $row["id"];?>.jpg.jpg);">
+						<div class="product-grid" style="background-image:url(images/1.jpg.jpg);">
 							<div class="inner">
 								<p>
-									<a href="addpanier.php?id=<?php echo $row["id"]; ?>&name=<?php echo $row["name"]; ?>&price=<?php echo $row["price"]; ?>"  class="icon addpanier" ><i class="icon-shopping-cart"></i></a>
+									<a href="addpanier.php?id=1&name=<?php echo "chaise1"; ?>&price=20"  class="icon addpanier" ><i class="icon-shopping-cart"></i></a>
 									<a href="single.html" class="icon"><i class="icon-eye"></i></a>
 								</p>
 							</div>
@@ -145,18 +136,35 @@ var_dump($_SESSION);
 						</div>
 						<div class="desc">
 
-							<input type="text" name="desc" value="<?php echo $row["name"]; ?>">
-							<input type="number" class="price" name="price" value="<?= $row["price"] ?>">
+							<input type="text" name="desc" value="chaise1">
+							<input type="number" class="price" name="price" value="20">
+
 						</div>
 					</div>
 
 				</div>
-							</form>
-				<?php
+				<div class="col-md-4 text-center ">
 
-					}
-				?>
+					<div class="product">
+						<div class="product-grid" style="background-image:url(images/2.jpg.jpg);">
+							<div class="inner">
+								<p>
+									<a href="addpanier.php?id=2&name=<?php echo "chaise2"; ?>&price=50"  class="icon addpanier" ><i class="icon-shopping-cart"></i></a>
+									<a href="single.html" class="icon"><i class="icon-eye"></i></a>
+								</p>
+							</div>
 
+						</div>
+						<div class="desc">
+
+							<input type="text" name="desc" value="chaise2">
+							<input type="number" class="price" name="price" value="50">
+
+						</div>
+					</div>
+
+				</div>
+</form>
 				<!-- Fin Produit a Ajouter EXEMPLE ----------------------------------------->
 			</div>
 		</div>
@@ -272,7 +280,7 @@ var_dump($_SESSION);
 		<!-- Main -->
 
 		<script src="js/main.js"></script>
+<script type="text/javascript" src="app.js" ></script>
 
-		<script type="text/javascript" src="app.js" ></script>
 		</body>
 	</html>

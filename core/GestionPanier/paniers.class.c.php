@@ -94,17 +94,22 @@ class panier{
     unset($_SESSION["commande"]); //****TANSECHHHHHHHHHHHHHHHHHHH!!
     $total=0 ;
     $val= 0 ;
-    $i = 1;// dima lezim tabda mil 1 sinon HELL
+    $i = 2;// HOT NBR DE PRODUITSNNNOURRRRR§§£££££££££££££££££££££££££££££££££££££££££££££££££££££££
+    var_dump($_SESSION['panier']);
     foreach ($_SESSION['panier'] as &$player) {
       if ($player["item_id"] == $i) {
+
         $val=(int)$tab[$i];
 
         $player["item_quantity"] = $val;
          $total = $total + ($player["item_quantity"] * $player["item_price"]);
-         ?><p>TOTAL= <?php  echo $total ?> </p>
-         <?php
+
       }
-      $i++;
+      var_dump($player["item_id"]);
+      ?><p>TOTAL= <?php  echo $total ?> </p>
+      <?php
+
+      $i--;
 
     }
     //var_dump($val);
@@ -119,7 +124,7 @@ class panier{
    unset($_SESSION["commande"]); //****TANSECHHHHHHHHHHHHHHHHHHH!!
    $total=0 ;
 
-   $i = 1;// dima lezim tabda mil 1 sinon HELL
+   $i = 2;// HOT NBR DE PRODUITS§§£££££££££££££££££££££££££££££££££££££££££££££££££££££££
    foreach ($_SESSION['panier'] as &$player) {
      if ($player["item_id"] == $i) {
 
@@ -127,7 +132,7 @@ class panier{
         /*?><p>TOTAL= <?php  echo $total ?> </p>
         <?php*/
      }
-     $i++;
+     $i--;
 
    }
     //var_dump($val);
@@ -143,7 +148,7 @@ class panier{
    unset($_SESSION["commande"]); //****TANSECHHHHHHHHHHHHHHHHHHH!!
    $total=0 ;
 
-   $i = 1;// dima lezim tabda mil 1 sinon HELL
+   $i = 2;// dima lezim tabda mil 1 sinon HELL
    foreach ($_SESSION['panier'] as &$player) {
      if ($player["item_id"] == $i) {
 
@@ -151,7 +156,7 @@ class panier{
         /*?><p>TOTAL= <?php  echo $total ?> </p>
         <?php*/
      }
-     $i++;
+     $i--;
 
    }
     //var_dump($val);
@@ -167,14 +172,14 @@ class panier{
   unset($_SESSION["commande"]); //****TANSECHHHHHHHHHHHHHHHHHHH!!
   $total= array();
   $val= 0 ;
-  $i = 1;// dima lezim tabda mil 1 sinon HELL
+  $i = 2;// dima lezim tabda mil 1 sinon HELL
   foreach ($_SESSION['panier'] as &$player) {
     if ($player["item_id"] == $i) {
 
        array_push($total,(int)$tab[$i]);
 
     }
-    $i++;
+    $i--;
 
   }
   var_dump($total);
@@ -193,14 +198,14 @@ public function listePrix($tab)
  unset($_SESSION["commande"]); //****TANSECHHHHHHHHHHHHHHHHHHH!!
  $total= array();
  $val= 0 ;
- $i = 1;// dima lezim tabda mil 1 sinon HELL
+ $i = 2;// dima lezim tabda mil 1 sinon HELL
  foreach ($_SESSION['panier'] as &$player) {
    if ($player["item_id"] == $i) {
     $val= (float)$player["item_price"] ;
       array_push($total,$val);
 
    }
-   $i++;
+   $i--;
 
  }
  var_dump($total);
@@ -219,14 +224,14 @@ public function listeNom($tab)
  unset($_SESSION["commande"]); //****TANSECHHHHHHHHHHHHHHHHHHH!!
  $total= array();
  $val= 0 ;
- $i = 1;// dima lezim tabda mil 1 sinon HELL
+ $i = 2;// dima lezim tabda mil 1 sinon HELL
  foreach ($_SESSION['panier'] as &$player) {
    if ($player["item_id"] == $i) {
     $val= (string)$player["item_name"] ;
       array_push($total,$val);
 
    }
-   $i++;
+   $i--;
 
  }
  var_dump($total);
@@ -245,14 +250,14 @@ public function listeID($tab)
  unset($_SESSION["commande"]); //****TANSECHHHHHHHHHHHHHHHHHHH!!
  $total= array();
  $val= 0 ;
- $i = 1;// dima lezim tabda mil 1 sinon HELL
+ $i = 2;// dima lezim tabda mil 1 sinon HELL
  foreach ($_SESSION['panier'] as &$player) {
    if ($player["item_id"] == $i) {
 
       array_push($total,(int)$i);
 
    }
-   $i++;
+   $i--;
 
  }
  var_dump($total);
@@ -270,15 +275,11 @@ public function listeID($tab)
     //unset($_SESSION["commande"]);
     $i=0;
     foreach ($listeC as $key => $value) {
-      ?><p>***************FONCTION HOUNI row***********</p><?php
 
 
           $_SESSION["commande"][$i] = $value;
           //var_dump($_SESSION["commande"][$i]);
-          ?><td><?PHP echo $value; ?></td>
-<td><?PHP echo $key; ?></td>
-          <td><?PHP echo $listeC[$i]; ?></td>
-<?php
+
 
 
     $i++;
