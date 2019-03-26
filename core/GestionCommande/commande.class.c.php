@@ -229,7 +229,6 @@ else if($etat == 0) $etat=1;
 
 function RechercheCommande($haja){
 
-
 	$sql="SELECT * FROM commande WHERE date_commande LIKE '%$haja%' OR id_commande=$haja OR id_client=$haja";
 
 
