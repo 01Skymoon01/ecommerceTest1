@@ -33,7 +33,7 @@ class CommandeC {
 
 	function afficherTouTCommande(){
 
-		$sql="SElECT * From commande";
+		$sql="SElECT * From commande ORDER BY id_Commande DESC";
 		$db = config::getConnexion();
 		try{
 		$liste=$db->query($sql);
@@ -229,7 +229,7 @@ else if($etat == 0) $etat=1;
 
 function RechercheCommande($haja){
 
-	$sql="SELECT * FROM commande WHERE date_commande LIKE '%$haja%' OR id_commande=$haja OR id_client=$haja";
+	$sql="SELECT * FROM commande WHERE date_commande LIKE '%$haja%' OR id_commande=$haja OR id_client=$haja ORDER BY id_Commande DESC";
 
 
 	$db = config::getConnexion();
@@ -245,7 +245,7 @@ function RechercheCommande($haja){
 function ClientPlusFidele(){
 
 
-	$sql="select id_client ,COUNT(id_commande) FROM commande GROUP BY id_client ASC LIMIT 1  ";
+	$sql="select id_client ,COUNT(id_commande)c FROM commande GROUP BY id_client ORDER BY c DESC LIMIT 1  ";
 
 
 	$db = config::getConnexion();

@@ -45,7 +45,7 @@ public function Total_nbforheadher()
  unset($_SESSION["commande"]); //****TANSECHHHHHHHHHHHHHHHHHHH!!
  $total=0 ;
 
- $i = 1;// HOT NBR DE PRODUITS§§£££££££££££££££££££££££££££££££££££££££££££££££££££££££
+ $i = 2;// HOT NBR DE PRODUITS§§£££££££££££££££££££££££££££££££££££££££££££££££££££££££
  foreach ($_SESSION['panier'] as &$player) {
    if ($player["item_id"] == $i) {
 
@@ -53,7 +53,7 @@ public function Total_nbforheadher()
       /*?><p>TOTAL= <?php  echo $total ?> </p>
       <?php*/
    }
-   $i++;
+   $i--;
 
  }
   //var_dump($val);
@@ -127,7 +127,7 @@ public function count()
     unset($_SESSION["commande"]); //****TANSECHHHHHHHHHHHHHHHHHHH!!
     $total=0 ;
     $val= 0 ;
-    $i = 1;// HOT NBR DE PRODUITSNNNOURRRRR§§£££££££££££££££££££££££££££££££££££££££££££££££££££££££
+    $i = 2;// HOT NBR DE PRODUITSNNNOURRRRR§§£££££££££££££££££££££££££££££££££££££££££££££££££££££££
     var_dump($_SESSION['panier']);
     foreach ($_SESSION['panier'] as &$player) {
       if ($player["item_id"] == $i) {
@@ -142,7 +142,7 @@ public function count()
       ?><p>TOTAL= <?php  echo $total ?> </p>
       <?php
 
-      $i++;
+      $i--;
 
     }
     //var_dump($val);
@@ -157,7 +157,7 @@ public function count()
    unset($_SESSION["commande"]); //****TANSECHHHHHHHHHHHHHHHHHHH!!
    $total=0 ;
 
-   $i = 1;// HOT NBR DE PRODUITS§§£££££££££££££££££££££££££££££££££££££££££££££££££££££££
+   $i = 2;// HOT NBR DE PRODUITS§§£££££££££££££££££££££££££££££££££££££££££££££££££££££££
    foreach ($_SESSION['panier'] as &$player) {
      if ($player["item_id"] == $i) {
 
@@ -165,7 +165,7 @@ public function count()
         /*?><p>TOTAL= <?php  echo $total ?> </p>
         <?php*/
      }
-     $i++;
+     $i--;
 
    }
     //var_dump($val);
@@ -181,7 +181,7 @@ public function count()
    unset($_SESSION["commande"]); //****TANSECHHHHHHHHHHHHHHHHHHH!!
    $total=0 ;
 
-   $i = 1;// dima lezim tabda mil 1 sinon HELL
+   $i = 2;// dima lezim tabda mil 1 sinon HELL
    foreach ($_SESSION['panier'] as &$player) {
      if ($player["item_id"] == $i) {
 
@@ -189,7 +189,7 @@ public function count()
         /*?><p>TOTAL= <?php  echo $total ?> </p>
         <?php*/
      }
-     $i++;
+     $i--;
 
    }
     //var_dump($val);
@@ -205,14 +205,14 @@ public function count()
   unset($_SESSION["commande"]); //****TANSECHHHHHHHHHHHHHHHHHHH!!
   $total= array();
   $val= 0 ;
-  $i = 1;// dima lezim tabda mil 1 sinon HELL
+  $i = 2;// dima lezim tabda mil 1 sinon HELL
   foreach ($_SESSION['panier'] as &$player) {
     if ($player["item_id"] == $i) {
 
        array_push($total,(int)$tab[$i]);
 
     }
-    $i++;
+    $i--;
 
   }
   var_dump($total);
@@ -231,14 +231,14 @@ public function listePrix($tab)
  unset($_SESSION["commande"]); //****TANSECHHHHHHHHHHHHHHHHHHH!!
  $total= array();
  $val= 0 ;
- $i = 1;// dima lezim tabda mil 1 sinon HELL
+ $i = 2;// dima lezim tabda mil 1 sinon HELL
  foreach ($_SESSION['panier'] as &$player) {
    if ($player["item_id"] == $i) {
     $val= (float)$player["item_price"] ;
       array_push($total,$val);
 
    }
-   $i++;
+   $i--;
 
  }
  var_dump($total);
@@ -257,14 +257,14 @@ public function listeNom($tab)
  unset($_SESSION["commande"]); //****TANSECHHHHHHHHHHHHHHHHHHH!!
  $total= array();
  $val= 0 ;
- $i = 1;// dima lezim tabda mil 1 sinon HELL
+ $i = 2;// dima lezim tabda mil 1 sinon HELL
  foreach ($_SESSION['panier'] as &$player) {
    if ($player["item_id"] == $i) {
     $val= (string)$player["item_name"] ;
       array_push($total,$val);
 
    }
-   $i++;
+   $i--;
 
  }
  var_dump($total);
@@ -283,14 +283,14 @@ public function listeID($tab)
  unset($_SESSION["commande"]); //****TANSECHHHHHHHHHHHHHHHHHHH!!
  $total= array();
  $val= 0 ;
- $i = 1;// dima lezim tabda mil 1 sinon HELL
+ $i = 2;// dima lezim tabda mil 1 sinon HELL
  foreach ($_SESSION['panier'] as &$player) {
    if ($player["item_id"] == $i) {
 
       array_push($total,(int)$i);
 
    }
-   $i++;
+   $i--;
 
  }
  var_dump($total);
@@ -306,7 +306,7 @@ public function listeID($tab)
   public function addCommandeVirtuelle($listeC)
   {
     //unset($_SESSION["commande"]);
-    $i=0;
+    $i=2;
     foreach ($listeC as $key => $value) {
 
 
@@ -315,7 +315,7 @@ public function listeID($tab)
 
 
 
-    $i++;
+    $i--;
   }
 }
 /*
