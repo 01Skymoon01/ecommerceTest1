@@ -168,48 +168,50 @@ $listeCommande=$CommandeC1->afficherDetailsCommandeEnCours($_GET["cin"]);
 
 
                       </table>
-                            <table >
-                              <tr >
-                                <th style="color:black;"> REFERENCE </th>
-                                    <th style="color:black;">DESIGNATION</th>
-                                    <th style="color:black;">QUANTITES</th>
-                                    <th style="color:black;">PRIX UNITAIRE</th>
-                                    <th style="color:black;">PRIX TOTAL</th>
+
+
+                                            </table>
+                                                  <table border=1px>
+                                                    <tr >
+                                                          <th style="color:black;">NOM PRODUIT</th>
+                                                          <th style="color:black;">QUANTITES</th>
+                                                          <th style="color:black;">PRIX</th>
+                                                          <th style="color:black;">PRIX TOTAL</th>
 
 
 
-                                </tr>
+                                                      </tr>
 
 
-<form action="SupprimerCommande.php" method="GET">
+                      <form action="SupprimerCommande.php" method="GET">
 
 
-<?php
-$listeCommande=$CommandeC1->afficherDetailsCommandeEnCours($_GET["cin"]);
- foreach($listeCommande as $row){ ?>
-                                <tr style="background-color:black;">
-                                    <td> <?PHP echo " rfe"; ?></td>
-                                    <td><?PHP echo $row['Nom_Produit']; ?></td>
-                                    <td><?PHP echo $row['Qte_Produit']; ?></td>
-                                    <td><?PHP echo $row['PRIX_Produit']; ?> TDN</td>
-                                    <td><?PHP echo $row['TOTAL']; ?> TDN</td>
+                      <?php
+                      $listeCommande=$CommandeC1->afficherDetailsCommandeEnCours($_GET["cin"]);
+                       foreach($listeCommande as $row){ ?>
+                                                      <tr style="background-color:black;">
 
-
-
-                                </tr>
-
-<?php }?>
-<tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td style="color:black; ">TOTAL :</td>
-    <td style="color:black;"><?PHP echo $_GET['totalTTC']; ?> TDN</td>
+                                                          <td><?PHP echo $row['Nom_Produit']; ?></td>
+                                                          <td><?PHP echo $row['Qte_Produit']; ?></td>
+                                                          <td><?PHP echo $row['PRIX_Produit']; ?> TDN</td>
+                                                          <td><?PHP echo $row['TOTAL']; ?> TDN</td>
 
 
 
-</tr>
-                            </table>
+                                                      </tr>
+                      <?php }?>
+                      <tr style="background-color:white; border:none;">
+
+                          <td></td>
+                          <td></td>
+                          <td style="color:black; border:1px">TOTAL :</td>
+                          <td style="color:black; border:1px"><?PHP echo $_GET['totalTTC']; ?> TDN</td>
+
+
+
+                      </tr>
+                                                  </table>
+                        
 </form>
 
                             <div class="custom-pagination">
