@@ -91,25 +91,20 @@ for ($i=0; $i < $taille ; $i++) {
 			$db = config::getConnexion();
 			try{
 	        $req=$db->prepare($sql);
-?><p>***************Fonction Ajouter commande detail***********</p><?php
+
           //$idCC=$commande->get_IdCommande();
 	        $IdCommande=$commande->get_IdCommande();
-					?><p>***************Class detail ID***********</p><?php
-				var_dump($IdCommande);
+
 
 					$NomProduit=$commande->get_NomProduit()[$i];
-					?><p>***************Class detail NomProduit***********</p><?php
-				var_dump($NomProduit);
+
 
 					$IdProduit=$commande->get_IdProduit()[$i];
-				var_dump($IdProduit);
 
 					$PrixProduits=$commande->get_PrixProduits()[$i];
-					?><p>***************Class detail PRIX***********</p><?php
-				var_dump($PrixProduits);
 
 					$QTEProduits=$commande->get_QTEProduits()[$i];
-				var_dump($QTEProduits);
+
 
 
 			$req->bindValue(':IdCommande',$IdCommande);

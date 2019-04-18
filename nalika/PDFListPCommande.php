@@ -6,12 +6,12 @@ $CommandeC1=new CommandeC();
 $listeCommande=$CommandeC1->afficherDetailsCommandeEnCours($_GET["cin"]);
  ?>
 
-<html class="no-js" lang="en">
 
-<head>
+
+<head style="background-color:white; color:white;">
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Product List | Nalika - Material Admin Template</title>
+    <title>Product List GeoConcept</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -69,56 +69,14 @@ $listeCommande=$CommandeC1->afficherDetailsCommandeEnCours($_GET["cin"]);
     <!-- modernizr JS
 		============================================ -->
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-    <div class="left-sidebar-pro">
-        <nav id="sidebar" class="">
-            <div class="sidebar-header">
-
-
-            </div>
-      <div class="nalika-profile">
-        <div class="profile-dtl">
-          <a href="#"><img src="img/notification/4.jpg" alt="" /></a>
-          <h2>GEOCONCEPT <span class="min-dtn">.</span></h2>
-        </div>
-
-      </div>
-            <div class="left-custom-menu-adp-wrap comment-scrollbar">
-                <nav class="sidebar-nav left-sidebar-menu-pro">
-                    <ul class="metismenu" id="menu1">
-                        <li class="active">
-                            <a class="has-arrow" href="index.html">
-                   <i class="icon nalika-bar-chart icon-wrap"></i>
-                   <span class="mini-click-non">Gestions</span>
-                </a>
-                            <ul class="submenu-angle" aria-expanded="true">
-
-                                <li><a title="Analytics" href="analytics.html"><span class="mini-sub-pro">Commandes</span></a></li>
-
-                            </ul>
-                    </ul>
-                </nav>
-            </div>
-        </nav>
-    </div>
-    <!-- Start Welcome area -->
-    <div class="all-content-wrapper">
-        <div class="container-fluid">
-            <div class="row">
-            </div>
-        </div>
-
 </head>
 
-<body >
+<body style="background-color:white;" onload="window.print()">
 
+        <!-- HOUNII COMMANDE§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§-->
         <div class="product-status mg-b-30" style="margin-top:50px;">
             <div class="container-fluid">
-                <div class="row">
+                <div class="row" style="margin-top: 5%;">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="product-status-wrap" style="background-color:white;">
                           <h3  style="color:black;">GEOCONCEPT.
@@ -164,16 +122,15 @@ $listeCommande=$CommandeC1->afficherDetailsCommandeEnCours($_GET["cin"]);
                                   ?></h5></a>
                                   </td>
                          </tr>
-
+  
 
 
                       </table>
-                            <table >
+                            <table border=1px>
                               <tr >
-                                <th style="color:black;"> REFERENCE </th>
-                                    <th style="color:black;">DESIGNATION</th>
+                                    <th style="color:black;">NOM PRODUIT</th>
                                     <th style="color:black;">QUANTITES</th>
-                                    <th style="color:black;">PRIX UNITAIRE</th>
+                                    <th style="color:black;">PRIX</th>
                                     <th style="color:black;">PRIX TOTAL</th>
 
 
@@ -188,7 +145,7 @@ $listeCommande=$CommandeC1->afficherDetailsCommandeEnCours($_GET["cin"]);
 $listeCommande=$CommandeC1->afficherDetailsCommandeEnCours($_GET["cin"]);
  foreach($listeCommande as $row){ ?>
                                 <tr style="background-color:black;">
-                                    <td> <?PHP echo " rfe"; ?></td>
+
                                     <td><?PHP echo $row['Nom_Produit']; ?></td>
                                     <td><?PHP echo $row['Qte_Produit']; ?></td>
                                     <td><?PHP echo $row['PRIX_Produit']; ?> TDN</td>
@@ -197,14 +154,13 @@ $listeCommande=$CommandeC1->afficherDetailsCommandeEnCours($_GET["cin"]);
 
 
                                 </tr>
-
 <?php }?>
-<tr>
+<tr style="background-color:white; border:none;">
+
     <td></td>
     <td></td>
-    <td></td>
-    <td style="color:black; ">TOTAL :</td>
-    <td style="color:black;"><?PHP echo $_GET['totalTTC']; ?> TDN</td>
+    <td style="color:black; border:1px">TOTAL :</td>
+    <td style="color:black; border:1px"><?PHP echo $_GET['totalTTC']; ?> TDN</td>
 
 
 
@@ -212,95 +168,15 @@ $listeCommande=$CommandeC1->afficherDetailsCommandeEnCours($_GET["cin"]);
                             </table>
 </form>
 
-                            <div class="custom-pagination">
-                              <div class="breadcomb-report">
-                                <form action="PDFListPCommande.php" method="GET">
-                                    <button data-toggle="tooltip" data-placement="left" title="" class="btn" data-original-title="Download Report"><i class="icon nalika-download"></i><input type="submit" value="Download" style="border: 0; background: none; font-size:20px; font-weight: 900;color:white;"></button>
-
-                                    <input type="hidden" value="<?PHP echo  $_GET['totalTTC']; ?>" name="totalTTC">
-                                    <input type="hidden" value="<?PHP echo $_GET["cin"]; ?>" name="cin">
-                                    <input type="hidden" value="<?PHP echo $_GET["date"]; ?>" name="date">
-                                    <input type="hidden" value="<?PHP echo $_GET["etat"]; ?>" name="etat">
-                                    <input type="hidden" value="<?PHP echo $_GET["cinC"]; ?>" name="cinC">
-                                    </form>
-                                  </div>
-
-								<ul class="pagination">
-									<li class="page-item"><a class="page-link" href="CommandeList.php">Retour</a></li>
-								</ul>
-
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-    </div>
 
-    <!-- jquery
-		============================================ -->
-    <script src="js/vendor/jquery-1.12.4.min.js"></script>
-
-    <!-- bootstrap JS
-		============================================ -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- wow JS
-		============================================ -->
-    <script src="js/wow.min.js"></script>
-    <!-- price-slider JS
-		============================================ -->
-    <script src="js/jquery-price-slider.js"></script>
-    <!-- meanmenu JS
-		============================================ -->
-    <script src="js/jquery.meanmenu.js"></script>
-    <!-- owl.carousel JS
-		============================================ -->
-    <script src="js/owl.carousel.min.js"></script>
-    <!-- sticky JS
-		============================================ -->
-    <script src="js/jquery.sticky.js"></script>
-    <!-- scrollUp JS
-		============================================ -->
-    <script src="js/jquery.scrollUp.min.js"></script>
-    <!-- mCustomScrollbar JS
-		============================================ -->
-    <script src="js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="js/scrollbar/mCustomScrollbar-active.js"></script>
-    <!-- metisMenu JS
-		============================================ -->
-    <script src="js/metisMenu/metisMenu.min.js"></script>
-    <script src="js/metisMenu/metisMenu-active.js"></script>
-
-
-    <!-- plugins JS
-		============================================ -->
-    <script src="js/plugins.js"></script>
-    <!-- main JS
-		============================================ -->
-    <script src="js/main.js"></script>
-
-    <!-- Modernizr JS -->
-    <script src="../views/js/modernizr-2.6.2.min.js"></script>
-    <!-- jQuery -->
-    <script src="../views/js/jquery.min.js"></script>
-    <!-- jQuery Easing -->
-    <script src="../views/js/jquery.easing.1.3.js"></script>
-    <!-- Bootstrap -->
-    <script src="../views/js/bootstrap.min.js"></script>
-    <!-- Waypoints -->
-    <script src="../views/js/jquery.waypoints.min.js"></script>
-    <!-- Carousel -->
-    <script src="../views/js/owl.carousel.min.js"></script>
-    <!-- countTo -->
-    <script src="../views/js/jquery.countTo.js"></script>
-    <!-- Flexslider -->
-    <script src="../views/js/jquery.flexslider-min.js"></script>
-    <!-- Main -->
-
-    <script src="../views/js/main.js"></script>
-    	<script type="text/javascript" src="../views/app.js" ></script>
 </body>
 
-</html>
-<?php } ?>
+
+<?php }
+?>

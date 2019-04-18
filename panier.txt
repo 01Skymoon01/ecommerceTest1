@@ -45,7 +45,7 @@ public function Total_nbforheadher()
  unset($_SESSION["commande"]); //****TANSECHHHHHHHHHHHHHHHHHHH!!
  $total=0 ;
 
- $i = count($_SESSION["panier"]);// HOT NBR DE PRODUITSÂ§Â§Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£
+ $i = 2;// HOT NBR DE PRODUITS§§£££££££££££££££££££££££££££££££££££££££££££££££££££££££
  foreach ($_SESSION['panier'] as &$player) {
    if ($player["item_id"] == $i) {
 
@@ -66,7 +66,7 @@ public function count()
 {
   if(isset($_SESSION["panier"]))
   {
-  return count($_SESSION["panier"]);
+  return $this->Total_nbforheadher();
   }
   else return 0;
 }
@@ -119,8 +119,6 @@ public function count()
 			}
 
      }
-
-     
   }
 
    public function recalculer($tab)
@@ -129,31 +127,26 @@ public function count()
     unset($_SESSION["commande"]); //****TANSECHHHHHHHHHHHHHHHHHHH!!
     $total=0 ;
     $val= 0 ;
-    $i = 0;// HOT NBR DE PRODUITSNNNOURRRRRÂ§Â§Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£
+    $i = 2;// HOT NBR DE PRODUITSNNNOURRRRR§§£££££££££££££££££££££££££££££££££££££££££££££££££££££££
     var_dump($_SESSION['panier']);
-    var_dump($tab);
-
-
-    foreach ($tab as $key  => $value){
     foreach ($_SESSION['panier'] as &$player) {
-      if ($player["item_id"] == $key) {
+      if ($player["item_id"] == $i) {
 
-        $val=(int)$value;
+        $val=(int)$tab[$i];
 
         $player["item_quantity"] = $val;
          $total = $total + ($player["item_quantity"] * $player["item_price"]);
 
       }
       var_dump($player["item_id"]);
-      ?><p>TOTAL= <?php  echo $total; ?> </p>
+      ?><p>TOTAL= <?php  echo $total ?> </p>
       <?php
 
-      $i++;
+      $i--;
 
     }
-  }
     //var_dump($val);
-     var_dump($_SESSION['panier']);
+     //var_dump( $_SESSION['panier']);
      //var_dump($values['item_quantity']);
     //var_dump($i);
       return $total;
@@ -164,14 +157,14 @@ public function count()
    unset($_SESSION["commande"]); //****TANSECHHHHHHHHHHHHHHHHHHH!!
    $total=0 ;
 
-   $i = count($_SESSION["panier"]);// HOT NBR DE PRODUITSÂ§Â§Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£Â£
+   $i = 2;// HOT NBR DE PRODUITS§§£££££££££££££££££££££££££££££££££££££££££££££££££££££££
    foreach ($_SESSION['panier'] as &$player) {
-
+     if ($player["item_id"] == $i) {
 
         $total ++;
         /*?><p>TOTAL= <?php  echo $total ?> </p>
         <?php*/
-
+     }
      $i--;
 
    }
@@ -179,7 +172,7 @@ public function count()
     //var_dump( $_SESSION['panier']);
     //var_dump($values['item_quantity']);
     //var_dump($i);
-     return count($_SESSION["panier"]);
+     return $total;
  }
 
   public function Total_QTE($tab)
@@ -188,18 +181,17 @@ public function count()
    unset($_SESSION["commande"]); //****TANSECHHHHHHHHHHHHHHHHHHH!!
    $total=0 ;
 
-
+   $i = 2;// dima lezim tabda mil 1 sinon HELL
    foreach ($_SESSION['panier'] as &$player) {
-
+     if ($player["item_id"] == $i) {
 
         $total = $total + ($player["item_quantity"]);
         /*?><p>TOTAL= <?php  echo $total ?> </p>
         <?php*/
-
-
+     }
+     $i--;
 
    }
-
     //var_dump($val);
     //var_dump( $_SESSION['panier']);
     //var_dump($values['item_quantity']);
@@ -213,18 +205,16 @@ public function count()
   unset($_SESSION["commande"]); //****TANSECHHHHHHHHHHHHHHHHHHH!!
   $total= array();
   $val= 0 ;
-
-  foreach ($tab as $key  => $value){
+  $i = 2;// dima lezim tabda mil 1 sinon HELL
   foreach ($_SESSION['panier'] as &$player) {
-    if ($player["item_id"] == $key) {
+    if ($player["item_id"] == $i) {
 
-       array_push($total,(int)$value);
+       array_push($total,(int)$tab[$i]);
 
     }
-
+    $i--;
 
   }
-}
   var_dump($total);
   ?><p> *****lidteQte**** </p>
   <?php
@@ -241,18 +231,16 @@ public function listePrix($tab)
  unset($_SESSION["commande"]); //****TANSECHHHHHHHHHHHHHHHHHHH!!
  $total= array();
  $val= 0 ;
-
-
+ $i = 2;// dima lezim tabda mil 1 sinon HELL
  foreach ($_SESSION['panier'] as &$player) {
-
+   if ($player["item_id"] == $i) {
     $val= (float)$player["item_price"] ;
       array_push($total,$val);
 
    }
+   $i--;
 
-
-
-
+ }
  var_dump($total);
  ?><p> *****listePrix**** </p>
  <?php
@@ -269,12 +257,14 @@ public function listeNom($tab)
  unset($_SESSION["commande"]); //****TANSECHHHHHHHHHHHHHHHHHHH!!
  $total= array();
  $val= 0 ;
-
+ $i = 2;// dima lezim tabda mil 1 sinon HELL
  foreach ($_SESSION['panier'] as &$player) {
-
+   if ($player["item_id"] == $i) {
     $val= (string)$player["item_name"] ;
       array_push($total,$val);
 
+   }
+   $i--;
 
  }
  var_dump($total);
@@ -293,12 +283,14 @@ public function listeID($tab)
  unset($_SESSION["commande"]); //****TANSECHHHHHHHHHHHHHHHHHHH!!
  $total= array();
  $val= 0 ;
+ $i = 2;// dima lezim tabda mil 1 sinon HELL
+ foreach ($_SESSION['panier'] as &$player) {
+   if ($player["item_id"] == $i) {
 
- foreach ($tab as $key => $player) {
+      array_push($total,(int)$i);
 
-
-      array_push($total,(int)$key);
-
+   }
+   $i--;
 
  }
  var_dump($total);
@@ -314,7 +306,7 @@ public function listeID($tab)
   public function addCommandeVirtuelle($listeC)
   {
     //unset($_SESSION["commande"]);
-    $i=count($_SESSION["panier"]);
+    $i=2;
     foreach ($listeC as $key => $value) {
 
 

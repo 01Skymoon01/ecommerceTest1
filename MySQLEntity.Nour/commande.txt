@@ -29,3 +29,21 @@ add(
     etat INT DEFAULT 0 not null CHECK(etat IN (0,1))
 )
 <---------------------------------------------------------------->
+
+SELECT COUNT(MOD(totalPrix_commande,50)) PTS_FIDELITE FROM commande WHERE id_client=2
+
+SELECT DAYOFMONTH(date_commande) FROM commande
+SELECT MONTH(date_commande) FROM commande
+
+SELECT FORMAT(SUM(totalPrix_commande),2) DakhlLyoum FROM commande
+WHERE date_commande IN (SELECT max(date_commande) FROM commande)
+
+SELECT FORMAT(SUM(totalPrix_commande),2) Dakhl FROM commande
+WHERE date_commande IN (SELECT date_commande FROM commande WHERE DAYOFMONTH(date_commande)="31")
+
+SELECT totalPrix_commande Dakhl FROM commande
+WHERE date_commande IN (SELECT date_commande FROM commande WHERE DAYOFMONTH(date_commande)="18")
+
+SELECT FORMAT(SUM(totalPrix_commande),2) Dakhl FROM commande WHERE date_commande IN (SELECT date_commande FROM commande WHERE DAYOFMONTH(date_commande)=DAYOFMONTH(NOW()))
+
+SELECT DAYOFMONTH(NOW()), FORMAT(SUM(totalPrix_commande),2) Dakhl FROM commande WHERE date_commande IN (SELECT date_commande FROM commande WHERE DAYOFMONTH(date_commande)=DAYOFMONTH(NOW()))

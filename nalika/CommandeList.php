@@ -1,9 +1,12 @@
 <?php
 include "../entities/commande/commande.class.php";
 include "../core/GestionCommande/commande.class.c.php";
+
+session_start ();
 $CommandeC1=new CommandeC();
 
 $listeCommande=$CommandeC1->afficherTouTCommande();
+
  ?>
 
 
@@ -74,9 +77,56 @@ $listeCommande=$CommandeC1->afficherTouTCommande();
 </head>
 
 <body>
+
+
+  <!-- Start Welcome area -->
+
+      <div class="header-advance-area">
+          <div class="header-top-area">
+              <div class="container-fluid">
+                  <div class="row">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="header-top-wraper">
+                              <div class="row">
+                                  <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
+                                      <div class="menu-switcher-pro">
+
+                                      </div>
+                                  </div>
+                                  <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
+                                      <div class="header-top-menu tabl-d-n">
+
+                                      </div>
+                                  </div>
+                                  <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                                      <div class="header-right-info">
+                                          <ul class="nav navbar-nav mai-top-nav header-right-menu">
+
+
+                                              <li class="nav-item">
+                                                  <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+                            <i class="icon nalika-user" aria-hidden="true"></i>
+                            <span class="admin-name"><?php echo $_SESSION['l']; ?></span>
+
+                            <a href="login-form/logout.php"><span class="icon nalika-unlocked author-log-ic"></span></a>
+                          </a>
+
+                                              </li>
+
+                                          </ul>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
     <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+
+
 
     <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
@@ -88,6 +138,7 @@ $listeCommande=$CommandeC1->afficherTouTCommande();
 				<div class="profile-dtl">
 					<a href="#"><img src="img/logo/logo.jpg" alt="" /></a>
 					<h2>GEOCONCEPT <span class="min-dtn">.</span></h2>
+
 				</div>
 
 			</div>
@@ -110,22 +161,24 @@ $listeCommande=$CommandeC1->afficherTouTCommande();
         </nav>
     </div>
     <!-- Start Welcome area -->
-    <div class="all-content-wrapper">
+    <div class="all-content-wrapper" >
         <div class="container-fluid">
             <div class="row">
             </div>
         </div>
         <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
         <div class="section-admin container-fluid res-mg-t-15" style="margin-top:50px;">
-            <div class="row admin text-center">
+            <div class="row admin text-center" style="margin-top:50px;">
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                            <div class="admin-content analysis-progrebar-ctn">
-                                <h4 class="text-left text-uppercase"><b>Client Plus Fidele:</b></h4>
+                            <div class="admin-content analysis-progrebar-ctn" style="background-color:white;color:black;"><div class="stats-icon pull-right">
+                                    <i class="fa fa-street-view" aria-hidden="true"></i>
+                                </div>
+                                <h4 class="text-left text-uppercase" style="color:black;"><b>Client Plus Fidele</b></h4>
                                 <div class="row vertical-center-box vertical-center-box-tablet">
                                     <div class="col-xs-9 cus-gh-hd-pro">
-                                        <h2 class="text-right no-margin">N°.<?php $ClientFidele=$CommandeC1->ClientPlusFidele();
+                                        <h2 class="text-right no-margin" style="color:green;font-size:30px;">N°.<?php $ClientFidele=$CommandeC1->ClientPlusFidele();
                                         {
                                           foreach($ClientFidele as $row){
                                             echo $row["id_client"];
@@ -139,11 +192,14 @@ $listeCommande=$CommandeC1->afficherTouTCommande();
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="margin-bottom:1px;">
-                            <div class="admin-content analysis-progrebar-ctn res-mg-t-30">
-                                <h4 class="text-left text-uppercase"><b>Produit Plus Achete:</b></h4>
+                            <div class="admin-content analysis-progrebar-ctn res-mg-t-30" style="background-color:white;color:black;">
+                              <div class="stats-icon pull-right">
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                </div>
+                                <h4 class="text-left text-uppercase" style="color:black;"><b>Produit Plus Achete</b></h4>
                                 <div class="row vertical-center-box vertical-center-box-tablet">
                                     <div class="col-xs-9 cus-gh-hd-pro">
-                                        <h2 class="text-right no-margin"><?php $ClientFidele=$CommandeC1->ProduitBestSaler();
+                                        <h2 class="text-right no-margin" style="color:#3B6B9A;font-size:30px; "><?php $ClientFidele=$CommandeC1->ProduitBestSaler();
                                         {
                                           foreach($ClientFidele as $row){
                                             echo $row["Nom_Produit"];
@@ -152,16 +208,20 @@ $listeCommande=$CommandeC1->afficherTouTCommande();
                                     </div>
                                 </div>
                                 <div class="progress progress-mini">
-                                    <div style="width: 100%;" class="progress-bar progress-bar-danger bg-red"></div>
+                                    <div style="width: 100%;" class="progress-bar bg-blue"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                            <div class="admin-content analysis-progrebar-ctn res-mg-t-30">
-                                <h4 class="text-left text-uppercase"><b>Non Valide:</b></h4>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" >
+
+                            <div class="admin-content analysis-progrebar-ctn res-mg-t-30" style="background-color:white;color:black;">
+                              <div class="stats-icon pull-right">
+                                          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                                      </div>
+                                <h4 class="text-left text-uppercase" style="color:black; "><b>Non Valide</b></h4>
                                 <div class="row vertical-center-box vertical-center-box-tablet">
                                     <div class="col-xs-9 cus-gh-hd-pro">
-                                        <h2 class="text-right no-margin"><?php $ClientFidele=$CommandeC1->NombreDuCommandeNonPayees();
+                                        <h2 class="text-right no-margin" style="color:red;font-size:30px; "><?php $ClientFidele=$CommandeC1->NombreDuCommandeNonPayees();
                                         {
                                           foreach($ClientFidele as $row){
                                             echo $row["nbr"];
@@ -170,16 +230,19 @@ $listeCommande=$CommandeC1->afficherTouTCommande();
                                     </div>
                                 </div>
                                 <div class="progress progress-mini">
-                                    <div style="width: 100%;" class="progress-bar bg-blue"></div>
+                                    <div style="width: 100%;" class="progress-bar progress-bar-danger bg-red "></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                            <div class="admin-content analysis-progrebar-ctn res-mg-t-30">
-                                <h4 class="text-left text-uppercase"><b>Revenue Du Jour:</b></h4>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" >
+                            <div class="admin-content analysis-progrebar-ctn res-mg-t-30" style="background-color:white;color:black;">
+                              <div class="stats-icon pull-right">
+                              <i class="fa fa-line-chart" aria-hidden="true"></i>
+                            </div>
+                                <h4 class="text-left text-uppercase" style="color:black; "><b>Revenue Du Jour:</b></h4>
                                 <div class="row vertical-center-box vertical-center-box-tablet">
                                     <div class="col-xs-9 cus-gh-hd-pro">
-                                        <h2 class="text-right no-margin"><?php $ClientFidele=$CommandeC1->RevenueParJour();
+                                        <h2 class="text-right no-margin" style="color:#663399;font-size:30px; "><?php $ClientFidele=$CommandeC1->RevenueParJour();
                                         {
                                           foreach($ClientFidele as $row){
                                             echo $row["revenue"];
@@ -192,6 +255,7 @@ $listeCommande=$CommandeC1->afficherTouTCommande();
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -287,6 +351,7 @@ foreach($listeCommande as $row){ ?>
                                     <input type="hidden" value="<?PHP echo $row['date_commande']; ?>" name="date">
                                     <input type="hidden" value="<?PHP echo $row['etat_commande']; ?>" name="etat">
                                     <input type="hidden" value="<?PHP echo $row['id_client']; ?>" name="cinC">
+                                    <input type="hidden" value="<?PHP echo $row['totalPrix_commande']; ?>" name="totalTTC">
                                     </form>
                                                                     </td>
                                 </tr>

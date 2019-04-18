@@ -5,7 +5,7 @@ $panier= new panier();
 $_SESSION["commande"]=array(); //****TANSECHHHHHHHHHHHHHHHHHHH!!
 unset($_SESSION["commande"]); //****TANSECHHHHHHHHHHHHHHHHHHH!!
 
-var_dump($_SESSION);
+
 ?>
 
 	<head>
@@ -135,9 +135,9 @@ var_dump($_SESSION);
 
 						</div>
 						<div class="desc">
-
-							<input type="text" name="desc" value="chaise1">
-							<input type="number" class="price" name="price" value="20">
+<div class="desc"><h3><a href="single.html">chaise1</a></h3><span class="price">20TND</span></div>
+							<input type="hidden" name="desc" value="chaise1">
+							<input type="hidden" class="price" name="price" value="20">
 
 						</div>
 					</div>
@@ -156,14 +156,37 @@ var_dump($_SESSION);
 
 						</div>
 						<div class="desc">
-
-							<input type="text" name="desc" value="chaise2">
-							<input type="number" class="price" name="price" value="50">
+<div class="desc"><h3><a href="single.html">chaise2</a></h3><span class="price">50TND</span></div>
+							<input type="hidden" name="desc" value="chaise2" >
+							<input type="hidden" class="price" name="price" value="50">
 
 						</div>
 					</div>
 
 				</div>
+
+				<div class="col-md-4 text-center ">
+
+					<div class="product">
+						<div class="product-grid" style="background-image:url(images/3.jpg.jpg);">
+							<div class="inner">
+								<p>
+									<a href="addpanier.php?id=3&name=<?php echo "chaise3"; ?>&price=55"  class="icon addpanier" ><i class="icon-shopping-cart"></i></a>
+									<a href="single.html" class="icon"><i class="icon-eye"></i></a>
+								</p>
+							</div>
+
+						</div>
+						<div class="desc">
+<div class="desc"><h3><a href="single.html">chaise3</a></h3><span class="price">55TND</span></div>
+							<input type="hidden" name="desc" value="chaise3" >
+							<input type="hidden" class="price" name="price" value="55">
+
+						</div>
+					</div>
+
+				</div>
+
 </form>
 				<!-- Fin Produit a Ajouter EXEMPLE ----------------------------------------->
 			</div>

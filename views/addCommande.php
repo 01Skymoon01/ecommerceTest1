@@ -53,17 +53,13 @@ foreach ($listeC as $key => $value) {
 }
 
 $listeC1=array($id_commande,$date_commande,$nbProduit_commande,$id_client,$totalPrix_commande);
-?><p>***************TABLEAU POUR VIRTUELLE***********</p><?php
-var_dump($listeC1);
+
 $commandeD1=new commandeDetails($id_commande,$NomProduit,$IdProduit,$PrixProduits,$QTEProduits);
-  ?><p>***************Class detail commande***********</p><?php
-var_dump($commandeD1);
-?><p>***************nbr total produits***********</p><?php
-var_dump((int)$nbProduit_commande);
+
 $commande1C->ajouterDetailsCommande($commandeD1,(int)$nbProduit_commande);
 
 
-?><p>**************************</p><?php
+
 $panier->addCommandeVirtuelle($listeC1);
 //var_dump($listeC1);
 header('location:commande.php');
