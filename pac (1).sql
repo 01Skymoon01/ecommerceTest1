@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 18 Avril 2019 à 21:24
+-- Généré le :  Sam 20 Avril 2019 à 21:26
 -- Version du serveur :  10.1.9-MariaDB
 -- Version de PHP :  5.6.15
 
@@ -112,8 +112,8 @@ INSERT INTO `commande` (`id_commande`, `id_client`, `date_commande`, `totalPrix_
 (204, 2, '2019-03-25 03:13:08', 800.8, 5, 1),
 (600, 1, '2019-04-18 03:12:03', 70, 2, 0),
 (613, 1, '2019-04-18 09:59:03', 105, 2, 0),
-(615, 1, '2019-04-18 18:18:36', 798, 2, 1),
-(616, 1, '2019-04-18 19:20:07', 12, 1, 0);
+(615, 1, '2019-04-18 18:18:36', 798, 2, 0),
+(616, 1, '2019-04-18 19:20:07', 12, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -316,12 +316,12 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT pour la table `commande`
 --
 ALTER TABLE `commande`
-  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=617;
+  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=618;
 --
 -- AUTO_INCREMENT pour la table `commande_details`
 --
 ALTER TABLE `commande_details`
-  MODIFY `id_CommandeDetails` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=341;
+  MODIFY `id_CommandeDetails` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=343;
 --
 -- AUTO_INCREMENT pour la table `products`
 --
