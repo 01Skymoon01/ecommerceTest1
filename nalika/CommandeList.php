@@ -2,7 +2,6 @@
 include "../entities/commande/commande.class.php";
 include "../core/GestionCommande/commande.class.c.php";
 
-session_start ();
 $CommandeC1=new CommandeC();
 
 $listeCommande=$CommandeC1->afficherTouTCommande();
@@ -106,7 +105,7 @@ $listeCommande=$CommandeC1->afficherTouTCommande();
                                               <li class="nav-item">
                                                   <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
                             <i class="icon nalika-user" aria-hidden="true"></i>
-                            <span class="admin-name"><?php echo $_SESSION['l']; ?></span>
+                            <span class="admin-name"></span>
 
                             <a href="login-form/logout.php"><span class="icon nalika-unlocked author-log-ic"></span></a>
                           </a>
@@ -147,12 +146,12 @@ $listeCommande=$CommandeC1->afficherTouTCommande();
                     <ul class="metismenu" id="menu1">
                         <li class="active">
                             <a class="has-arrow" href="index.html">
-								   <i class="icon nalika-bar-chart icon-wrap"></i>
+								   <i class="icon nalika-bar-chart icon-wrap"></li>
 								   <span class="mini-click-non">Gestions</span>
 								</a>
                             <ul class="submenu-angle" aria-expanded="true">
 
-                                <li><a title="Analytics" href="analytics.html"><span class="mini-sub-pro">Commandes</span></a></li>
+                                <li><a title="Analytics" href="CommandeList.php"><span class="mini-sub-pro">Commandes</span></a></li>
 
                             </ul>
                     </ul>

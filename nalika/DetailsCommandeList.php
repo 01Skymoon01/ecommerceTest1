@@ -97,7 +97,7 @@ $listeCommande=$CommandeC1->afficherDetailsCommandeEnCours($_GET["cin"]);
                 </a>
                             <ul class="submenu-angle" aria-expanded="true">
 
-                                <li><a title="Analytics" href="analytics.html"><span class="mini-sub-pro">Commandes</span></a></li>
+                                <li><a title="Analytics" href="CommandeList.php"><span class="mini-sub-pro">Commandes</span></a></li>
 
                             </ul>
                     </ul>
@@ -211,7 +211,7 @@ $listeCommande=$CommandeC1->afficherDetailsCommandeEnCours($_GET["cin"]);
 
                       </tr>
                                                   </table>
-                        
+
 </form>
 
                             <div class="custom-pagination">
