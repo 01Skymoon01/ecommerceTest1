@@ -50,8 +50,15 @@ var_dump($liste->fetchAll(PDO::FETCH_OBJ));*/
                     <div class="product-grid" style="background-image:url(images/<?php echo $product->num; ?>.jpg)">
                         <div class="inner">
                             <p>
+															<?php
+															if($product->qte!=0){ ?>
 															<a href="addpanier.php?id=<?php echo $product->num; ?>&name=<?php echo $product->nom; ?>&price=<?php echo $product->prix; ?>"  class="icon addpanier" ><i class="icon-shopping-cart"></i></a>
-                                <a href="javascript:openModal(<?php echo $product->num; ?>)" class="icon"><i class="icon-eye"></i></a>
+<?php } ?>
+<?php
+if($product->qte==0){ ?>
+<a style="background-color:#A9A9A9;" href="Rupture de Stock" class="icon addpanier" ><i class="icon-shopping-cart"></i></a>
+<?php } ?>
+															  <a href="javascript:openModal(<?php echo $product->num; ?>)" class="icon"><i class="icon-eye"></i></a>
                             </p>
                         </div>
                     </div>
