@@ -206,13 +206,7 @@ function SupprimerCommande($cin){
 function ModifierEtatCommande($cin,$etat){
 $db = config::getConnexion();
 $etat =(int)$etat;
- if($etat == 0){ $etat=1;
-	$sql="update commande set etat_commande=:etat where id_commande=:cin";
-
-
-			$req=$db->prepare($sql);
-	$req->bindValue(':cin',$cin);
-	$req->bindValue(':etat',$etat);
+ if($etat == 0){
 
 	$sql2="SELECT Nom_Produit, Qte_Produit FROM commande_details WHERE id_Commande=$cin ";
 	$liste=$db->query($sql2);
@@ -224,23 +218,26 @@ $etat =(int)$etat;
 			var_dump( $row["Qte_Produit"]);
 			$req3->bindValue(':nom', $row["Nom_Produit"]);
 			$req3->bindValue(':qte', $row["Qte_Produit"]);
-      $req3->execute();
+      $test=$req3->execute();
 
 	}
 
-				 $req->execute();
-				// header('Location: index.php');
+	var_dump($test);
+if($test==true){
+$etat=1;
+$sql="update commande set etat_commande=:etat where id_commande=:cin";
+$req=$db->prepare($sql);
+$req->bindValue(':cin',$cin);
+$req->bindValue(':etat',$etat);
+				$req->execute();
+			 // header('Location: index.php');
+}
 
 
 		}
 
-		else if($etat == 1){ $etat=0;
-	 	$sql="update commande set etat_commande=:etat where id_commande=:cin";
+		else if($etat == 1){
 
-
-	 			$req=$db->prepare($sql);
-	 	$req->bindValue(':cin',$cin);
-	 	$req->bindValue(':etat',$etat);
 
 	 	$sql2="SELECT Nom_Produit, Qte_Produit FROM commande_details WHERE id_Commande=$cin ";
 	 	$liste=$db->query($sql2);
@@ -252,13 +249,19 @@ $etat =(int)$etat;
 	 			var_dump( $row["Qte_Produit"]);
 	 			$req3->bindValue(':nom', $row["Nom_Produit"]);
 	 			$req3->bindValue(':qte', $row["Qte_Produit"]);
-	       $req3->execute();
+	      $test=$req3->execute();
 
 	 	}
-
+		var_dump($test);
+if($test==true){
+	$etat=0;
+ $sql="update commande set etat_commande=:etat where id_commande=:cin ";
+ $req=$db->prepare($sql);
+$req->bindValue(':cin',$cin);
+$req->bindValue(':etat',$etat);
 					$req->execute();
 				 // header('Location: index.php');
-
+}
 
 
 	}
