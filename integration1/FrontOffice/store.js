@@ -71,7 +71,7 @@ function updateCartTotal(){
     console.log("dkhal 1")
     var priceElement = cartRow.getElementsByClassName("priceCart")[0]
     var quantityElement = cartRow.getElementsByClassName("quantity")[0]
-    var price = priceElement.innerText.replace('TND','')
+    var price = priceElement.innerText.replace(' TND','')
     var quantity = quantityElement.value
     console.log(price*quantity)
     total = total + (price*quantity)
@@ -79,6 +79,6 @@ function updateCartTotal(){
 
   }
   total = Math.round(total * 100) / 100
-  document.getElementsByClassName("total")[0].innerText = total + 'TND'
+  document.getElementsByClassName("total")[0].innerText = total + ' TND'
 
 }

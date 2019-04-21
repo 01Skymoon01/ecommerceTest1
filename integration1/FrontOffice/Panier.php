@@ -66,7 +66,7 @@ input[type=submit]:focus {
                         <input type="hidden" class="quantityVrif" value="<?php echo $product->qte; ?>">
     <?php                     }
                                   ?>
-                        <input type="number" class="quantity" name="panier[qte][<?php print_r($values["item_id"]); ?>]" style="max-width:40px" placeholder="1" size="16" type="number" value="<?php print_r($values["item_quantity"]); ?>"></td>
+                        <input type="number" class="quantity" name="panier[qte][<?php print_r($values["item_id"]); ?>]" style="max-width:100px" placeholder="1" size="16" type="number" value="<?php print_r($values["item_quantity"]); ?>"></td>
 
 											<td><a class="remove deletepanier" href="deletePanier.php?id=<?php echo $values["item_id"]; ?>" value="supprimer"  >
                      X
@@ -88,9 +88,10 @@ input[type=submit]:focus {
 
 										 <td></td>
 										 <td></td>
-										 <td></td>
+
 		                  <td style="color:#000000;">Total products:	</td>
-		                  <td class="total" style="color:#000000;"><?php print_r($total); ?>TND</td>
+		                  <td class="total" style="color:#000000;"><?php print_r($total); ?> TND</td>
+                      <td></td>
 											<input type="hidden" name="prix" value="<?php print_r($total); ?>">
 											<input type="hidden" name="qtte" value="<?php print_r(count($_SESSION["panier"])); ?>">
                   </tr>
