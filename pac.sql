@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 21 Avril 2019 à 03:06
+-- Généré le :  Dim 21 Avril 2019 à 23:42
 -- Version du serveur :  10.1.9-MariaDB
 -- Version de PHP :  5.6.15
 
@@ -48,7 +48,9 @@ INSERT INTO `admins` (`id`, `login`, `mdp`, `email`, `banstat`, `dateserv`, `rol
 (15, 'zeineb', '4569AK74LOL', 'zeineb@gmail.com', 'actif', '2019-04-05 21:22:52', 'staff'),
 (16, 'hibeuuu', '0000', 'hiba.zrig@esprit.tn', 'actif', '2019-04-09 11:05:58', 'staff'),
 (17, 'sys', '0000', 'sys@gmail.com', 'actif', '2019-04-14 09:22:14', 'admin'),
-(18, 'Youss', '5050', 'Youss@gmail.com', 'actif', '2019-04-17 14:49:09', 'staff');
+(18, 'Youss', '5050', 'Youss@gmail.com', 'actif', '2019-04-17 14:49:09', 'staff'),
+(19, 'nourKhedher', 'nour123', 'nour.khedher@esprit.tn', 'actif', '2019-04-21 01:47:11', 'staff'),
+(20, 'nourKhedhergr', 'grerg7', 'gonklovox@gmail.com', 'actif', '2019-04-21 01:59:00', 'staff');
 
 -- --------------------------------------------------------
 
@@ -72,136 +74,99 @@ INSERT INTO `categorie` (`nom`, `descr`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `clients`
---
-
-CREATE TABLE `clients` (
-  `clientno` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `clients`
---
-
-INSERT INTO `clients` (`clientno`) VALUES
-(1),
-(2),
-(3);
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `commande`
 --
 
-CREATE TABLE commande (
-  id_commande INT NOT NULL AUTO_INCREMENT ,
-  id_client INT NOT NULL ,
-  date_commande TIMESTAMP default CURRENT_TIMESTAMP NOT NULL,
-  totalPrix_commande FLOAT NOT NULL,
-    nbProduit_commande INT NOT NULL,
-    etat_commande int(11) NOT NULL DEFAULT '0',
-  FOREIGN KEY(id_client) REFERENCES membres(cin),
-  PRIMARY KEY (id_commande)
- )
+CREATE TABLE `commande` (
+  `id_commande` int(11) NOT NULL,
+  `id_client` int(11) NOT NULL,
+  `date_commande` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `totalPrix_commande` float NOT NULL,
+  `nbProduit_commande` int(11) NOT NULL,
+  `etat_commande` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `commande`
 --
 
 INSERT INTO `commande` (`id_commande`, `id_client`, `date_commande`, `totalPrix_commande`, `nbProduit_commande`, `etat_commande`) VALUES
-(203, 2, '2019-03-25 03:09:44', 800.8, 5, 0),
-(204, 2, '2019-03-25 03:13:08', 800.8, 5, 1),
-(600, 1, '2019-04-18 03:12:03', 70, 2, 0),
-(613, 1, '2019-04-18 09:59:03', 105, 2, 0),
-(615, 1, '2019-04-18 18:18:36', 798, 2, 0),
-(616, 1, '2019-04-18 19:20:07', 12, 1, 1),
-(618, 1, '2019-04-20 19:54:21', 800, 1, 1),
-(619, 1, '2019-04-20 20:00:08', 800, 1, 1),
-(663, 1, '2019-04-20 22:46:20', 925, 2, 0),
-(664, 1, '2019-04-20 22:49:25', 1475, 3, 0),
-(665, 1, '2019-04-20 23:33:25', 1475, 3, 0),
-(666, 1, '2019-04-20 23:49:25', 1475, 3, 0),
-(667, 1, '2019-04-20 23:50:17', 925, 2, 0),
-(668, 1, '2019-04-20 23:51:47', 675, 2, 0),
-(669, 1, '2019-04-20 23:54:09', 5000, 1, 0),
-(670, 1, '2019-04-20 23:54:53', 2500, 1, 0),
-(671, 1, '2019-04-20 23:56:28', 125, 1, 0),
-(672, 1, '2019-04-20 23:56:57', 125, 1, 0),
-(673, 1, '2019-04-20 23:57:15', 550, 1, 0),
-(674, 1, '2019-04-20 23:58:13', 125, 1, 0),
-(675, 1, '2019-04-21 00:00:12', 800, 1, 0),
-(676, 1, '2019-04-21 00:00:50', 800, 1, 0),
-(677, 1, '2019-04-21 00:20:34', 2056, 2, 0),
-(678, 1, '2019-04-21 00:21:47', 2056, 2, 0),
-(679, 1, '2019-04-21 00:23:07', 1256, 1, 0),
-(680, 1, '2019-04-21 00:24:51', 500, 1, 0),
-(681, 1, '2019-04-21 00:39:41', 1256, 1, 0);
+(1, 12345678, '2019-04-21 18:52:48', 925, 2, 0),
+(2, 12345678, '2019-04-21 18:59:42', 3655, 4, 0),
+(3, 12345678, '2019-04-21 19:03:32', 925, 2, 0),
+(4, 12345678, '2019-04-21 19:13:46', 925, 2, 0),
+(5, 12345678, '2019-04-21 19:16:05', 3655, 4, 0),
+(6, 12345678, '2019-04-21 19:18:01', 65225, 4, 1),
+(7, 12345678, '2019-04-21 20:58:15', 1655, 3, 0),
+(8, 12345678, '2019-04-21 21:35:10', 4355, 3, 0);
 
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `commande_details`
 --
-CREATE TABLE commande_details (
-  id_CommandeDetails INT NOT NULL AUTO_INCREMENT ,
-  id_Commande INT NOT NULL ,
-  Nom_Produit varchar(20),
-  id_produit  INT NOT NULL,
-  Qte_Produit INT DEFAULT 0 NOT NULL,
-  PRIX_Produit float DEFAULT 0 NOT NULL,
-  FOREIGN KEY(id_Commande) REFERENCES commande(id_commande),
-  PRIMARY KEY (id_CommandeDetails)
- )
+
+CREATE TABLE `commande_details` (
+  `id_CommandeDetails` int(11) NOT NULL,
+  `id_Commande` int(11) NOT NULL,
+  `Nom_Produit` varchar(20) DEFAULT NULL,
+  `id_produit` int(11) NOT NULL,
+  `Qte_Produit` int(11) NOT NULL DEFAULT '0',
+  `PRIX_Produit` float NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `commande_details`
 --
 
 INSERT INTO `commande_details` (`id_CommandeDetails`, `id_Commande`, `Nom_Produit`, `id_produit`, `Qte_Produit`, `PRIX_Produit`) VALUES
-(5, 203, 'chaise1', 1, 2, 150.5),
-(6, 203, 'chaise 2', 2, 3, 166.6),
-(7, 204, 'chaise1', 1, 2, 150.5),
-(8, 204, 'chaise 2', 2, 3, 166.6),
-(307, 600, 'chaise1', 1, 1, 20),
-(308, 600, 'chaise2', 2, 1, 50),
-(334, 613, 'chaise2', 2, 1, 50),
-(335, 613, 'chaise3', 3, 1, 55),
-(338, 615, 'chaise', 1, 4, 12),
-(339, 615, 'chaise3', 3, 5, 150),
-(340, 616, 'chaise', 1, 1, 12),
-(343, 618, 'chaise1236', 1231564658, 1, 800),
-(344, 619, 'chaise1236', 1231564658, 1, 800),
-(449, 663, 'chaise1236', 1231564658, 1, 800),
-(450, 663, 'chaise3', 1231564661, 1, 125),
-(451, 664, 'chaise1236', 1231564658, 1, 800),
-(452, 664, 'chaise3', 1231564661, 1, 125),
-(453, 664, 'Fauteuil', 1231564663, 1, 550),
-(454, 665, 'chaise1236', 1231564658, 1, 800),
-(455, 665, 'chaise3', 1231564661, 1, 125),
-(456, 665, 'Fauteuil', 1231564663, 1, 550),
-(457, 666, 'chaise1236', 1231564658, 1, 800),
-(458, 666, 'chaise3', 1231564661, 1, 125),
-(459, 666, 'Fauteuil', 1231564663, 1, 550),
-(460, 667, 'chaise1236', 1231564658, 1, 800),
-(461, 667, 'chaise3', 1231564661, 1, 125),
-(462, 668, 'chaise3', 1231564661, 1, 125),
-(463, 668, 'Fauteuil', 1231564663, 1, 550),
-(464, 669, 'Tableau Artistique', 1231564665, 1, 5000),
-(465, 670, 'TableTs', 1231564669, 5, 500),
-(466, 671, 'chaise3', 1231564661, 1, 125),
-(467, 672, 'chaise3', 1231564661, 1, 125),
-(468, 673, 'Fauteuil', 1231564663, 1, 550),
-(469, 674, 'chaise3', 1231564661, 1, 125),
-(470, 675, 'chaise1236', 1231564658, 1, 800),
-(471, 676, 'chaise1236', 1231564658, 1, 800),
-(472, 677, 'chaise1236', 1231564658, 1, 800),
-(473, 677, 'chaise5', 1231564662, 1, 1256),
-(474, 678, 'chaise1236', 1231564658, 1, 800),
-(475, 678, 'chaise5', 1231564662, 1, 1256),
-(476, 679, 'chaise5', 1231564662, 1, 1256),
-(477, 680, 'chaise125', 1231564660, 1, 500),
-(478, 681, 'chaise5', 1231564662, 1, 1256);
+(1, 1, 'chaise1236', 1231564658, 1, 800),
+(2, 1, 'chaise3', 1231564661, 1, 125),
+(3, 2, 'chaise3', 1231564661, 1, 125),
+(4, 2, 'chaise1236', 1231564658, 1, 800),
+(5, 2, 'Fauteuil 2 Places', 1231564664, 1, 2500),
+(6, 2, 'Table', 1231564667, 1, 230),
+(7, 3, 'chaise3', 1231564661, 1, 125),
+(8, 3, 'chaise1236', 1231564658, 1, 800),
+(9, 4, 'chaise3', 1231564661, 1, 125),
+(10, 4, 'chaise1236', 1231564658, 1, 800),
+(11, 5, 'chaise3', 1231564661, 1, 125),
+(12, 5, 'chaise1236', 1231564658, 1, 800),
+(13, 5, 'Table', 1231564667, 1, 230),
+(14, 5, 'Fauteuil 2 Places', 1231564664, 1, 2500),
+(15, 6, 'chaise1236', 1231564658, 1, 800),
+(16, 6, 'chaise3', 1231564661, 5, 125),
+(17, 6, 'Fauteuil 2 Places', 1231564664, 20, 2500),
+(18, 6, 'Table', 1231564667, 60, 230),
+(19, 7, 'chaise1236', 1231564658, 1, 800),
+(20, 7, 'chaise3', 1231564661, 5, 125),
+(21, 7, 'Table', 1231564667, 1, 230),
+(22, 8, 'chaise3', 1231564661, 1, 125),
+(23, 8, 'chaise1236', 1231564658, 5, 800),
+(24, 8, 'Table', 1231564667, 1, 230);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `favoris`
+--
+
+CREATE TABLE `favoris` (
+  `id` int(11) NOT NULL,
+  `id_client` int(11) NOT NULL,
+  `nom_prod` varchar(20) DEFAULT NULL,
+  `id_produit` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `favoris`
+--
+
+INSERT INTO `favoris` (`id`, `id_client`, `nom_prod`, `id_produit`) VALUES
+(16, 12345678, 'chaise3', 1231564661),
+(18, 12345678, 'TableTs', 1231564669),
+(20, 12345678, 'chaise125', 1231564660),
+(21, 12345678, 'chaise5', 1231564662);
 
 -- --------------------------------------------------------
 
@@ -217,8 +182,18 @@ CREATE TABLE `membres` (
   `date_naissance` date DEFAULT NULL,
   `sexe` varchar(10) DEFAULT NULL,
   `num_tel` int(20) DEFAULT NULL,
-  `prenom` varchar(50) DEFAULT NULL
+  `prenom` varchar(50) DEFAULT NULL,
+  `avatar` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `membres`
+--
+
+INSERT INTO `membres` (`cin`, `nom`, `email`, `mdp`, `date_naissance`, `sexe`, `num_tel`, `prenom`, `avatar`) VALUES
+(0, 'yhedr', 'zrty', '698d51a19d8a121ce581499d7b701668', '2019-04-21', 'Homme', 0, 'rthy', ''),
+(123546, 'erij', 'nour.khedher@esprit.tn', '827ccb0eea8a706c4c34a16891f84e7b', '2019-04-21', 'Homme', 123456789, 'erij', ''),
+(12345678, 'Erij', 'mxmbb2018@gmail.com', '6b4dccfb69c362b172bafdfc60c343e1', '2019-04-04', 'Femme', 25928777, 'tarhouni', '12345678.jpg');
 
 -- --------------------------------------------------------
 
@@ -240,21 +215,37 @@ CREATE TABLE `produits` (
 --
 
 INSERT INTO `produits` (`nom`, `num`, `prix`, `qte`, `descr`, `cat`) VALUES
-('chaise1236', 1231564658, 800, 80, 'description', 'Interieur'),
+('chaise1236', 1231564658, 800, 37, 'description', 'Interieur'),
 ('chaise125', 1231564660, 500, 125, 'descrchaise125', 'Exterieur'),
-('chaise3', 1231564661, 125, 500, 'descr3', 'Interieur'),
+('chaise3', 1231564661, 125, 10, 'descr3', 'Interieur'),
 ('chaise5', 1231564662, 1256, 500, 'descr55', 'Exterieur'),
 ('Fauteuil', 1231564663, 550, 0, 'Fauteuil Comfort', 'Interieur'),
-('Fauteuil 2 Places', 1231564664, 2500, 32, 'faut Comfortable', 'Interieur'),
+('Fauteuil 2 Places', 1231564664, 2500, 2, 'faut Comfortable', 'Interieur'),
 ('Tableau Artistique', 1231564665, 5000, 0, 'tableau', 'Interieur'),
-('Table', 1231564667, 230, 200, 'Tbmx', 'Interieur'),
+('Table', 1231564667, 230, 130, 'Tbmx', 'Interieur'),
 ('AspirateurAS', 1231564668, 125, 500, 'Aspirateur Samsung', 'Interieur'),
-('TableTs', 1231564669, 500, 250, 'Descr', 'Interieur'),
-('Prodtest', 1231564671, 500, 500, 'description test', 'Interieur'),
-('lilyouss', 1231564672, 5000, 500, 'youss', 'Exterieur'),
-('wiou', 1231564673, 500, 580, 'description', 'Interieur'),
-('chaise55', 1231564674, 5000, 5000, 'descr', 'Interieur'),
-('hatem', 1231564675, 500, 52466, 'kjalkja', 'Interieur');
+('TableTs', 1231564669, 500, 245, 'Descr', 'Interieur'),
+('lilyouss', 1231564672, 5000, 500, 'youss', 'Exterieur');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `recuperation`
+--
+
+CREATE TABLE `recuperation` (
+  `id` int(11) NOT NULL,
+  `mail` varchar(255) NOT NULL,
+  `code` int(11) NOT NULL,
+  `confirme` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `recuperation`
+--
+
+INSERT INTO `recuperation` (`id`, `mail`, `code`, `confirme`) VALUES
+(1, 'mxmbb2018@gmail.com', 135319166, 1);
 
 -- --------------------------------------------------------
 
@@ -293,12 +284,6 @@ ALTER TABLE `categorie`
   ADD KEY `nom` (`nom`);
 
 --
--- Index pour la table `clients`
---
-ALTER TABLE `clients`
-  ADD PRIMARY KEY (`clientno`);
-
---
 -- Index pour la table `commande`
 --
 ALTER TABLE `commande`
@@ -313,10 +298,20 @@ ALTER TABLE `commande_details`
   ADD KEY `id_Commande` (`id_Commande`);
 
 --
+-- Index pour la table `favoris`
+--
+ALTER TABLE `favoris`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id_produit` (`id_produit`),
+  ADD KEY `id_client` (`id_client`);
+
+--
 -- Index pour la table `membres`
 --
 ALTER TABLE `membres`
-  ADD UNIQUE KEY `email` (`email`);
+  ADD PRIMARY KEY (`cin`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD KEY `cin` (`cin`);
 
 --
 -- Index pour la table `produits`
@@ -324,6 +319,13 @@ ALTER TABLE `membres`
 ALTER TABLE `produits`
   ADD PRIMARY KEY (`num`),
   ADD KEY `cat` (`cat`);
+
+--
+-- Index pour la table `recuperation`
+--
+ALTER TABLE `recuperation`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `mail` (`mail`);
 
 --
 -- Index pour la table `superadmin`
@@ -339,22 +341,32 @@ ALTER TABLE `superadmin`
 -- AUTO_INCREMENT pour la table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT pour la table `commande`
 --
 ALTER TABLE `commande`
-  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=682;
+  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT pour la table `commande_details`
 --
 ALTER TABLE `commande_details`
-  MODIFY `id_CommandeDetails` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=479;
+  MODIFY `id_CommandeDetails` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+--
+-- AUTO_INCREMENT pour la table `favoris`
+--
+ALTER TABLE `favoris`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT pour la table `produits`
 --
 ALTER TABLE `produits`
-  MODIFY `num` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1231564676;
+  MODIFY `num` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1231564673;
+--
+-- AUTO_INCREMENT pour la table `recuperation`
+--
+ALTER TABLE `recuperation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `superadmin`
 --
@@ -368,7 +380,7 @@ ALTER TABLE `superadmin`
 -- Contraintes pour la table `commande`
 --
 ALTER TABLE `commande`
-  ADD CONSTRAINT `commande_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `clients` (`clientno`);
+  ADD CONSTRAINT `commande_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `membres` (`cin`);
 
 --
 -- Contraintes pour la table `commande_details`
@@ -377,10 +389,22 @@ ALTER TABLE `commande_details`
   ADD CONSTRAINT `commande_details_ibfk_1` FOREIGN KEY (`id_Commande`) REFERENCES `commande` (`id_commande`);
 
 --
+-- Contraintes pour la table `favoris`
+--
+ALTER TABLE `favoris`
+  ADD CONSTRAINT `favoris_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `membres` (`cin`);
+
+--
 -- Contraintes pour la table `produits`
 --
 ALTER TABLE `produits`
   ADD CONSTRAINT `produits_ibfk_1` FOREIGN KEY (`cat`) REFERENCES `categorie` (`nom`);
+
+--
+-- Contraintes pour la table `recuperation`
+--
+ALTER TABLE `recuperation`
+  ADD CONSTRAINT `recuperation_ibfk_1` FOREIGN KEY (`mail`) REFERENCES `membres` (`email`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
