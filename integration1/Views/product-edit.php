@@ -126,7 +126,7 @@
 
                             <div id="myTabContent" class="tab-content custom-product-edit">
 
-                                <form method="post" action="http://localhost:1234/Produits/Views/ajouter_produit.php">
+                                <form method="post" action="ajouter_produit.php">
                                     <div class="product-tab-list tab-pane fade active in" id="description">
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">

@@ -46,7 +46,7 @@ $var =  $_SESSION["role"];
                                     class="icon nalika-pie-chart icon-wrap"></i> <span
                                     class="mini-click-non">Produits</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Liste Produits" href="http://localhost:1234/Produits/Views/afficher_produits.php"><span class="mini-sub-pro">Liste Produits</span></a>
+                            <li><a title="Liste Produits" href="afficher_produits.php"><span class="mini-sub-pro">Liste Produits</span></a>
                             </li>
                             <li><a title="Ajouter Produits" href="product-edit.php"><span class="mini-sub-pro">Ajouter Produits</span></a>
                             </li>
