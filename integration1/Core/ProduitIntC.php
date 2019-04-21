@@ -83,7 +83,6 @@ class ProduitIntC
 
     }
 
-
     function modifier_produit($produitint, $num)
     {
         $sql = "UPDATE produits SET nom=:nom, num=:num,prix=:prix,qte=:qte,descr=:descr,cat=:cat WHERE num=:num";

@@ -29,25 +29,28 @@ for (var i=0 ; i < removeCarteItemButton.length ; i++ )
 }
 
 var quantityInputs= document.getElementsByClassName("quantity")
+
 for (var i=0 ; i < quantityInputs.length ; i++ )
 {
   var input = quantityInputs[i]
-  input.addEventListener("change", quantityChanged )
+
+  input.addEventListener("change", function(event){
+    var input = event.target
+var quantityInputsverif2= document.getElementsByClassName("quantityVrif").value
+var verif=Number(event.target.previousElementSibling.value)
+console.log(verif)
+    console.log(input.value)
+    if(isNaN(input.value) || input.value <= 0 || input.value > verif )
+    {
+      input.value=1
+    }
+    updateCartTotal()
+  } );
 }
 
 }
 
 
-
-
-function quantityChanged(event) {
-  var input = event.target
-  if(isNaN(input.value) || input.value <= 0)
-  {
-    input.value=1
-  }
-  updateCartTotal()
-}
 
 function removeCarteItem(event)
 {

@@ -57,7 +57,16 @@ input[type=submit]:focus {
 
 											<td class="priceCart"><?php print_r($values["item_price"]); ?> TND</td>
 
-                      <td><input type="number" class="quantity" name="panier[qte][<?php print_r($values["item_id"]); ?>]" style="max-width:40px" placeholder="1" size="16" type="number" value="<?php print_r($values["item_quantity"]); ?>"></td>
+                      <td><?php $item_id=(int)$values["item_id"];
+                       $sql="SELECT qte FROM produits WHERE num='$item_id'";
+                                  $req=$db->prepare($sql);
+                                  $req->execute();
+                                  $liste=$req->fetchAll(PDO::FETCH_OBJ);
+                                  foreach ($liste as $product){ ?>
+                        <input type="hidden" class="quantityVrif" value="<?php echo $product->qte; ?>">
+    <?php                     }
+                                  ?>
+                        <input type="number" class="quantity" name="panier[qte][<?php print_r($values["item_id"]); ?>]" style="max-width:40px" placeholder="1" size="16" type="number" value="<?php print_r($values["item_quantity"]); ?>"></td>
 
 											<td><a class="remove deletepanier" href="deletePanier.php?id=<?php echo $values["item_id"]; ?>" value="supprimer"  >
                      X
