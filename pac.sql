@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 20 Avril 2019 à 21:26
+-- Généré le :  Dim 21 Avril 2019 à 03:06
 -- Version du serveur :  10.1.9-MariaDB
 -- Version de PHP :  5.6.15
 
@@ -113,7 +113,28 @@ INSERT INTO `commande` (`id_commande`, `id_client`, `date_commande`, `totalPrix_
 (600, 1, '2019-04-18 03:12:03', 70, 2, 0),
 (613, 1, '2019-04-18 09:59:03', 105, 2, 0),
 (615, 1, '2019-04-18 18:18:36', 798, 2, 0),
-(616, 1, '2019-04-18 19:20:07', 12, 1, 1);
+(616, 1, '2019-04-18 19:20:07', 12, 1, 1),
+(618, 1, '2019-04-20 19:54:21', 800, 1, 1),
+(619, 1, '2019-04-20 20:00:08', 800, 1, 1),
+(663, 1, '2019-04-20 22:46:20', 925, 2, 0),
+(664, 1, '2019-04-20 22:49:25', 1475, 3, 0),
+(665, 1, '2019-04-20 23:33:25', 1475, 3, 0),
+(666, 1, '2019-04-20 23:49:25', 1475, 3, 0),
+(667, 1, '2019-04-20 23:50:17', 925, 2, 0),
+(668, 1, '2019-04-20 23:51:47', 675, 2, 0),
+(669, 1, '2019-04-20 23:54:09', 5000, 1, 0),
+(670, 1, '2019-04-20 23:54:53', 2500, 1, 0),
+(671, 1, '2019-04-20 23:56:28', 125, 1, 0),
+(672, 1, '2019-04-20 23:56:57', 125, 1, 0),
+(673, 1, '2019-04-20 23:57:15', 550, 1, 0),
+(674, 1, '2019-04-20 23:58:13', 125, 1, 0),
+(675, 1, '2019-04-21 00:00:12', 800, 1, 0),
+(676, 1, '2019-04-21 00:00:50', 800, 1, 0),
+(677, 1, '2019-04-21 00:20:34', 2056, 2, 0),
+(678, 1, '2019-04-21 00:21:47', 2056, 2, 0),
+(679, 1, '2019-04-21 00:23:07', 1256, 1, 0),
+(680, 1, '2019-04-21 00:24:51', 500, 1, 0),
+(681, 1, '2019-04-21 00:39:41', 1256, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -145,7 +166,39 @@ INSERT INTO `commande_details` (`id_CommandeDetails`, `id_Commande`, `Nom_Produi
 (335, 613, 'chaise3', 3, 1, 55),
 (338, 615, 'chaise', 1, 4, 12),
 (339, 615, 'chaise3', 3, 5, 150),
-(340, 616, 'chaise', 1, 1, 12);
+(340, 616, 'chaise', 1, 1, 12),
+(343, 618, 'chaise1236', 1231564658, 1, 800),
+(344, 619, 'chaise1236', 1231564658, 1, 800),
+(449, 663, 'chaise1236', 1231564658, 1, 800),
+(450, 663, 'chaise3', 1231564661, 1, 125),
+(451, 664, 'chaise1236', 1231564658, 1, 800),
+(452, 664, 'chaise3', 1231564661, 1, 125),
+(453, 664, 'Fauteuil', 1231564663, 1, 550),
+(454, 665, 'chaise1236', 1231564658, 1, 800),
+(455, 665, 'chaise3', 1231564661, 1, 125),
+(456, 665, 'Fauteuil', 1231564663, 1, 550),
+(457, 666, 'chaise1236', 1231564658, 1, 800),
+(458, 666, 'chaise3', 1231564661, 1, 125),
+(459, 666, 'Fauteuil', 1231564663, 1, 550),
+(460, 667, 'chaise1236', 1231564658, 1, 800),
+(461, 667, 'chaise3', 1231564661, 1, 125),
+(462, 668, 'chaise3', 1231564661, 1, 125),
+(463, 668, 'Fauteuil', 1231564663, 1, 550),
+(464, 669, 'Tableau Artistique', 1231564665, 1, 5000),
+(465, 670, 'TableTs', 1231564669, 5, 500),
+(466, 671, 'chaise3', 1231564661, 1, 125),
+(467, 672, 'chaise3', 1231564661, 1, 125),
+(468, 673, 'Fauteuil', 1231564663, 1, 550),
+(469, 674, 'chaise3', 1231564661, 1, 125),
+(470, 675, 'chaise1236', 1231564658, 1, 800),
+(471, 676, 'chaise1236', 1231564658, 1, 800),
+(472, 677, 'chaise1236', 1231564658, 1, 800),
+(473, 677, 'chaise5', 1231564662, 1, 1256),
+(474, 678, 'chaise1236', 1231564658, 1, 800),
+(475, 678, 'chaise5', 1231564662, 1, 1256),
+(476, 679, 'chaise5', 1231564662, 1, 1256),
+(477, 680, 'chaise125', 1231564660, 1, 500),
+(478, 681, 'chaise5', 1231564662, 1, 1256);
 
 -- --------------------------------------------------------
 
@@ -163,28 +216,6 @@ CREATE TABLE `membres` (
   `num_tel` int(20) DEFAULT NULL,
   `prenom` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `products`
---
-
-CREATE TABLE `products` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `price` float NOT NULL DEFAULT '0',
-  `stock` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `products`
---
-
-INSERT INTO `products` (`id`, `name`, `price`, `stock`) VALUES
-(1, 'chaise', 12, 3),
-(2, 'chaises2', 50, 0),
-(3, 'chaise3', 150, 4);
 
 -- --------------------------------------------------------
 
@@ -285,12 +316,6 @@ ALTER TABLE `membres`
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Index pour la table `products`
---
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Index pour la table `produits`
 --
 ALTER TABLE `produits`
@@ -316,17 +341,12 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT pour la table `commande`
 --
 ALTER TABLE `commande`
-  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=618;
+  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=682;
 --
 -- AUTO_INCREMENT pour la table `commande_details`
 --
 ALTER TABLE `commande_details`
-  MODIFY `id_CommandeDetails` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=343;
---
--- AUTO_INCREMENT pour la table `products`
---
-ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_CommandeDetails` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=479;
 --
 -- AUTO_INCREMENT pour la table `produits`
 --
