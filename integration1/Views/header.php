@@ -55,13 +55,23 @@ $var =  $_SESSION["role"];
                         </ul>
 
                     <li>
-                        <a class="has-arrow" href="product-edit.php" aria-expanded="false" ><i class="icon nalika-bar-chart icon-wrap"></i> <span
+                        <a class="has-arrow" href="product-edit.php" aria-expanded="false" ><i class="icon nalika-table icon-wrap"></i> <span
                                     class="mini-click-non">Commande</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
                             <li><a title="Liste Produits" href="CommandeList.php"><span class="mini-sub-pro">Liste Commandes</span></a>
                             </li>
                           </ul>
                         </li>
+                        <li>
+                            <a class="has-arrow" href="product-edit.php" aria-expanded="false" ><i class="icon nalika-home icon-wrap"></i></i> <span
+                                        class="mini-click-non">Users</span></a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li><a title="Liste Produits" href="Users.php"><span class="mini-sub-pro">Liste Users</span></a>
+                                </li>
+                                <li><a title="Liste Produits" href="SendMailForm.php"><span class="mini-sub-pro">Send Mail</span></a>
+                                </li>
+                              </ul>
+                            </li>
                 </ul>
             </nav>
         </div>

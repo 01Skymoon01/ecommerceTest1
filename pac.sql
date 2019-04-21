@@ -94,14 +94,16 @@ INSERT INTO `clients` (`clientno`) VALUES
 -- Structure de la table `commande`
 --
 
-CREATE TABLE `commande` (
-  `id_commande` int(11) NOT NULL,
-  `id_client` int(11) NOT NULL,
-  `date_commande` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `totalPrix_commande` float NOT NULL,
-  `nbProduit_commande` int(11) NOT NULL,
-  `etat_commande` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE commande (
+  id_commande INT NOT NULL AUTO_INCREMENT ,
+  id_client INT NOT NULL ,
+  date_commande TIMESTAMP default CURRENT_TIMESTAMP NOT NULL,
+  totalPrix_commande FLOAT NOT NULL,
+    nbProduit_commande INT NOT NULL,
+    etat_commande int(11) NOT NULL DEFAULT '0',
+  FOREIGN KEY(id_client) REFERENCES membres(cin),
+  PRIMARY KEY (id_commande)
+ )
 
 --
 -- Contenu de la table `commande`
@@ -141,15 +143,16 @@ INSERT INTO `commande` (`id_commande`, `id_client`, `date_commande`, `totalPrix_
 --
 -- Structure de la table `commande_details`
 --
-
-CREATE TABLE `commande_details` (
-  `id_CommandeDetails` int(11) NOT NULL,
-  `id_Commande` int(11) NOT NULL,
-  `Nom_Produit` varchar(20) DEFAULT NULL,
-  `id_produit` int(11) NOT NULL,
-  `Qte_Produit` int(11) NOT NULL DEFAULT '0',
-  `PRIX_Produit` float NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE commande_details (
+  id_CommandeDetails INT NOT NULL AUTO_INCREMENT ,
+  id_Commande INT NOT NULL ,
+  Nom_Produit varchar(20),
+  id_produit  INT NOT NULL,
+  Qte_Produit INT DEFAULT 0 NOT NULL,
+  PRIX_Produit float DEFAULT 0 NOT NULL,
+  FOREIGN KEY(id_Commande) REFERENCES commande(id_commande),
+  PRIMARY KEY (id_CommandeDetails)
+ )
 
 --
 -- Contenu de la table `commande_details`

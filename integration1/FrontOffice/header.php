@@ -4,12 +4,23 @@ require '../core/GestionPanier/paniers.class.c.php';
 $db = config::getConnexion();
 $panier= new panier();
 
+
+if (isset($_SESSION['cin']) and $_SESSION['cin'] > 0 )
+{
+    $getcin=$_SESSION['cin'];
+    $bdd = config::getConnexion();
+    $requser=$bdd->prepare('SELECT * FROM membres WHERE cin = ?');
+    $requser->execute(array($getcin));
+    $userinfo = $requser->fetch();
+}
+
 ?>
 <!DOCTYPE HTML>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
     <title>Geoconcept &mdash; Vente et Location Meubles</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Free HTML5 Website Template by gettemplates.co" />
@@ -74,25 +85,25 @@ $panier= new panier();
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3 col-xs-2">
-					<div id="fh5co-logo"><a href="index.html">GeoConcept.</a></div>
+					<div id="fh5co-logo"><a href="product.html"><img src="images/logosn.png" alt="" width="35" style="margin: -4px 5px 0px 10px;" />GeoConcept.</a></div>
 				</div>
 				<div class="col-md-6 col-xs-6 text-center menu-1">
 					<ul>
 						<li class="has-dropdown">
 							<a href="product.php">GeoInt</a>
 							<ul class="dropdown">
-								<li><a href="single.html">Consulter Produits Intérieur</a></li>
+								<li><a href="product.php">Consulter Produits Intérieur</a></li>
 							</ul>
 						</li>
 						<li class="has-dropdown">
 							<a href="product2.php">GeoExt</a>
 							<ul class="dropdown">
-								<li><a href="single.html">Consulter Produits Extérieur</a></li>
+								<li><a href="product2.php">Consulter Produits Extérieur</a></li>
 							</ul>
 						</li>
-						<li><a href="about.html">About</a></li>
+
 						<li class="has-dropdown">
-							<a href="services.html">Services</a>
+							<a href="#">Services</a>
 							<ul class="dropdown">
 								<li><a href="#">Fabrication</a></li>
 								<li><a href="#">eCommerce</a></li>
@@ -100,7 +111,13 @@ $panier= new panier();
 								<li><a href="#">API</a></li>
 							</ul>
 						</li>
-						<li><a href="contact.html">Contact</a></li>
+						<li><a href="#">Contact</a></li>
+
+         <?php if(!isset($_SESSION['cin'])){ ?>
+         <li><a href="signup.php">S'inscrire</a></li>
+         <li><a href="signin.php">Se connecter</a></li>
+       <?php } ?>
+
 					</ul>
 				</div>
 				<div class="col-md-3 col-xs-4 text-right hidden-xs menu-2">
@@ -113,11 +130,47 @@ $panier= new panier();
 						        <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
 						      </span>
                                 </form>
+
 						    </div>
 						</li>
-            <li class="shopping-cart"><a href="Panier.php" name="TotalProduits" class="cart"><span><small><?php echo $panier->count(); ?></small><i class="icon-shopping-cart"></i></span></a></li>
-					</ul>
+            <div style="display: flex;">
+            <li class="shopping-cart">
+
+          <div class="input-group mb-3" style="margin-top:10px; ">
+              <a href="Panier.php" name="TotalProduits" class="cart" ><span><small><?php echo $panier->count(); ?></small><i class="icon-shopping-cart"></i></span></a>
+            </div>
+          </li>
+          <?php if(isset($_SESSION['cin'])){ ?>
+          <li class="has-dropdown">
+            <div style="margin-left:80px; ">
+  <?php
+
+
+  if (!empty($userinfo['avatar'])) {
+      ?>
+<a href="profile.php"><img src="membres/avatars/<?php echo $userinfo['avatar'];?>" style=" border-radius: 50%;  width: 50px; height: 40px;"/></a>
+
+  <ul class="dropdown" style="margin-left:80px; width:80px">
+      <li><a href="profile.php" class="deja2">Profile</a></li>
+    <li><a href="logout.php" class="deja2">logout</a></li>
+  </ul>
+  <?php
+  }
+  else {
+      ?>
+      <a href="profile.php"><img src="images\profileicon3.jpg"/></a>
+      <?php
+  }
+  ?>
+
+
+
+
+</li>
+<?php } ?>
+  </div>      	</ul>
 				</div>
+
 			</div>
 
 		</div>

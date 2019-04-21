@@ -36,6 +36,7 @@ for (var i=0 ; i < quantityInputs.length ; i++ )
 
   input.addEventListener("change", function(event){
     var input = event.target
+    console.log(event.target)
 var quantityInputsverif2= document.getElementsByClassName("quantityVrif").value
 var verif=Number(event.target.previousElementSibling.value)
 console.log(verif)

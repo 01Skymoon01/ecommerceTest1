@@ -3,6 +3,9 @@ include "../core/GestionPanier/paniers.class.c.php";
 include "../entities/commande/commande.class.php";
 include "../core/GestionCommande/commande.class.c.php";
 $panier= new panier();
+if(isset($_SESSION['cin']))
+{
+
 $listeC1=array();
 $listeC=array();
 if (isset($_POST["panier"]["qte"])) {
@@ -11,7 +14,8 @@ if (isset($_POST["panier"]["qte"])) {
 
  $nbProduit=$panier->Total_nb($_POST["panier"]["qte"]);
  $totalQTE=(int)$panier->Total_QTE($_POST["panier"]["qte"]) ;
- $IDClient=1;
+ $IDClient=(int)$_SESSION['cin'];
+
   $NomProduit= $panier->listeNom($_POST["panier"]["qte"]);
   $IdProduit= $panier->listeID($_POST["panier"]["qte"]);
   $PrixProduits= $panier->listePrix($_POST["panier"]["qte"]);
@@ -57,8 +61,14 @@ $commande1C->ajouterDetailsCommande($commandeD1,(int)$nbProduit_commande);
 
 
 $panier->addCommandeVirtuelle($listeC1);
-//var_dump($listeC1);
+var_dump($listeC1);
 header('location:commande.php');
+}
+}
+else {
+  $_SESSION["page"]=array();
+  $_SESSION["page"]="addCommande.php"; 
+  header('location:signin.php');
 }
 //header('location:commande.php');
 
