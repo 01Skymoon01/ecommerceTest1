@@ -12,6 +12,7 @@ if (isset($_GET['id'])) {
 
    if($test == true)
    {
+     $json['count']= $panier->count();
      $json['message']= 'bien ajouter';
    }
     if($test == false){

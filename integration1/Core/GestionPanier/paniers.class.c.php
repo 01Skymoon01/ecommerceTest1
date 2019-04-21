@@ -153,7 +153,7 @@ public function count()
     }
   }
     //var_dump($val);
-     var_dump($_SESSION['panier']);
+  
      //var_dump($values['item_quantity']);
     //var_dump($i);
       return $total;

@@ -233,10 +233,14 @@ if (isset($_GET["search"]) && $_GET["search"]!=""){
 }
 
 foreach($listeCommande as $row){ ?>
-  <?PHP if($row['etat_commande'] == 0){  ?>
+  <?PHP if($row['etat_commande'] == 0){
+
+    ?>
                                   <tr style="background-color:#3B6B9A;">
 
-  <?PHP } else if($row['etat_commande'] == 1) { ?>
+  <?PHP } else if($row['etat_commande'] == 1) {
+     ?>
+
                                   <tr style="background-color:#365D84;">
       <?php }      ?>
                                     <td>
@@ -347,7 +351,8 @@ foreach($listeCommande as $row){ ?>
     <!-- Main -->
 
     <script src="../views/js/main.js"></script>
-    	<script type="text/javascript" src="../views/app.js" ></script>
+
+      <script type="text/javascript" src="app.js" ></script>
 </body>
 
 </html>
