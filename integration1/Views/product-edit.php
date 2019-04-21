@@ -185,7 +185,21 @@
                                                             <OPTION>Exterieur
                                                         </SELECT>
                                                     </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="text-center custom-pro-edt-ds">
+                                                                <button type="submit" id="sauvegarder" name="sauvegarder"
+                                                                        class="btn btn-custon-rounded-four btn-danger"onclick="return verifform()">Sauvegarder
+                                                                </button>
+                                                                <button type="button" class="btn btn-default btn-md">Annuler
+                                                                </button>
+                                                            </div>
 
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
 
                                                 </div>
 
