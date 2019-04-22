@@ -81,11 +81,17 @@ $list=$reclamationc->afficherReclamation($_SESSION['cin']);
     </div>
 
     <div id="fh5co-started">
-        <div class="container">
 
-            <div class="row animate-box">
-                <div class="col-md-8 col-md-offset-2">
-                    <table class="table-bordered" >
+                <div class="row animate-box" style="  margin: auto; padding: 10px;" >
+
+                <div class="row" >
+                <div class="span12">
+
+                <div class="well well-small" style="margin-left:10% ; width:1200px">
+                  <h1>Liste de Vos Reclamations<small class="pull-right"></small></h1>
+                <hr class="soften"/>
+
+                <table class="table table-striped" >
                         <thead>
                         <th>Date de depot</th>
                         <th>Sujet reclamation</th>

@@ -86,10 +86,17 @@ $list=$demandec->afficherDemande($_SESSION['cin']);
 
 
 	<div id="fh5co-started">
-		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2">
-					<table class="table-bordered">
+
+					<div class="row animate-box" style="  margin: auto; padding: 10px;" >
+
+					<div class="row" >
+					<div class="span12">
+
+					<div class="well well-small" style="margin-left:10% ; width:1200px">
+						<h1>Liste de Vos Demandes<small class="pull-right"></small></h1>
+					<hr class="soften"/>
+
+					<table class="table table-striped" >
                         <thead>
                         <th>Date de la demande</th>
                         <th>Nom de la societe</th>
@@ -136,10 +143,14 @@ $list=$demandec->afficherDemande($_SESSION['cin']);
                         ?>
 
                     </table>
-				</div>
-			</div>
-		</div>
-	</div>
+									</div>
+
+									</div>
+								</div>
+
+
+								 </div>
+
 
 	<footer id="fh5co-footer" role="contentinfo">
 		<div class="container">
