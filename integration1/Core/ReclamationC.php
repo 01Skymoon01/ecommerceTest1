@@ -100,7 +100,7 @@ class ReclamationC {
     }
 
 
-}
+
 
 function modifierReclamation($Reclamation,$ID_R)
 {
@@ -118,6 +118,86 @@ function modifierReclamation($Reclamation,$ID_R)
     $req->bindValue(':NOW_R', $NOW_R);
 
     $req->execute();
+
+}
+
+function RechercheReclamationC($haja){
+
+  $sql="SELECT d.ID_R,d.OBJET_R,d.DETAILS_R,d.ETAT,d.NOW_R,u.nom,u.prenom FROM reclamation d INNER JOIN membres u ON u.cin=d.USER_ID WHERE u.nom LIKE '%$haja%' ";
+
+
+  $db = config::getConnexion();
+  try{
+  $liste=$db->query($sql);
+  return $liste;
+
+  }
+       catch (Exception $e){
+           die('Erreur: '.$e->getMessage());
+       }
+}
+
+function NBRLivraisonNonRecu(){
+
+  $sql="SELECT COUNT(ID_R) nbr FROM reclamation WHERE OBJET_R='Livraison non reçu' ";
+
+
+  $db = config::getConnexion();
+  try{
+  $liste=$db->query($sql);
+  return $liste;
+
+  }
+       catch (Exception $e){
+           die('Erreur: '.$e->getMessage());
+       }
+}
+
+function NBRLivraison_non_coforme(){
+
+  $sql="SELECT COUNT(ID_R) nbr FROM reclamation WHERE OBJET_R='Livraison non coforme' ";
+
+
+  $db = config::getConnexion();
+  try{
+  $liste=$db->query($sql);
+  return $liste;
+
+  }
+       catch (Exception $e){
+           die('Erreur: '.$e->getMessage());
+       }
+}
+function NBRRetM_sousGrantie(){
+
+  $sql="SELECT COUNT(ID_R) nbr FROM reclamation WHERE OBJET_R='Réparation et maintenance sous garantie' ";
+
+
+  $db = config::getConnexion();
+  try{
+  $liste=$db->query($sql);
+  return $liste;
+
+  }
+       catch (Exception $e){
+           die('Erreur: '.$e->getMessage());
+       }
+}
+function NBRAutre(){
+
+  $sql="SELECT COUNT(ID_R) nbr FROM reclamation WHERE OBJET_R='Autre..' ";
+
+
+  $db = config::getConnexion();
+  try{
+  $liste=$db->query($sql);
+  return $liste;
+
+  }
+       catch (Exception $e){
+           die('Erreur: '.$e->getMessage());
+       }
+}
 
 }
 ?>

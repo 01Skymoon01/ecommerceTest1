@@ -122,7 +122,7 @@ $listeCommande=$CommandeC1->afficherDetailsCommandeEnCours($_GET["cin"]);
                                   ?></h5></a>
                                   </td>
                          </tr>
-  
+
 
 
                       </table>
@@ -179,4 +179,5 @@ $listeCommande=$CommandeC1->afficherDetailsCommandeEnCours($_GET["cin"]);
 
 
 <?php }
+
 ?>

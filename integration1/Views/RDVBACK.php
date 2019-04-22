@@ -76,12 +76,12 @@ $listerdv = $rdvC->afficherRDVs();
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                         <div class="admin-content analysis-progrebar-ctn" style="background-color:white;color:black;"><div class="stats-icon pull-right">
-                                <i class="fa fa-street-view" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
                             </div>
                             <h4 class="text-left text-uppercase" style="color:black;"><b>livraison non recu</b></h4>
                             <div class="row vertical-center-box vertical-center-box-tablet">
                                 <div class="col-xs-9 cus-gh-hd-pro">
-                                    <h2 class="text-right no-margin" style="color:green;font-size:20px;"><?php $ClientFidele=$rdvC->NBRRESU();
+                                    <h2 class="text-right no-margin" style="color:#3B6B9A;font-size:20px;"><?php $ClientFidele=$rdvC->NBRRESU();
                                     {
                                       foreach($ClientFidele as $row){
                                         echo $row["nbr"];
@@ -90,7 +90,7 @@ $listerdv = $rdvC->afficherRDVs();
                                 </div>
                             </div>
                             <div class="progress progress-mini">
-                                <div style="width: 100%;" class="progress-bar bg-green"></div>
+                                <div style="width: 100%;" class="progress-bar bg-blue"></div>
                             </div>
                         </div>
                     </div>
@@ -165,7 +165,7 @@ $listerdv = $rdvC->afficherRDVs();
         </div>
     </div>
 
-        <div class="product-status mg-b-30" style="margin-top:10px">
+        <div class="product-status mg-b-30" style="margin-top:50px">
             <div class="container-fluid" style="margin-top:20px">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -174,7 +174,7 @@ $listerdv = $rdvC->afficherRDVs();
 
 
                             <form action="RDVBACK.php" method="GET">
-                              <div style="display: flex;">
+                              <div style="display: flex; margin-bottom:10px">
                           <div class="input-group mb-3" >
                             <input type="text" class="form-control"placeholder="Search..." aria-label="" aria-describedby="basic-addon1" style="color:white;" name="search">
                           </div>
@@ -215,9 +215,16 @@ $listerdv = $rdvC->afficherRDVs();
                                 }
                                 foreach($listerdv as $row){
                                 if ($dd >= $row['NOW_RDV']) {
-                                ?>
+                                  if($row['ETAT_RDV'] == 'en attente'){
 
-                                <tr>
+                                     ?>
+                                                                   <tr style="background-color:#3B6B9A;">
+
+                                   <?PHP } else if($row['ETAT_RDV'] == "Acceptee") {
+                                      ?>
+
+                                                                   <tr style="background-color:#365D84;">
+                                       <?php }      ?>
                                     <td><?PHP echo $row['NOW_RDV']; ?></td>
                                     <td><?PHP echo $row['DATE_RDV']; ?></td>
                                     <td><?PHP echo $row['OBJET_RDV']; ?></td>

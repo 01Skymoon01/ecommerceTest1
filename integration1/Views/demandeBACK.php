@@ -132,7 +132,7 @@ $dd= date_create()->format('Y-m-d');
                             <h4>Liste des Demandes</h4>
 
   <form action="demandeBACK.php" method="GET">
-    <div style="display: flex;">
+    <div style="display: flex;margin-bottom:10px;">
 <div class="input-group mb-3" >
   <input type="text" class="form-control"placeholder="Search..." aria-label="" aria-describedby="basic-addon1" style="color:white;" name="search">
 </div>
@@ -177,8 +177,18 @@ background-color: rgb(255, 255, 255); " >
                                 }
                                     foreach($listedemande as $row){
                                         if ($dd>= $row['DATE_DEMANDE']){
-                                ?>
-                                <tr>
+
+                                          if($row['ETAT_D'] == 'non traitee'){
+
+                                             ?>
+                                                                           <tr style="background-color:#3B6B9A;">
+
+                                           <?PHP } else if($row['ETAT_D'] == "Traitee") {
+                                              ?>
+
+                                                                           <tr style="background-color:#365D84;">
+                                               <?php }      ?>
+
                                     <td><?PHP echo $row['DATE_DEMANDE']; ?></td>
                                     <td><?PHP echo $row['NOM_D']; ?></td>
 

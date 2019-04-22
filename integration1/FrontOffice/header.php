@@ -1,6 +1,6 @@
 <?PHP
 include_once "../config.php";
-require '../core/GestionPanier/paniers.class.c.php';
+require_once '../core/GestionPanier/paniers.class.c.php';
 $db = config::getConnexion();
 $panier= new panier();
 
@@ -85,7 +85,7 @@ if (isset($_SESSION['cin']) and $_SESSION['cin'] > 0 )
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3 col-xs-2">
-					<div id="fh5co-logo"><a href="product.html"><img src="images/logosn.png" alt="" width="35" style="margin: -4px 5px 0px 10px;" />GeoConcept.</a></div>
+					<div id="fh5co-logo"><a href="product.php"><!--img src="images/logosn.png" alt="" width="35" style="margin: -4px 5px 0px 10px;" /-->GeoConcept.</a></div>
 				</div>
 				<div class="col-md-6 col-xs-6 text-center menu-1">
 					<ul>
@@ -103,23 +103,24 @@ if (isset($_SESSION['cin']) and $_SESSION['cin'] > 0 )
 						</li>
 
 						<li class="has-dropdown">
-							<a href="#">Services</a>
+							<a href="#">Location</a>
 							<ul class="dropdown">
-								<li><a href="#">Fabrication</a></li>
-								<li><a href="#">eCommerce</a></li>
-								<li><a href="#">Branding</a></li>
-								<li><a href="#">API</a></li>
+								<li><a href="#">Louer</a></li>
+
 							</ul>
 						</li>
+<?php if(isset($_SESSION['cin'])){ ?>
 						<li class="has-dropdown">
             <a href="contact.php">Contact</a>
             <ul class="dropdown">
               <li><a href="RDV.php">Rendez-vous</a></li>
               <li><a href="demande.php">Demandes</a></li>
+              <li><a href="contact.php">Reclamer</a></li>
 
             </ul>
 
           </li>
+        <?php } ?>
 
          <?php if(!isset($_SESSION['cin'])){ ?>
          <li><a href="signup.php">S'inscrire</a></li>
