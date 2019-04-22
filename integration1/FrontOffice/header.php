@@ -111,7 +111,15 @@ if (isset($_SESSION['cin']) and $_SESSION['cin'] > 0 )
 								<li><a href="#">API</a></li>
 							</ul>
 						</li>
-						<li><a href="#">Contact</a></li>
+						<li class="has-dropdown">
+            <a href="contact.php">Contact</a>
+            <ul class="dropdown">
+              <li><a href="RDV.php">Rendez-vous</a></li>
+              <li><a href="demande.php">Demandes</a></li>
+
+            </ul>
+
+          </li>
 
          <?php if(!isset($_SESSION['cin'])){ ?>
          <li><a href="signup.php">S'inscrire</a></li>
