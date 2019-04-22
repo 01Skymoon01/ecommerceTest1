@@ -72,6 +72,18 @@ $var =  $_SESSION["role"];
                                 </li>
                               </ul>
                             </li>
+                            <li>
+                                <a class="has-arrow" href="product-edit.php" aria-expanded="false" ><i class="icon nalika-diamond icon-wrap"></i></i> <span
+                                            class="mini-click-non">S.A.V</span></a>
+                                <ul class="submenu-angle" aria-expanded="false">
+                                    <li><a title="Liste Produits" href="demandeBACK.php"><span class="mini-sub-pro">Demandes</span></a>
+                                    </li>
+                                    <li><a title="Liste Produits" href="RDVBACK.php"><span class="mini-sub-pro">Rendez-vous</span></a>
+                                    </li>
+                                    <li><a title="Liste Produits" href="reclamationBACK.php"><span class="mini-sub-pro">Reclamations</span></a>
+                                    </li>
+                                  </ul>
+                                </li>
                 </ul>
             </nav>
         </div>
