@@ -34,7 +34,7 @@ if(isset($_POST['SignIn'])){
             if(($email_membre==$email)&&($motdepassecrypte==$motdepasse))
             {
 
-                header('Location: indexConnecte.php');
+                header('Location: product.php');
 
 
             }
@@ -50,7 +50,7 @@ if(!empty($_SESSION['cin'])) {
     $_SESSION["page"]=array();
     $_SESSION["page"]="product.php";
   }else{
-    header('Location: indexConnecte.php');
+    header('Location: product.php');
   }
 }
 ?>
