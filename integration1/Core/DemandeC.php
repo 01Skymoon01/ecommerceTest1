@@ -129,6 +129,54 @@ class DemandeC
         $req->execute();
 
     }
+
+    function RechercheDemande($haja){
+
+    	$sql="SELECT d.ID_D,d.DATE_DEMANDE,d.NOM_D,d.NUM_D,d.OBJET_D,d.DETAILS_D,d.ETAT_D,u.nom,u.prenom FROM demande d INNER JOIN  membres u ON u.cin=d.user_id WHERE DATE_DEMANDE LIKE '%$haja%' ORDER BY DATE_DEMANDE DESC";
+
+
+    	$db = config::getConnexion();
+    	try{
+    	$liste=$db->query($sql);
+    	return $liste;
+
+    	}
+    			 catch (Exception $e){
+    					 die('Erreur: '.$e->getMessage());
+    			 }
+    }
+
+    function NBRPART(){
+
+      $sql="SELECT COUNT(ID_D) nbr FROM demande WHERE OBJET_D='partenariat' ";
+
+
+      $db = config::getConnexion();
+      try{
+      $liste=$db->query($sql);
+      return $liste;
+
+      }
+           catch (Exception $e){
+               die('Erreur: '.$e->getMessage());
+           }
+    }
+
+    function NBRSPON(){
+
+      $sql="SELECT COUNT(ID_D) nbr FROM demande WHERE OBJET_D='sponsoring' ";
+
+
+      $db = config::getConnexion();
+      try{
+      $liste=$db->query($sql);
+      return $liste;
+
+      }
+           catch (Exception $e){
+               die('Erreur: '.$e->getMessage());
+           }
+    }
 }
 
 ?>

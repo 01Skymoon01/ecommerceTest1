@@ -1,6 +1,10 @@
 <!doctype html>
 <html class="no-js" lang="en">
-
+<?php include "../core/RdvC.php";
+$rdvC = new RdvC();
+$dd= date_create()->format('Y-m-d');
+$listerdv = $rdvC->afficherRDVs();
+?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -66,15 +70,128 @@
 
 <body>
     <?php require 'header.php' ?>
+    <div class="section-admin container-fluid res-mg-t-15" style="margin-top:10px;">
+        <div class="row admin text-center" style="margin-top:50px;">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="admin-content analysis-progrebar-ctn" style="background-color:white;color:black;"><div class="stats-icon pull-right">
+                                <i class="fa fa-street-view" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="text-left text-uppercase" style="color:black;"><b>livraison non recu</b></h4>
+                            <div class="row vertical-center-box vertical-center-box-tablet">
+                                <div class="col-xs-9 cus-gh-hd-pro">
+                                    <h2 class="text-right no-margin" style="color:green;font-size:20px;"><?php $ClientFidele=$rdvC->NBRRESU();
+                                    {
+                                      foreach($ClientFidele as $row){
+                                        echo $row["nbr"];
+                                      }
+                                    }?></h2>
+                                </div>
+                            </div>
+                            <div class="progress progress-mini">
+                                <div style="width: 100%;" class="progress-bar bg-green"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="margin-bottom:1px;">
+                        <div class="admin-content analysis-progrebar-ctn res-mg-t-30" style="background-color:white;color:black;">
+                          <div class="stats-icon pull-right">
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="text-left text-uppercase" style="color:black;"><b>Livraisons non conforme</b></h4>
+                            <div class="row vertical-center-box vertical-center-box-tablet">
+                                <div class="col-xs-9 cus-gh-hd-pro">
+                                    <h2 class="text-right no-margin" style="color:#3B6B9A;font-size:20px; "><?php $ClientFidele=$rdvC->NBRNONC();
+                                    {
+                                      foreach($ClientFidele as $row){
+                                        echo $row["nbr"];
+                                      }
+                                    }?></h2>
+                                </div>
+                            </div>
+                            <div class="progress progress-mini">
+                                <div style="width: 100%;" class="progress-bar bg-blue"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="margin-bottom:1px;">
+                        <div class="admin-content analysis-progrebar-ctn res-mg-t-30" style="background-color:white;color:black;">
+                          <div class="stats-icon pull-right">
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="text-left text-uppercase" style="color:black;"><b>Reparation </b></h4>
+                            <div class="row vertical-center-box vertical-center-box-tablet">
+                                <div class="col-xs-9 cus-gh-hd-pro">
+                                    <h2 class="text-right no-margin" style="color:#3B6B9A;font-size:20px; "><?php $ClientFidele=$rdvC->NBRREP();
+                                    {
+                                      foreach($ClientFidele as $row){
+                                        echo $row["nbr"];
+                                      }
+                                    }?></h2>
+                                </div>
+                            </div>
+                            <div class="progress progress-mini">
+                                <div style="width: 100%;" class="progress-bar bg-blue"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="margin-bottom:1px;">
+                        <div class="admin-content analysis-progrebar-ctn res-mg-t-30" style="background-color:white;color:black;">
+                          <div class="stats-icon pull-right">
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="text-left text-uppercase" style="color:black;"><b>Autre</b></h4>
+                            <div class="row vertical-center-box vertical-center-box-tablet">
+                                <div class="col-xs-9 cus-gh-hd-pro">
+                                    <h2 class="text-right no-margin" style="color:#3B6B9A;font-size:20px; "><?php $ClientFidele=$rdvC->NBRAUTRE();
+                                    {
+                                      foreach($ClientFidele as $row){
+                                        echo $row["nbr"];
+                                      }
+                                    }?></h2>
+                                </div>
+                            </div>
+                            <div class="progress progress-mini">
+                                <div style="width: 100%;" class="progress-bar bg-blue"></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
         <div class="product-status mg-b-30" style="margin-top:10px">
             <div class="container-fluid" style="margin-top:20px">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="product-status-wrap">
                             <h4>Liste des Rendez-vous</h4>
-                            <div class="add-product">
-                                <!---<a href="product-edit.html">Add Product</a>-->
-                            </div>
+
+
+                            <form action="RDVBACK.php" method="GET">
+                              <div style="display: flex;">
+                          <div class="input-group mb-3" >
+                            <input type="text" class="form-control"placeholder="Search..." aria-label="" aria-describedby="basic-addon1" style="color:white;" name="search">
+                          </div>
+                          <div class=" mb-2" style="margin-left:6px; margin-top:5px;">
+                             <input type="submit" name="recherche" value="OK" style="
+                          background-color:#6090;
+                          border-style: outset;
+
+                          border-radius: 5px;
+                          border-color: black;
+
+                          padding: 6px;
+                          background-color: rgb(255, 255, 255); " >
+
+                          </div>
+                          </div>
+                          </form>
                             <table>
                                 <tr>
                                     <th>Date depot rdv</th>
@@ -86,12 +203,16 @@
 
                                 </tr>
 
-                                <?php include "../core/RdvC.php";
-                                $rdvC = new RdvC();
-                                $dd= date_create()->format('Y-m-d');
-                                $listerdv = $rdvC->afficherRDVs();
-                                ?>
+
                                 <?PHP
+
+                                if (isset($_GET["search"]) && $_GET["search"]!=""){
+
+                                //  var_dump($_GET["cin"]);
+
+                                  $listerdv=$rdvC->RechercheRDV($_GET["search"]);
+
+                                }
                                 foreach($listerdv as $row){
                                 if ($dd >= $row['NOW_RDV']) {
                                 ?>

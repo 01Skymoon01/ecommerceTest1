@@ -112,7 +112,7 @@ class RdvC {
         }
     }
 
-}
+
 
 
 function modifierRDV($Rdv,$ID_RDV)
@@ -132,6 +132,86 @@ function modifierRDV($Rdv,$ID_RDV)
 
 }
 
+function RechercheRDV($haja){
+
+  $sql="SELECT d.ID_RDV,d.NOW_RDV,d.DATE_RDV,d.OBJET_RDV,d.ETAT_RDV,u.nom,u.prenom FROM rdv d INNER JOIN membres u ON u.cin=d.USER_ID WHERE u.nom LIKE '%$haja%' ORDER BY DATE_RDV DESC";
 
 
+  $db = config::getConnexion();
+  try{
+  $liste=$db->query($sql);
+  return $liste;
+
+  }
+       catch (Exception $e){
+           die('Erreur: '.$e->getMessage());
+       }
+}
+
+function NBRRESU(){
+
+  $sql="SELECT COUNT(ID_RDV) nbr FROM rdv WHERE OBJET_RDV='Livraison non reçu' ";
+
+
+  $db = config::getConnexion();
+  try{
+  $liste=$db->query($sql);
+  return $liste;
+
+  }
+       catch (Exception $e){
+           die('Erreur: '.$e->getMessage());
+       }
+}
+
+function NBRNONC(){
+
+  $sql="SELECT COUNT(ID_RDV) nbr FROM rdv WHERE OBJET_RDV='Livraison non coforme' ";
+
+
+  $db = config::getConnexion();
+  try{
+  $liste=$db->query($sql);
+  return $liste;
+
+  }
+       catch (Exception $e){
+           die('Erreur: '.$e->getMessage());
+       }
+}
+
+function NBRREP(){
+
+  $sql="SELECT COUNT(ID_RDV) nbr FROM rdv WHERE OBJET_RDV='Réparation et maintenance sous garantie' ";
+
+
+  $db = config::getConnexion();
+  try{
+  $liste=$db->query($sql);
+  return $liste;
+
+  }
+       catch (Exception $e){
+           die('Erreur: '.$e->getMessage());
+       }
+}
+
+function NBRAUTRE(){
+
+  $sql="SELECT COUNT(ID_RDV) nbr FROM rdv WHERE OBJET_RDV='Autre..' ";
+
+
+  $db = config::getConnexion();
+  try{
+  $liste=$db->query($sql);
+  return $liste;
+
+  }
+       catch (Exception $e){
+           die('Erreur: '.$e->getMessage());
+       }
+}
+
+
+}
 ?>
