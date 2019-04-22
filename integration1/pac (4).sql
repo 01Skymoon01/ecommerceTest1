@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 21 Avril 2019 à 23:42
+-- Généré le :  Lun 22 Avril 2019 à 18:23
 -- Version du serveur :  10.1.9-MariaDB
 -- Version de PHP :  5.6.15
 
@@ -94,11 +94,9 @@ INSERT INTO `commande` (`id_commande`, `id_client`, `date_commande`, `totalPrix_
 (1, 12345678, '2019-04-21 18:52:48', 925, 2, 0),
 (2, 12345678, '2019-04-21 18:59:42', 3655, 4, 0),
 (3, 12345678, '2019-04-21 19:03:32', 925, 2, 0),
-(4, 12345678, '2019-04-21 19:13:46', 925, 2, 0),
 (5, 12345678, '2019-04-21 19:16:05', 3655, 4, 0),
 (6, 12345678, '2019-04-21 19:18:01', 65225, 4, 1),
-(7, 12345678, '2019-04-21 20:58:15', 1655, 3, 0),
-(8, 12345678, '2019-04-21 21:35:10', 4355, 3, 0);
+(7, 12345678, '2019-04-22 15:00:49', 355, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -128,8 +126,6 @@ INSERT INTO `commande_details` (`id_CommandeDetails`, `id_Commande`, `Nom_Produi
 (6, 2, 'Table', 1231564667, 1, 230),
 (7, 3, 'chaise3', 1231564661, 1, 125),
 (8, 3, 'chaise1236', 1231564658, 1, 800),
-(9, 4, 'chaise3', 1231564661, 1, 125),
-(10, 4, 'chaise1236', 1231564658, 1, 800),
 (11, 5, 'chaise3', 1231564661, 1, 125),
 (12, 5, 'chaise1236', 1231564658, 1, 800),
 (13, 5, 'Table', 1231564667, 1, 230),
@@ -138,12 +134,33 @@ INSERT INTO `commande_details` (`id_CommandeDetails`, `id_Commande`, `Nom_Produi
 (16, 6, 'chaise3', 1231564661, 5, 125),
 (17, 6, 'Fauteuil 2 Places', 1231564664, 20, 2500),
 (18, 6, 'Table', 1231564667, 60, 230),
-(19, 7, 'chaise1236', 1231564658, 1, 800),
-(20, 7, 'chaise3', 1231564661, 5, 125),
-(21, 7, 'Table', 1231564667, 1, 230),
-(22, 8, 'chaise3', 1231564661, 1, 125),
-(23, 8, 'chaise1236', 1231564658, 5, 800),
-(24, 8, 'Table', 1231564667, 1, 230);
+(19, 7, 'chaise3', 1231564661, 1, 125),
+(20, 7, 'Table', 1231564667, 1, 230);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `demande`
+--
+
+CREATE TABLE `demande` (
+  `ID_D` int(255) NOT NULL,
+  `DATE_DEMANDE` date DEFAULT NULL,
+  `NOM_D` varchar(100) NOT NULL,
+  `NUM_D` int(100) NOT NULL,
+  `OBJET_D` varchar(100) NOT NULL,
+  `DETAILS_D` text NOT NULL,
+  `ETAT_D` varchar(25) NOT NULL DEFAULT 'non traitee',
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `demande`
+--
+
+INSERT INTO `demande` (`ID_D`, `DATE_DEMANDE`, `NOM_D`, `NUM_D`, `OBJET_D`, `DETAILS_D`, `ETAT_D`, `user_id`) VALUES
+(2, '2019-03-04', 'djnhozdn', 5555, 'pkj', 'sdkjnhdskn', 'Traitee', 123546),
+(3, '2019-04-09', '2000/02/02', 52541114, 'Sponsoring', 'c,dcp,dks', 'non traitee', 123546);
 
 -- --------------------------------------------------------
 
@@ -193,7 +210,8 @@ CREATE TABLE `membres` (
 INSERT INTO `membres` (`cin`, `nom`, `email`, `mdp`, `date_naissance`, `sexe`, `num_tel`, `prenom`, `avatar`) VALUES
 (0, 'yhedr', 'zrty', '698d51a19d8a121ce581499d7b701668', '2019-04-21', 'Homme', 0, 'rthy', ''),
 (123546, 'erij', 'nour.khedher@esprit.tn', '827ccb0eea8a706c4c34a16891f84e7b', '2019-04-21', 'Homme', 123456789, 'erij', ''),
-(12345678, 'Erij', 'mxmbb2018@gmail.com', '6b4dccfb69c362b172bafdfc60c343e1', '2019-04-04', 'Femme', 25928777, 'tarhouni', '12345678.jpg');
+(12345678, 'Erij', 'mxmbb2018@gmail.com', '6b4dccfb69c362b172bafdfc60c343e1', '2019-04-04', 'Femme', 25928777, 'tarhouni', '12345678.jpg'),
+(55621814, 'yassine', 'brofrescoYEAH@gmail.com', '2b2531cb39ce2f11233f03645349663c', '2019-04-22', 'Autre', 55621814, 'khedher', '55621814.jpg');
 
 -- --------------------------------------------------------
 
@@ -215,17 +233,80 @@ CREATE TABLE `produits` (
 --
 
 INSERT INTO `produits` (`nom`, `num`, `prix`, `qte`, `descr`, `cat`) VALUES
-('chaise1236', 1231564658, 800, 37, 'description', 'Interieur'),
+('chaise1236', 1231564658, 800, 27, 'description', 'Interieur'),
 ('chaise125', 1231564660, 500, 125, 'descrchaise125', 'Exterieur'),
-('chaise3', 1231564661, 125, 10, 'descr3', 'Interieur'),
+('chaise3', 1231564661, 125, 8, 'descr3', 'Interieur'),
 ('chaise5', 1231564662, 1256, 500, 'descr55', 'Exterieur'),
 ('Fauteuil', 1231564663, 550, 0, 'Fauteuil Comfort', 'Interieur'),
-('Fauteuil 2 Places', 1231564664, 2500, 2, 'faut Comfortable', 'Interieur'),
+('Fauteuil 2 Places', 1231564664, 2500, 0, 'faut Comfortable', 'Interieur'),
 ('Tableau Artistique', 1231564665, 5000, 0, 'tableau', 'Interieur'),
-('Table', 1231564667, 230, 130, 'Tbmx', 'Interieur'),
+('Table', 1231564667, 230, 129, 'Tbmx', 'Interieur'),
 ('AspirateurAS', 1231564668, 125, 500, 'Aspirateur Samsung', 'Interieur'),
 ('TableTs', 1231564669, 500, 245, 'Descr', 'Interieur'),
 ('lilyouss', 1231564672, 5000, 500, 'youss', 'Exterieur');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `rdv`
+--
+
+CREATE TABLE `rdv` (
+  `ID_RDV` int(255) NOT NULL,
+  `NOW_RDV` date DEFAULT NULL,
+  `DATE_RDV` date NOT NULL,
+  `OBJET_RDV` varchar(50) NOT NULL,
+  `ETAT_RDV` varchar(25) NOT NULL DEFAULT 'non traitee',
+  `USER_ID` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `rdv`
+--
+
+INSERT INTO `rdv` (`ID_RDV`, `NOW_RDV`, `DATE_RDV`, `OBJET_RDV`, `ETAT_RDV`, `USER_ID`) VALUES
+(5, NULL, '2019-03-30', 'livraison non conforme', 'Acceptee', 1),
+(6, NULL, '2019-03-31', 'Livraison non reÃ§u', 'Refusee', 1),
+(9, NULL, '2019-04-26', 'Livraison non reÃ§u', 'en attente', 2),
+(11, NULL, '2019-03-31', 'Livraison non coforme', 'en attente', 2),
+(12, NULL, '2019-03-31', 'Livraison non coforme', 'Refusee', 2),
+(13, NULL, '2019-03-28', 'Livraison non reÃ§u', 'en attente', 2),
+(14, NULL, '2019-03-05', 'Livraison non coforme', 'en attente', 2),
+(16, NULL, '2019-04-26', 'Livraison non reÃ§u', 'en attente', 2),
+(18, '2019-04-17', '2019-04-30', 'Livraison non coforme', 'en attente', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `reclamation`
+--
+
+CREATE TABLE `reclamation` (
+  `ID_R` int(255) NOT NULL,
+  `NOW_R` date DEFAULT NULL,
+  `OBJET_R` varchar(255) NOT NULL,
+  `DETAILS_R` text NOT NULL,
+  `ETAT` varchar(25) NOT NULL DEFAULT 'non traitee',
+  `USER_ID` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `reclamation`
+--
+
+INSERT INTO `reclamation` (`ID_R`, `NOW_R`, `OBJET_R`, `DETAILS_R`, `ETAT`, `USER_ID`) VALUES
+(5, NULL, 'livraison non conforme', 'tchtchtch', 'Traitee', 1),
+(7, '2019-04-14', 'Livraison non reÃ§u', 'REEEEEEE', 'Traitee', 55621814),
+(9, NULL, 'Livraison non reÃ§u', 'fafatrashh', 'Traitee', 2),
+(10, NULL, 'Livraison non coforme', 'ghhh', 'en attente', 2),
+(12, NULL, 'Livraison non coforme', 'lool', 'en attente', 2),
+(15, NULL, 'Livraison non coforme', 'hhk', 'en attente', 2),
+(26, NULL, 'RÃ©paration et maintenance sous garantie', 'tchhhhhhhhh', 'en attente', 1),
+(27, NULL, 'Livraison non reÃ§u', 'jik', 'en attente', 1),
+(28, NULL, 'Livraison non reÃ§u', 'ggwp', 'en attente', 1),
+(29, NULL, 'RÃ©paration et maintenance sous garantie', 'Azertyy', 'en attente', 2),
+(30, NULL, 'Livraison non reÃ§u', 'produit  validÃ©', 'en attente', 2),
+(33, '2019-04-17', 'Livraison non reÃ§u', 'Aymen', 'Traitee', 2);
 
 -- --------------------------------------------------------
 
@@ -298,6 +379,12 @@ ALTER TABLE `commande_details`
   ADD KEY `id_Commande` (`id_Commande`);
 
 --
+-- Index pour la table `demande`
+--
+ALTER TABLE `demande`
+  ADD PRIMARY KEY (`ID_D`);
+
+--
 -- Index pour la table `favoris`
 --
 ALTER TABLE `favoris`
@@ -319,6 +406,18 @@ ALTER TABLE `membres`
 ALTER TABLE `produits`
   ADD PRIMARY KEY (`num`),
   ADD KEY `cat` (`cat`);
+
+--
+-- Index pour la table `rdv`
+--
+ALTER TABLE `rdv`
+  ADD PRIMARY KEY (`ID_RDV`);
+
+--
+-- Index pour la table `reclamation`
+--
+ALTER TABLE `reclamation`
+  ADD PRIMARY KEY (`ID_R`);
 
 --
 -- Index pour la table `recuperation`
@@ -346,22 +445,37 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT pour la table `commande`
 --
 ALTER TABLE `commande`
-  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT pour la table `commande_details`
 --
 ALTER TABLE `commande_details`
-  MODIFY `id_CommandeDetails` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_CommandeDetails` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+--
+-- AUTO_INCREMENT pour la table `demande`
+--
+ALTER TABLE `demande`
+  MODIFY `ID_D` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88908;
 --
 -- AUTO_INCREMENT pour la table `favoris`
 --
 ALTER TABLE `favoris`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT pour la table `produits`
 --
 ALTER TABLE `produits`
   MODIFY `num` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1231564673;
+--
+-- AUTO_INCREMENT pour la table `rdv`
+--
+ALTER TABLE `rdv`
+  MODIFY `ID_RDV` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+--
+-- AUTO_INCREMENT pour la table `reclamation`
+--
+ALTER TABLE `reclamation`
+  MODIFY `ID_R` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT pour la table `recuperation`
 --
