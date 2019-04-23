@@ -120,6 +120,10 @@ if (isset($_SESSION['cin']) and $_SESSION['cin'] > 0 )
             </ul>
 
           </li>
+          <li class="has-dropdown">
+          <a href="addfavoris.php">Vos Favoris</a>
+
+        </li>
         <?php } ?>
 
          <?php if(!isset($_SESSION['cin'])){ ?>
@@ -167,7 +171,7 @@ if (isset($_SESSION['cin']) and $_SESSION['cin'] > 0 )
   }
   else {
       ?>
-    
+
       <a href="profile.php"><img src="images\profileicon3.jpg" style=" border-radius: 50%;  width: 40px; height: 40px;"/></a>
 
         <ul class="dropdown" style="margin-left:80px; width:80px">

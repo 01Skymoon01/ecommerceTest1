@@ -9,8 +9,8 @@ require_once "../config.php";
 class favorisC
 {
 
-	function listeFavoris(){
-		$sql="SElECT * From favoris";
+	function listeFavoris($_cin){
+		$sql="SElECT * From favoris where id_client='$_cin'";
         $db = config::getConnexion();
         try{
             $liste=$db->query($sql);

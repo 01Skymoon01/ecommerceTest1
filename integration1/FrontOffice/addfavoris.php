@@ -5,12 +5,6 @@ include_once '../Entities/favoris.php';
 
 
 
-if(empty($_SESSION['cin'])) {
-
-                header('Location: signin.php');
-
-  }
-
   if(!empty($_SESSION['cin'])) {
     $favorisc = new favorisC();
       if(!empty($_GET['nom'])){
@@ -19,7 +13,7 @@ if(empty($_SESSION['cin'])) {
 
     $favorisc->ajouterFavoris($favoris);
 }
-    $list=$favorisc->listeFavoris();
+    $list=$favorisc->listeFavoris($_SESSION['cin']);
         ?>
 
         <?php require 'header.php';
