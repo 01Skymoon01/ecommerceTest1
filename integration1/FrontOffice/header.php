@@ -167,7 +167,13 @@ if (isset($_SESSION['cin']) and $_SESSION['cin'] > 0 )
   }
   else {
       ?>
-      <a href="profile.php"><img src="images\profileicon3.jpg"/></a>
+    
+      <a href="profile.php"><img src="images\profileicon3.jpg" style=" border-radius: 50%;  width: 40px; height: 40px;"/></a>
+
+        <ul class="dropdown" style="margin-left:80px; width:80px">
+            <li><a href="profile.php" class="deja2">Profile</a></li>
+          <li><a href="logout.php" class="deja2">logout</a></li>
+        </ul>
       <?php
   }
   ?>
