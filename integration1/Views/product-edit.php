@@ -183,6 +183,7 @@
                                                         <SELECT name="CatProd" id ="CatProd" size="1" class="form-control" required>
                                                             <OPTION>Interieur
                                                             <OPTION>Exterieur
+                                                            <OPTION>louer
                                                         </SELECT>
                                                     </div>
                                                     <div class="row">

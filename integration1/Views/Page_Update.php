@@ -116,7 +116,7 @@
                                 <li class="active"><a href="#description"><i class="icon nalika-edit"
                                                                              aria-hidden="true"></i> Modifier
                                         Produit</a></li>
-                              
+
                             </ul>
 
                             <div id="myTabContent" class="tab-content custom-product-edit">
@@ -181,6 +181,7 @@
                                                         <SELECT name="CatProd" id ="CatProd" size="1" class="form-control" required>
                                                             <OPTION>Interieur
                                                             <OPTION>Exterieur
+                                                              <OPTION>louer
                                                         </SELECT>
                                                         <script>
                                                             var val= "<?php echo $_GET['cat']; ?>";

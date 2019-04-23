@@ -103,9 +103,9 @@ if (isset($_SESSION['cin']) and $_SESSION['cin'] > 0 )
 						</li>
 
 						<li class="has-dropdown">
-							<a href="#">Location</a>
+							<a href="Louer.php">Location</a>
 							<ul class="dropdown">
-								<li><a href="#">Louer</a></li>
+								<li><a href="Louer.php">Louer</a></li>
 
 							</ul>
 						</li>

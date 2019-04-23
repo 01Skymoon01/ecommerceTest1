@@ -42,7 +42,7 @@ $var =  $_SESSION["role"];
                     </li>
                     <?php endif; ?>
                     <li>
-                        <a class="has-arrow" href="product-edit.php" aria-expanded="false"><i
+                        <a class="has-arrow"  aria-expanded="false"><i
                                     class="icon nalika-pie-chart icon-wrap"></i> <span
                                     class="mini-click-non">Produits</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
@@ -55,7 +55,7 @@ $var =  $_SESSION["role"];
                         </ul>
 
                     <li>
-                        <a class="has-arrow" href="product-edit.php" aria-expanded="false" ><i class="icon nalika-table icon-wrap"></i> <span
+                        <a class="has-arrow"  aria-expanded="false" ><i class="icon nalika-table icon-wrap"></i> <span
                                     class="mini-click-non">Commande</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
                             <li><a title="Liste Produits" href="CommandeList.php"><span class="mini-sub-pro">Liste Commandes</span></a>
@@ -63,7 +63,7 @@ $var =  $_SESSION["role"];
                           </ul>
                         </li>
                         <li>
-                            <a class="has-arrow" href="product-edit.php" aria-expanded="false" ><i class="icon nalika-home icon-wrap"></i></i> <span
+                            <a class="has-arrow"  aria-expanded="false" ><i class="icon nalika-home icon-wrap"></i></i> <span
                                         class="mini-click-non">Users</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Liste Produits" href="Users.php"><span class="mini-sub-pro">Liste Users</span></a>
@@ -73,7 +73,7 @@ $var =  $_SESSION["role"];
                               </ul>
                             </li>
                             <li>
-                                <a class="has-arrow" href="product-edit.php" aria-expanded="false" ><i class="icon nalika-diamond icon-wrap"></i></i> <span
+                                <a class="has-arrow"  aria-expanded="false" ><i class="icon nalika-diamond icon-wrap"></i></i> <span
                                             class="mini-click-non">S.A.V</span></a>
                                 <ul class="submenu-angle" aria-expanded="false">
                                     <li><a title="Liste Produits" href="demandeBACK.php"><span class="mini-sub-pro">Demandes</span></a>
@@ -84,6 +84,15 @@ $var =  $_SESSION["role"];
                                     </li>
                                   </ul>
                                 </li>
+                                <li>
+                                    <a class="has-arrow" aria-expanded="false" ><i class="icon nalika-bar-chart icon-wrap"></i> <span
+                                                class="mini-click-non">Location</span></a>
+                                    <ul class="submenu-angle" aria-expanded="false">
+                                        <li><a title="Liste Produits" href="locationBack.php"><span class="mini-sub-pro">Liste des locations</span></a>
+                                        </li>
+
+                                      </ul>
+                                    </li>
                 </ul>
             </nav>
         </div>
