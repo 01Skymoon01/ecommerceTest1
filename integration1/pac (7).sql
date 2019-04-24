@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 23 Avril 2019 à 01:35
+-- Généré le :  Mer 24 Avril 2019 à 05:42
 -- Version du serveur :  10.1.9-MariaDB
 -- Version de PHP :  5.6.15
 
@@ -42,7 +42,7 @@ CREATE TABLE `admins` (
 
 INSERT INTO `admins` (`id`, `login`, `mdp`, `email`, `banstat`, `dateserv`, `role`) VALUES
 (11, 'Hatem', '0000', 'hatem.temimi@esprit.tn', 'banni', '2019-04-05 21:16:49', 'staff'),
-(12, 'nour', '0000', 'nour.kheder@esprit.tn', 'actif', '2019-04-05 21:21:50', 'staff'),
+(12, 'nour', '0000', 'nour.kheder@esprit.tn', 'banni', '2019-04-05 21:21:50', 'staff'),
 (13, 'mehdi', '5555', 'mehdihmaidi@gmail.com', 'actif', '2019-04-05 21:22:13', 'staff'),
 (14, 'euuriiijj', '4568', 'panda@gmail.com', 'banni', '2019-04-05 21:22:26', 'staff'),
 (15, 'zeineb', '4569AK74LOL', 'zeineb@gmail.com', 'actif', '2019-04-05 21:22:52', 'staff'),
@@ -98,7 +98,12 @@ INSERT INTO `commande` (`id_commande`, `id_client`, `date_commande`, `totalPrix_
 (5, 12345678, '2019-04-21 19:16:05', 3655, 4, 0),
 (6, 12345678, '2019-04-21 19:18:01', 65225, 4, 1),
 (7, 12345678, '2019-04-22 15:00:49', 355, 2, 1),
-(8, 66666666, '2019-04-22 22:32:36', 8125, 2, 0);
+(8, 66666666, '2019-04-22 22:32:36', 8125, 2, 0),
+(9, 23548975, '2019-04-23 01:20:38', 700, 1, 0),
+(10, 23548975, '2019-04-23 02:11:59', 800, 1, 0),
+(11, 12345678, '2019-04-23 14:13:05', 3200, 1, 0),
+(12, 12345678, '2019-04-23 14:13:42', 375, 1, 1),
+(13, 12345678, '2019-04-23 14:18:04', 1425, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -139,7 +144,14 @@ INSERT INTO `commande_details` (`id_CommandeDetails`, `id_Commande`, `Nom_Produi
 (19, 7, 'chaise3', 1231564661, 1, 125),
 (20, 7, 'Table', 1231564667, 1, 230),
 (21, 8, 'chaise3', 1231564661, 1, 125),
-(22, 8, 'chaise1236', 1231564658, 10, 800);
+(22, 8, 'chaise1236', 1231564658, 10, 800),
+(23, 9, 'Chaise Skandinave', 2, 100, 7),
+(24, 10, 'chaise1236', 1231564658, 1, 800),
+(25, 11, 'chaise1236', 1231564658, 4, 800),
+(26, 12, 'chaise3', 1231564661, 3, 125),
+(27, 13, 'chaise1236', 1231564658, 1, 800),
+(28, 13, 'TableTs', 1231564669, 1, 500),
+(29, 13, 'chaise3', 1231564661, 1, 125);
 
 -- --------------------------------------------------------
 
@@ -185,10 +197,11 @@ CREATE TABLE `favoris` (
 --
 
 INSERT INTO `favoris` (`id`, `id_client`, `nom_prod`, `id_produit`) VALUES
-(16, 12345678, 'chaise3', 1231564661),
-(18, 12345678, 'TableTs', 1231564669),
 (20, 12345678, 'chaise125', 1231564660),
-(21, 12345678, 'chaise5', 1231564662);
+(21, 12345678, 'chaise5', 1231564662),
+(26, 23548975, 'Fauteuil', 1231564663),
+(28, 23548975, 'Fauteuil 2 Places', 1231564664),
+(30, 12345678, 'chaise3', 1231564661);
 
 -- --------------------------------------------------------
 
@@ -201,89 +214,22 @@ CREATE TABLE `loc` (
   `nom` varchar(255) NOT NULL,
   `prix` int(11) NOT NULL,
   `qte` int(11) NOT NULL,
-  `dateLoc` date NOT NULL,
+  `dateLoc` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `datedeb` date NOT NULL,
   `datefin` date NOT NULL,
-  `etat` int(11) DEFAULT NULL
+  `etat` int(11) NOT NULL DEFAULT '0',
+  `id_client` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `loc`
 --
 
-INSERT INTO `loc` (`idloc`, `nom`, `prix`, `qte`, `dateLoc`, `datedeb`, `datefin`, `etat`) VALUES
-(1, 'Nom', 500, 100, '2019-04-16', '2019-04-18', '2019-04-19', 1),
-(30, '', 0, 100, '0000-00-00', '2019-04-25', '2019-04-26', NULL),
-(31, '', 0, 0, '0000-00-00', '0000-00-00', '0000-00-00', NULL),
-(51, 'Nom', 5000, 1000, '2019-04-17', '2019-04-25', '2019-04-30', 0),
-(52, 'Nom', 5000, 1000, '2019-04-17', '2019-04-25', '2019-04-30', 0),
-(53, '', 0, 222222222, '0000-00-00', '2019-04-25', '2019-04-27', NULL),
-(54, '', 0, 1, '0000-00-00', '0000-00-00', '0000-00-00', NULL),
-(55, '', 0, 1, '0000-00-00', '0000-00-00', '0000-00-00', NULL),
-(56, '', 0, 1, '0000-00-00', '0000-00-00', '0000-00-00', NULL),
-(57, '', 0, 1, '0000-00-00', '0000-00-00', '0000-00-00', NULL),
-(58, '', 0, 1, '0000-00-00', '0000-00-00', '0000-00-00', NULL),
-(59, '', 0, 1, '0000-00-00', '0000-00-00', '0000-00-00', NULL),
-(60, '', 0, 4, '0000-00-00', '2019-04-30', '2019-04-30', NULL),
-(61, '', 0, 4, '0000-00-00', '2019-04-30', '2019-04-30', NULL),
-(62, '', 0, 12, '0000-00-00', '2019-05-30', '2019-05-31', NULL),
-(63, '', 0, 12, '0000-00-00', '2019-05-30', '2019-05-31', NULL),
-(64, '', 0, 44, '0000-00-00', '2019-04-28', '2019-05-25', NULL),
-(66, 'Wuuuuuuuuuut', 958, 26, '2019-04-17', '2019-04-25', '2019-04-27', 0),
-(67, '', 0, 101, '0000-00-00', '2019-04-25', '2019-04-26', NULL),
-(68, '', 0, 100, '0000-00-00', '0000-00-00', '2019-10-10', NULL),
-(69, '', 0, 958, '0000-00-00', '2019-04-25', '2019-10-10', NULL),
-(73, '', 0, 101, '0000-00-00', '2019-04-25', '2019-04-26', NULL),
-(74, '', 0, 101, '0000-00-00', '2019-04-16', '2019-04-15', NULL),
-(75, '', 0, 101, '0000-00-00', '2019-04-15', '2019-04-14', NULL),
-(76, '', 0, 101, '0000-00-00', '2019-04-15', '2019-04-14', NULL),
-(77, '', 0, 101, '0000-00-00', '2019-04-16', '2019-04-15', NULL),
-(78, '', 0, 3, '0000-00-00', '2019-04-16', '2019-04-15', NULL),
-(79, '', 0, 95, '0000-00-00', '2019-04-15', '2019-04-14', NULL),
-(80, '', 0, 70, '0000-00-00', '0000-00-00', '0000-00-00', NULL),
-(81, 'Hmm', 9856, 542, '2019-04-17', '2019-04-18', '2019-04-19', 1),
-(82, 'Hmm', 9856, 542, '2019-04-17', '2019-04-18', '2019-04-19', 1),
-(83, '', 0, 100, '0000-00-00', '2019-04-17', '2019-04-20', NULL),
-(84, '', 0, 100, '0000-00-00', '2019-04-17', '2019-04-21', NULL),
-(85, '', 0, 101, '0000-00-00', '2019-04-16', '2019-04-20', NULL),
-(86, '', 0, 100, '0000-00-00', '2019-04-17', '2019-04-26', NULL),
-(87, '', 0, 100, '0000-00-00', '2019-04-23', '2019-04-24', NULL),
-(88, '', 0, 102, '0000-00-00', '2019-04-18', '2019-04-19', NULL),
-(89, '', 0, 99, '0000-00-00', '2019-04-29', '2019-04-23', NULL),
-(90, '', 0, 99, '0000-00-00', '2019-04-17', '2019-04-16', NULL),
-(91, '', 0, 99, '0000-00-00', '2019-04-17', '2019-04-19', NULL),
-(92, '', 0, 99, '0000-00-00', '2019-04-16', '2019-04-18', NULL),
-(93, '', 0, 99, '0000-00-00', '2019-04-19', '2019-04-15', NULL),
-(94, '', 0, 101, '0000-00-00', '2019-04-19', '2019-04-16', NULL),
-(95, '', 0, 100, '0000-00-00', '2019-04-24', '2019-04-26', NULL),
-(96, '', 0, 100, '0000-00-00', '2019-04-17', '2019-04-17', NULL);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `loca`
---
-
-CREATE TABLE `loca` (
-  `idto` int(1) NOT NULL,
-  `idloc` int(11) DEFAULT NULL,
-  `smth` varchar(255) NOT NULL,
-  `datefin` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `loca`
---
-
-INSERT INTO `loca` (`idto`, `idloc`, `smth`, `datefin`) VALUES
-(84, NULL, '', '2019-04-19'),
-(87, NULL, '', '2019-04-19'),
-(88, NULL, '', '2019-04-26'),
-(90, 31, '', '2019-04-04'),
-(91, 31, '', '2019-04-04'),
-(226, 60, 'Mauvais état', '2019-04-19'),
-(227, 60, 'Mauvais état', '2019-04-19'),
-(228, NULL, 'Bon Ã©tat', '0000-00-00');
+INSERT INTO `loc` (`idloc`, `nom`, `prix`, `qte`, `dateLoc`, `datedeb`, `datefin`, `etat`, `id_client`) VALUES
+(5, 'grand table', 123, 1, '2019-04-23 02:24:23', '2019-04-18', '2019-04-17', 1, 23548975),
+(7, 'grand table2', 500, 1, '2019-04-23 03:53:31', '2019-04-16', '2019-04-18', 0, 23548975),
+(8, 'grand table2', 500, 3, '2019-04-23 13:15:56', '2019-04-26', '2019-04-27', 0, 12345678),
+(9, 'grand table2', 500, 3, '2019-04-23 14:40:31', '2019-04-27', '2019-04-28', 0, 12345678);
 
 -- --------------------------------------------------------
 
@@ -310,7 +256,8 @@ CREATE TABLE `membres` (
 INSERT INTO `membres` (`cin`, `nom`, `email`, `mdp`, `date_naissance`, `sexe`, `num_tel`, `prenom`, `avatar`) VALUES
 (0, 'yhedr', 'zrty', '698d51a19d8a121ce581499d7b701668', '2019-04-21', 'Homme', 0, 'rthy', ''),
 (123546, 'erij', 'nour.khedher@esprit.tn', '827ccb0eea8a706c4c34a16891f84e7b', '2019-04-21', 'Homme', 123456789, 'erij', ''),
-(12345678, 'Erij', 'mxmbb2018@gmail.com', '6b4dccfb69c362b172bafdfc60c343e1', '2019-04-04', 'Femme', 25928777, 'tarhouni', '12345678.jpg'),
+(12345678, 'Erij', 'mxmbb2018@gmail.com', '94b8cea57c49a3007225a0c70c475450', '2019-04-04', 'Femme', 0, 'tarhouni', '12345678.jpg'),
+(23548975, 'nour', 'nour@gmail.com', 'ebb4ae5e8b495e8fa997f80bce3df801', '2019-04-23', 'Femme', 95164507, 'nour', ''),
 (55621814, 'yassine', 'brofrescoYEAH@gmail.com', '2b2531cb39ce2f11233f03645349663c', '2019-04-22', 'Autre', 55621814, 'khedher', '55621814.jpg'),
 (66666666, 'sfaxi', 'zeineb.sfaxi@esprit.tn', '67efe3fc78d9ebd16c1de25ffe37627b', '2019-04-22', 'Autre', 92300008, 'zeineb', '66666666.jpg');
 
@@ -334,17 +281,19 @@ CREATE TABLE `produits` (
 --
 
 INSERT INTO `produits` (`nom`, `num`, `prix`, `qte`, `descr`, `cat`) VALUES
-('chaise1236', 1231564658, 800, 27, 'description', 'Interieur'),
+('chaise1236', 1231564658, 800, 26, 'description', 'Interieur'),
 ('chaise125', 1231564660, 500, 125, 'descrchaise125', 'Exterieur'),
-('chaise3', 1231564661, 125, 8, 'descr3', 'Interieur'),
+('chaise3', 1231564661, 125, 4, 'descr3', 'Interieur'),
 ('chaise5', 1231564662, 1256, 500, 'descr55', 'Exterieur'),
 ('Fauteuil', 1231564663, 550, 0, 'Fauteuil Comfort', 'Interieur'),
 ('Fauteuil 2 Places', 1231564664, 2500, 0, 'faut Comfortable', 'Interieur'),
 ('Tableau Artistique', 1231564665, 5000, 0, 'tableau', 'Interieur'),
 ('Table', 1231564667, 230, 129, 'Tbmx', 'Interieur'),
 ('AspirateurAS', 1231564668, 125, 500, 'Aspirateur Samsung', 'Interieur'),
-('TableTs', 1231564669, 500, 245, 'Descr', 'Interieur'),
-('lilyouss', 1231564672, 5000, 500, 'youss', 'Exterieur');
+('TableTs', 1231564669, 500, 244, 'Descr', 'Interieur'),
+('lilyouss', 1231564672, 5000, 500, 'youss', 'Exterieur'),
+('cai chaise', 1231564674, 123, 200, 'chiase', 'louer'),
+('grand table2', 1231564675, 500, 13, 'grand table', 'louer');
 
 -- --------------------------------------------------------
 
@@ -367,7 +316,7 @@ CREATE TABLE `rdv` (
 
 INSERT INTO `rdv` (`ID_RDV`, `NOW_RDV`, `DATE_RDV`, `OBJET_RDV`, `ETAT_RDV`, `USER_ID`) VALUES
 (20, '2019-04-22', '2019-04-24', 'RÃ©paration et maintenance sous garantie', 'Acceptee', 12345678),
-(21, '2019-04-22', '2019-04-25', 'Livraison non coforme', 'en attente', 66666666),
+(21, '2019-04-22', '2019-04-25', 'Livraison non coforme', 'Acceptee', 66666666),
 (22, '2019-04-22', '2019-04-28', 'Livraison non reÃ§u', 'en attente', 66666666);
 
 -- --------------------------------------------------------
@@ -394,7 +343,18 @@ INSERT INTO `reclamation` (`ID_R`, `NOW_R`, `OBJET_R`, `DETAILS_R`, `ETAT`, `USE
 (34, '2019-04-22', 'RÃ©paration et maintenance sous garantie', 'here baby', 'en attente', 12345678),
 (35, '2019-04-22', 'RÃ©paration et maintenance sous garantie', 'here baby', 'Traitee', 12345678),
 (36, '2019-04-22', 'RÃ©paration et maintenance sous garantie', 'here baby', 'en attente', 12345678),
-(38, '2019-04-22', 'RÃ©paration et maintenance sous garantie', 'hhhh123', 'en attente', 66666666);
+(38, '2019-04-22', 'RÃ©paration et maintenance sous garantie', 'hhhh123', 'en attente', 66666666),
+(39, '2019-04-23', 'Livraison non coforme', 'livraison non', 'Traitee', 12345678),
+(40, '2019-04-23', 'Livraison non reÃ§u', 'details', 'en attente', 12345678),
+(41, '2019-04-23', 'RÃ©paration et maintenance sous garantie', 'detailss', 'en attente', 12345678),
+(42, '2019-04-23', 'Livraison non coforme', 'detailssss', 'en attente', 12345678),
+(43, '2019-04-23', 'RÃ©paration et maintenance sous garantie', 'detaileuu', 'en attente', 12345678),
+(44, '2019-04-23', 'Livraison non reÃ§u', 'emaile5dem', 'en attente', 66666666),
+(45, '2019-04-23', 'Livraison non reÃ§u', 'e5demm', 'en attente', 66666666),
+(46, '2019-04-23', 'Livraison non reÃ§u', 'gamkgamlka', 'en attente', 66666666),
+(47, '2019-04-23', 'Livraison non reÃ§u', 'mlkamalka', 'en attente', 66666666),
+(48, '2019-04-23', 'Livraison non reÃ§u', 'mlkamalka', 'en attente', 66666666),
+(49, '2019-04-23', 'Livraison non reÃ§u', 'mlkamalka', 'en attente', 66666666);
 
 -- --------------------------------------------------------
 
@@ -487,13 +447,6 @@ ALTER TABLE `loc`
   ADD PRIMARY KEY (`idloc`);
 
 --
--- Index pour la table `loca`
---
-ALTER TABLE `loca`
-  ADD PRIMARY KEY (`idto`),
-  ADD KEY `idloc` (`idloc`);
-
---
 -- Index pour la table `membres`
 --
 ALTER TABLE `membres`
@@ -546,12 +499,12 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT pour la table `commande`
 --
 ALTER TABLE `commande`
-  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT pour la table `commande_details`
 --
 ALTER TABLE `commande_details`
-  MODIFY `id_CommandeDetails` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_CommandeDetails` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT pour la table `demande`
 --
@@ -561,22 +514,17 @@ ALTER TABLE `demande`
 -- AUTO_INCREMENT pour la table `favoris`
 --
 ALTER TABLE `favoris`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT pour la table `loc`
 --
 ALTER TABLE `loc`
-  MODIFY `idloc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
---
--- AUTO_INCREMENT pour la table `loca`
---
-ALTER TABLE `loca`
-  MODIFY `idto` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=229;
+  MODIFY `idloc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT pour la table `produits`
 --
 ALTER TABLE `produits`
-  MODIFY `num` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1231564673;
+  MODIFY `num` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1231564676;
 --
 -- AUTO_INCREMENT pour la table `rdv`
 --
@@ -586,7 +534,7 @@ ALTER TABLE `rdv`
 -- AUTO_INCREMENT pour la table `reclamation`
 --
 ALTER TABLE `reclamation`
-  MODIFY `ID_R` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `ID_R` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 --
 -- AUTO_INCREMENT pour la table `recuperation`
 --
@@ -618,12 +566,6 @@ ALTER TABLE `commande_details`
 --
 ALTER TABLE `favoris`
   ADD CONSTRAINT `favoris_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `membres` (`cin`);
-
---
--- Contraintes pour la table `loca`
---
-ALTER TABLE `loca`
-  ADD CONSTRAINT `loca_ibfk_1` FOREIGN KEY (`idloc`) REFERENCES `loc` (`idloc`);
 
 --
 -- Contraintes pour la table `produits`

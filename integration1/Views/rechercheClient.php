@@ -83,12 +83,12 @@ require_once "../core/membreC.php";
 <body>
 <?php require 'header.php' ?>
     <!-- Start Welcome area -->
-    <div class="all-content-wrapper">
+		<div class="all-content-wrapper" style="margin-left:2px">
 
 
         <!-- clieeeeeeeeeeeeeennnnnnnnnts-->
-        <div class="product-status mg-b-30" style="margin-top:50px;">
-            <div class="container-fluid" >
+<div class="product-status mg-b-30" style="margin-top:50px; margin-left:2px">
+	   <div class="container-fluid" >
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="product-status-wrap">
@@ -98,7 +98,8 @@ require_once "../core/membreC.php";
 
 
     <form action = "rechercheClient.php" method = "get">
-        <div class="input-group mb-3" >
+			<div style="display: flex;">
+		<div class="input-group mb-3" >
           <input type="text" class="form-control"placeholder="Search..." aria-label="" aria-describedby="basic-addon1" style="color:white;" name="terme">
         </div>
 
@@ -116,6 +117,7 @@ require_once "../core/membreC.php";
 
 
         </div>
+			</div>
     </form>
 
 
@@ -128,8 +130,8 @@ require_once "../core/membreC.php";
                             <div class="add-product">
 
                             </div>
-                            <table style="background-color:#6090;">
-                               <tr>
+														<table style="background-color:#6090;">
+															<tr style="background-color:#3B6B9A;">
 
                                     <th>CIN</th>
                                     <th>Nom</th>
@@ -152,7 +154,7 @@ require_once "../core/membreC.php";
                                     {
 
 
-                                        echo '<tr>';
+                                        echo '<tr style="background-color:#365D84;">';
                                         echo '<td class="td2">'.$row['cin'].'</td>';
                                         echo '<td class="td2">'.$row['nom'].'</td>';
                                         echo '<td class="td2">'.$row['prenom'].'</td>';

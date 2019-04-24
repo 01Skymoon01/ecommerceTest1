@@ -17,7 +17,8 @@ if (isset($_POST['subject']) and isset($_POST['message'])){
     $result = mysqli_query($db,$sql);
     $count = mysqli_num_rows($result);
    $row_data = mysqli_fetch_array($result);
-    $to =$row_data['MAIL'];
+    $to =$row_data['email'];
+    var_dump($to);
     $subject = "Votre Reclamation a bien ete reçu";
     $messageBody ="Ce mail represente votre ticket de reclamation deposé chez Geoconcept. DO NOT DELETE.";
     if( $count ==0){
@@ -27,16 +28,16 @@ if (isset($_POST['subject']) and isset($_POST['message'])){
     else
     {
         $mail = new PHPMailer();
-        $mail->IsSMTP();
+        //$mail->IsSMTP();
         $mail->SMTPAuth = true; // authentication enabled
-        $mail->IsHTML(true);
-        $mail->SMTPSecure = 'ssl';//turn on to send html email
+        //$mail->IsHTML(true);
+        $mail->SMTPSecure = 'tls';//turn on to send html email
         // $mail->Host = "ssl://smtp.zoho.com";
         $mail->Host = "ssl://smtp.gmail.com";
-        $mail->Port = 465;
+        $mail->Port =587;
         $mail->Username = "gintokiismyhusband@gmail.com";
         $mail->Password = "zouzou11199";
-        $mail->SetFrom("gintokiismyhusband@gmail.com", "geoconcept");
+        $mail->SetFrom("gintokiismyhusband@gmail.com", "GeoConcept");
         $mail->Subject = $subject;
 
         $mail->Body = $messageBody;
@@ -50,9 +51,10 @@ if (isset($_POST['subject']) and isset($_POST['message'])){
         }
     }
     //header('Location:contact.php');
-    echo "<script type=\"text/javascript\">window.alert('Reclamation ajoutée Verifiez votre mail.');
-                window.location.href='contact.php'</script>";
-}else{
+    echo "<script type=\"text/javascript\">window.alert('Reclamation ajoutée Verifiez votre mail. Vous ne pourrez plus modifier ou supprimer apres 24h.');
+                 window.location.href='contact.php' </script>";
+}
+else{
 
     echo "<script type=\"text/javascript\">window.alert('Verifiez vos champs.');
                 window.location.href='contact.php'</script>";

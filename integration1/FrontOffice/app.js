@@ -5,7 +5,6 @@
     $.get($(this).attr('href'),{},function(data)
     {
 
-if(data.message !='bien ajouter'){
        if(confirm(data.message + '. Voulez vous consulter votre panier ? '))
        {
          location.href = 'Panier.php';
@@ -13,7 +12,6 @@ if(data.message !='bien ajouter'){
 
 
      }
-   }else {}
 
     },'json');
     return false;
