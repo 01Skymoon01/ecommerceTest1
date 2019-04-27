@@ -73,6 +73,9 @@ $listeCommande=$CommandeC1->afficherTouTCommande();
 		============================================ -->
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 
+
+
+
 </head>
 
 <body>
@@ -159,7 +162,9 @@ $listeCommande=$CommandeC1->afficherTouTCommande();
                                         {
                                           foreach($ClientFidele as $row){
                                             echo $row["revenue"];
+                                            if($row["revenue"]==NULL) echo 0;
                                           }
+
                                         }?> TDN</h2>
                                     </div>
                                 </div>
@@ -173,6 +178,10 @@ $listeCommande=$CommandeC1->afficherTouTCommande();
                 </div>
             </div>
         </div>
+<!-- Stat with graph         ----------------------------------->
+
+
+
         <!-- HOUNII COMMANDE§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§-->
         <div class="product-status mg-b-30" style="margin-top:50px;">
             <div class="container-fluid">
@@ -288,7 +297,6 @@ foreach($listeCommande as $row){ ?>
             </div>
         </div>
 
-    </div>
 
     <!-- jquery
 		============================================ -->

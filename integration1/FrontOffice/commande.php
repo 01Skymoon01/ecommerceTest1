@@ -28,6 +28,33 @@ th {
 
 
 </style>
+<script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+<script>
+    // Render the PayPal button into #paypal-button-container
+    paypal.Buttons({
+
+        // Set up the transaction
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: '0.01'
+                    }
+                }]
+            });
+        },
+
+        // Finalize the transaction
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+                // Show a success message to the buyer
+                alert('Transaction completed by ' + details.payer.name.given_name + '!');
+            });
+        }
+
+
+    }).render('#paypal-button-container');
+</script>
 <!--DEBUT COMMANDE -------------------------------------------------------------------------------------------->
 <header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(images/Baniere1.jpg);height:500px;">
 
@@ -143,11 +170,18 @@ $total = 0; ?>
           <td style="background-color: #f5f5f5;"><?PHP echo $values; ?> TND</td>
 
         </tr>
+
         <?php
       }
+
     $total++;
   }
+
   ?>
+  <tr>
+  <td style="background-color:white;"></td>
+       <td style="background-color:white;"><div id="paypal-button-container"></div></td>
+  <tr>
 </table>
 </fieldset>
   <table  style=" margin: auto; padding: auto; margin-top:80px; background-color:#f5f5f5; width: 60%; ">
@@ -159,6 +193,7 @@ $total = 0; ?>
         <th scope="col" class="table-light">Qte_Produit</th>
         <th scope="col" class="table-light">PRIX_Produit</th>
         <th scope="col" class="table-light">TOTAL</th>
+
       </tr>
     </thead>
     <tbody>
@@ -172,17 +207,20 @@ $total = 0; ?>
     	<td><?PHP echo $row['Qte_Produit']; ?></td>
     	<td><?PHP echo $row['PRIX_Produit']; ?></td>
     	<td><?PHP echo $row['TOTAL']; ?></td>
+
     	</tr>
     	<?PHP
     }
 
 ?>
+
   </table>
 <?php
     }
    $_SESSION["panier"]=array();
-  $_SESSION["commande"]=array();
+$_SESSION["commande"]=array();
     ?>
+
     </tbody>
 
 

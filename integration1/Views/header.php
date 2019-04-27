@@ -60,6 +60,8 @@ $var =  $_SESSION["role"];
                         <ul class="submenu-angle" aria-expanded="false">
                             <li><a title="Liste Produits" href="CommandeList.php"><span class="mini-sub-pro">Liste Commandes</span></a>
                             </li>
+                            <li><a title="Liste Produits" href="REVENUE.php"><span class="mini-sub-pro">Revenue</span></a>
+                            </li>
                           </ul>
                         </li>
                         <li>

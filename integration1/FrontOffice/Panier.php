@@ -19,6 +19,9 @@ input[type=submit]:focus {
     color:#D2B48C;
 }
 </style>
+
+
+
 <form method="POST" action="addCommande.php">
 	<div id="fh5co-started">
 
@@ -30,6 +33,7 @@ input[type=submit]:focus {
 			<div class="well well-small" style="margin-left:20% ; width:900px">
 				<h1>Check Out <small class="pull-right"></small></h1>
 			<hr class="soften"/>
+
 
 			<table class="table table-striped" >
 		              <thead>

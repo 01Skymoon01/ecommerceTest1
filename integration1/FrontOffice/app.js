@@ -9,6 +9,7 @@
        {
          location.href = 'Panier.php';
        }else {
+ $('.countcart').empty().append(data.count);
 
 
      }
@@ -20,7 +21,7 @@
     event.preventDefault();
     $.get($(this).attr('href'),{},function(data)
     {
-     $('#countcart').empty().append(data.count);
+     $('.countcart').empty().append(data.count);
      alert(data.message);
 
     },'json');

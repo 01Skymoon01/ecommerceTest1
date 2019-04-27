@@ -58,7 +58,12 @@ var_dump($liste->fetchAll(PDO::FETCH_OBJ));*/
 <?php } ?>
 <?php
 if($product->qte==0){ ?>
-<a style="background-color:#A9A9A9;" href="Rupture de Stock" class="icon addpanier" ><i class="icon-shopping-cart"></i></a>
+
+
+		<a style="background-color:#A9A9A9;" href="Rupture de Stock" class="icon addpanier" onclick="alert('HORS STOCK');" ><i class="icon-shopping-cart"></i></a>
+
+
+
 <?php } ?>
 															  <a href="javascript:openModal(<?php echo $product->num; ?>)" class="icon"><i class="icon-eye"></i></a>
 

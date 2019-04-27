@@ -304,6 +304,23 @@ function NombreDuCommandeNonPayees(){
 			 }
 }
 
+function RevenueParJoursGraph(){
+
+
+	$sql="SELECT totalPrix_commande revenue ,date_commande  FROM commande WHERE etat_commande=1 ORDER BY date_commande DESC LIMIT 5 ";
+
+
+	$db = config::getConnexion();
+	try{
+	$liste=$db->query($sql);
+	return $liste;
+
+	}
+			 catch (Exception $e){
+					 die('Erreur: '.$e->getMessage());
+			 }
+}
+
 }
 
 ?>

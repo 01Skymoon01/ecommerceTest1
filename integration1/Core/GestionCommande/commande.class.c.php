@@ -33,7 +33,7 @@ class CommandeC {
 
 	function afficherTouTCommande(){
 
-		$sql="SElECT * From commande ORDER BY id_Commande DESC";
+		$sql="SElECT * From commande ORDER BY date_commande DESC";
 		$db = config::getConnexion();
 		try{
 		$liste=$db->query($sql);
@@ -320,7 +320,7 @@ function ProduitBestSaler(){
 function RevenueParJour(){
 
 
-	$sql="SELECT FORMAT(SUM(totalPrix_commande),2) revenue FROM commande WHERE date_commande IN (SELECT date_commande FROM commande WHERE DATE(date_commande)=DATE(NOW()) ) and etat_commande=1  ";
+	$sql="SELECT FORMAT(SUM(totalPrix_commande),2) revenue,DAY(date_commande) datec FROM commande WHERE date_commande IN (SELECT date_commande FROM commande WHERE DATE(date_commande)=DATE(NOW()) ) and etat_commande=1  ";
 
 
 	$db = config::getConnexion();
@@ -351,6 +351,54 @@ function NombreDuCommandeNonPayees(){
 			 }
 }
 
+function RevenueParJoursGraph(){
+
+
+	//$sql="SELECT totalPrix_commande revenue ,DAY(date_commande) datec FROM commande WHERE etat_commande=1 ORDER BY date_commande DESC LIMIT 5 ";
+$sql="SELECT SUM(totalPrix_commande) revenue ,DAY(date_commande) datec FROM commande WHERE etat_commande=1 and MONTH(date_commande)=MONTH(NOW()) and YEAR(date_commande)=YEAR(NOW())  GROUP BY DAY(date_commande) ORDER BY date_commande ASC  ";
+
+	$db = config::getConnexion();
+	try{
+	$liste=$db->query($sql);
+	return $liste;
+
+	}
+			 catch (Exception $e){
+					 die('Erreur: '.$e->getMessage());
+			 }
+}
+function RevenueParMonisGraph(){
+
+
+	//$sql="SELECT totalPrix_commande revenue ,DAY(date_commande) datec FROM commande WHERE etat_commande=1 ORDER BY date_commande DESC LIMIT 5 ";
+$sql="SELECT SUM(totalPrix_commande) revenue ,MONTH(date_commande) datec FROM commande WHERE etat_commande=1 and YEAR(date_commande)=YEAR(NOW())  GROUP BY MONTH(date_commande) ORDER BY date_commande ASC  ";
+
+	$db = config::getConnexion();
+	try{
+	$liste=$db->query($sql);
+	return $liste;
+
+	}
+			 catch (Exception $e){
+					 die('Erreur: '.$e->getMessage());
+			 }
+}
+function RevenueParAnneeGraph(){
+
+
+	//$sql="SELECT totalPrix_commande revenue ,DAY(date_commande) datec FROM commande WHERE etat_commande=1 ORDER BY date_commande DESC LIMIT 5 ";
+$sql="SELECT SUM(totalPrix_commande) revenue ,YEAR(date_commande) datec FROM commande WHERE etat_commande=1  GROUP BY YEAR(date_commande) ORDER BY date_commande ASC  ";
+
+	$db = config::getConnexion();
+	try{
+	$liste=$db->query($sql);
+	return $liste;
+
+	}
+			 catch (Exception $e){
+					 die('Erreur: '.$e->getMessage());
+			 }
+}
 }
 
 ?>

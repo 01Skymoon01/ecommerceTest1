@@ -150,7 +150,7 @@ if (isset($_SESSION['cin']) and $_SESSION['cin'] > 0 )
             <li class="shopping-cart">
 
           <div class="input-group mb-3" style="margin-top:10px; ">
-              <a href="Panier.php" name="TotalProduits" class="cart" ><span><small><?php echo $panier->count(); ?></small><i class="icon-shopping-cart"></i></span></a>
+              <a href="Panier.php" name="TotalProduits" ><span><small class="countcart"><?php echo $panier->count(); ?></small><i class="icon-shopping-cart"></i></span></a>
             </div>
           </li>
           <?php if(isset($_SESSION['cin'])){ ?>
