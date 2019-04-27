@@ -333,6 +333,22 @@ function RevenueParJour(){
 					 die('Erreur: '.$e->getMessage());
 			 }
 }
+function RevenueParJour2(){
+
+
+	$sql="SELECT SUM(totalPrix_commande) revenue ,DAY(date_commande) datec FROM commande WHERE etat_commande=1 and  DATE(date_commande)=DATE(NOW())  GROUP BY DAY(date_commande) ORDER BY date_commande ASC  ";
+
+
+	$db = config::getConnexion();
+	try{
+	$liste=$db->query($sql);
+	return $liste;
+
+	}
+			 catch (Exception $e){
+					 die('Erreur: '.$e->getMessage());
+			 }
+}
 
 function NombreDuCommandeNonPayees(){
 

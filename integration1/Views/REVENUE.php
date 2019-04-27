@@ -4,7 +4,6 @@ include "../core/GestionCommande/commande.class.c.php";
 
 $CommandeC1=new CommandeC();
 
-$listeCommande=$CommandeC1->afficherTouTCommande();
 
  ?>
 
@@ -89,13 +88,7 @@ function drawChart() {
     foreach($listeCommandeStat as $row){
       echo "['".$row["datec"]."',".$row["revenue"]."],";
     }
-$ClientFidele=$CommandeC1->RevenueParJour();
 
-foreach($ClientFidele as $row){
-  if($row["revenue"]!=NULL) {
-  echo "['".$row["datec"]."',".$row["revenue"]."]";
-}
-}
      ?>
 
   ]);
