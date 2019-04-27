@@ -5,6 +5,12 @@ include_once '../Entities/favoris.php';
 
 
 
+if(empty($_SESSION['cin'])) {
+
+                header('Location: signin.php');
+
+  }
+
   if(!empty($_SESSION['cin'])) {
     $favorisc = new favorisC();
       if(!empty($_GET['nom'])){
@@ -13,7 +19,7 @@ include_once '../Entities/favoris.php';
 
     $favorisc->ajouterFavoris($favoris);
 }
-    $list=$favorisc->listeFavoris($_SESSION['cin']);
+    $list=$favorisc->listeFavoris();
         ?>
 
         <?php require 'header.php';
@@ -45,7 +51,7 @@ include_once '../Entities/favoris.php';
         			<div class="span12">
 
         			<div class="well well-small" style="margin-left:20% ; width:900px">
-        				<h1><a style='font-size:50px;'> &#9734;</a>Liste Favoris <small class="pull-right"></small></h1>
+        				<h1><a style='font-size:50px; '> <img src="images/favoris.png" style="height: 35px; width: 35px; margin-left: 40px;"></a> Liste Favoris <small class="pull-right"></small></h1>
         			<hr class="soften"/>
 
         			<table class="table table-striped" >
@@ -72,9 +78,14 @@ include_once '../Entities/favoris.php';
 
 
         											<td><a href="deleteFavoris.php?id=<?php echo $values["id_produit"]; ?>" value="supprimer"  >
-                             X
+                             <img src="images/delete.png" style="height: 25px; width: 25px;">
         											</a>
         										</td>
+
+                                                <td><input type="submit" id="submit" class="shopBtn pull-right" name="ajouter" value="Acheter">
+                        
+                                                    </a>
+                                                </td>
 
 
 

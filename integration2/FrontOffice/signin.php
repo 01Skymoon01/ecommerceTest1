@@ -10,12 +10,12 @@ if(isset($_POST['SignIn'])){
     $motdepasse='';
 
 
-    if((isset($_POST['email']))&&(isset($_POST['password']))){
+    if((isset($_POST['email']))&&(isset($_POST['password']))){   
         $email_membre= $_POST['email'];
         $motdepasse_membre=$_POST['password'];
         $motdepassecrypte=md5($motdepasse_membre);
 
-        $tab = $membre->connexion($email_membre);
+        $tab = $membre->connexion($email_membre,$motdepassecrypte);
                 if (is_array($tab) || is_object($tab))
                 {
                     foreach($tab as $row)
@@ -27,31 +27,22 @@ if(isset($_POST['SignIn'])){
                         $_SESSION['nom']=$nom=$row['nom'];
                         $_SESSION['cin']=$cin=$row['cin'];
                         $_SESSION['sexe']=$sexe=$row['sexe'];
-                        $_SESSION['num_tel']=$telephone=$row['num_tel'];
-                        $_SESSION['date_naissance']=$datedenaissance=$row['date_naissance'];
-                    }
+                        $_SESSION['num_tel']=$telephone=$row['num_tel']; 
+                        $_SESSION['date_naissance']=$datedenaissance=$row['date_naissance'];                       
+                    } 
                 }
             if(($email_membre==$email)&&($motdepassecrypte==$motdepasse))
             {
-
                 header('Location: product.php');
-
-
             }
             else{
-                echo "ERREUR: Vérifier votre email et mot de passe!!";
+                echo "ERREUR: Vérifier votre email et mot de passe!!"; 
             }
         }
 }
 
 if(!empty($_SESSION['cin'])) {
-  if($_SESSION["page"]=="addCommande.php"){
-    header('Location: Panier.php');
-    $_SESSION["page"]=array();
-    $_SESSION["page"]="product.php";
-  }else{
-    header('Location: product.php');
-  }
+header('Location: product.php');
 }
 ?>
 
@@ -95,7 +86,7 @@ if(!empty($_SESSION['cin'])) {
 
 
                     <form method="POST" action="">
-
+                    
                         <div class="input-group">
                              <input class="input--style-1" type="email" placeholder="ADRESSE EMAIL" name="email" required>
                         </div>
@@ -103,15 +94,15 @@ if(!empty($_SESSION['cin'])) {
                         <div class="input-group">
                              <input class="input--style-1" type="password" placeholder="MOT DE PASSE" name="password" required>
                         </div>
-
-						<div class="forgot"><a href="recuperation.php">Mot de passe oublié?</a></div></br>
+                         
+                        <div class="forgot"><a href="recuperation.php">Mot de passe oublié?</a></div></br>
 
 
                         <div class="p-t-20">
                             <button class="btn btn--radius btn--green" name="SignIn">Connexion</button>
                         </div>
 
-                        <div class="membre"><a href="signup.php" class="deja2">Inscrivez-vous?</a></div>
+                        <div class="membre"><a href="signup.php" class="deja2">Inscrivez-vous?</a></div>  
 
                     </form>
                 </div>
