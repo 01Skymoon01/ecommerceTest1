@@ -8,7 +8,27 @@ $db = config::getConnexion();
 $liste=$db->query($sql);
 var_dump($liste->fetchAll(PDO::FETCH_OBJ));*/
 ?>
+<style>
+.comm {
+  background-color: #b7a868;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 8%;
+  font-weight: bold;
+}
 
+.comm:hover {opacity: 2}
+
+</style>
 	<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(images/Baniere1.jpg);">
 
 		<div class="overlay"></div>
@@ -84,27 +104,34 @@ if($product->qte==0){ ?>
 		<div class="container">
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Besoin d'aide ? </h2>
-					<p>Inscrivez vous pour suivre nos produits et nouveautés</p>
+					<h2>Vos commentaires ... </h2>
+					
+
 				</div>
 			</div>
+			<?php if(isset($_SESSION['cin'])){ ?>
 			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2">
-					<form class="form-inline">
-						<div class="col-md-6 col-sm-6">
-							<div class="form-group">
-								<label for="email" class="sr-only">Email</label>
-								<input type="email" class="form-control" id="email" placeholder="Email">
+				<div class="col-md-8 col-md-offset-2" style="margin-left: 31.8%; margin-top: -70px;">
+					<form class="form-inline" action="AjouterCommentaire.php" >
+						<div class="col-md-6 col-sm-6" >
+							<div class="form-group"  >
+								<textarea name="commentaire" class="form-control" placeholder="Ajouter un commentaire ..." ></textarea></br></br>
+								
+								<input type="submit" name="submit_commentaire" value="Poster" class="comm" style="margin-left: 113px;"></br></br></br>
 							</div>
-						</div>
-						<div class="col-md-6 col-sm-6">
-							<button type="submit" class="btn btn-default btn-block">Inscrivez-Vous</button>
-						</div>
+
+							
+
+						</div>	
+
 					</form>
 				</div>
 			</div>
+		<?php } ?>
+
+
+
 		</div>
-	</div>
 
 	<?php require 'footer.php'; ?>
 

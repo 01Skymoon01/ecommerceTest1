@@ -53,11 +53,22 @@ return $liste;
         }
 	}
 
+	public function selectMdp($cin) {
+
+		$c = config::getConnexion();
+    	$sql = "SELECT mdp FROM membres WHERE cin='$cin'";			
+		return $c->query($sql);
+		
+        
+	}
+
+
+	
 	public function ajouterMembre($Membre) {
 
       		$db = config::getConnexion();
-   			$sql="INSERT INTO membres (cin,nom, prenom, date_naissance, sexe, email,mdp, num_tel)
-							     VALUES (:cin, :nom, :prenom, :date_naissance, :sexe, :email, :mdp, :num_tel)";
+	   			$sql="INSERT INTO membres (cin,nom, prenom, date_naissance, sexe, email,mdp, num_tel)
+								     VALUES (:cin, :nom, :prenom, :date_naissance, :sexe, :email, :mdp, :num_tel)";
 
 
 			try{
@@ -152,10 +163,10 @@ return $liste;
 	}
 
 
-		public function connexion($email)
+		public function connexion($email,$mdp)
 		{
 		$c = config::getConnexion();
-		$sql = "SELECT * FROM membres WHERE email='$email'";
+		$sql = "SELECT * FROM membres WHERE email='$email' AND mdp='$mdp'";
 		return $c->query($sql);
 		}
 
@@ -180,13 +191,6 @@ return $liste;
 	*/
 
 
-
-   	public function afficherClient($Client)
-		{
-			echo "cin: ".$Membre->get_telephone()." | Nom: ".$Client->get_nom()." | Prénom: ".$Client->get_prenom()."
-			| Sexe: ".$Client->get_sexe()." | Email: ".$Client->get_email()." | Adresse: ".$Client->get_adresse().
-			 "| Code Postal: ".$Client->get_codepostal()."| Mot de passe: ".$Client->get_motdepasse()."| Date de naissance: ".$Client->get_datedenaissance()."<br>";
-		}
 
 	function supprimerMembre($cin){
 		$sql="DELETE FROM membres where cin= :cin";

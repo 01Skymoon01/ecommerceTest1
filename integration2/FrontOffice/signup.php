@@ -2,13 +2,13 @@
 
 session_start();
 
-
 ?>
 
 
 <html lang="en">
 
 <head>
+    
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -34,6 +34,14 @@ session_start();
 
     <!-- Main CSS-->
     <link href="css/main.css" rel="stylesheet" media="all">
+    
+        
+       
+
+
+
+
+    
 </head>
 
 <body>
@@ -58,6 +66,7 @@ session_start();
                             <div class="col-2">
                                 <div class="input-group">
                                     <input class="input--style-1" type="text" placeholder="PRENOM" name="prenom" id="prenom">
+                                    <label id="error"></label>
                             </div>
                             </div>
 
@@ -112,7 +121,7 @@ session_start();
                         </div>
 
                         <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" type="submit" onclick="Controle();">S'inscrire</button>
+                            <button class="btn btn--radius btn--green" type="submit" name ="signup" onclick="Controle();">S'inscrire</button>
                         </div>
 
                         <div class="membre"><a href="signin.php" class="deja">Déjà inscrit?</a></div>
@@ -125,7 +134,7 @@ session_start();
 
 
      <!-- Jquery JS-->
-      <script src="scripts.js"></script>
+      
     <script src="vendor/jquery/jquery.min.js"></script>
     <!-- Vendor JS-->
     <script src="vendor/select2/select2.min.js"></script>
@@ -134,6 +143,7 @@ session_start();
 
     <!-- Main JS-->
     <script src="js/global.js"></script>
+    <script src="js/scripts.js"></script>
 
 
 

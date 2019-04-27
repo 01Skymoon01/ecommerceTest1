@@ -39,6 +39,8 @@ $listeadmins = $temp->afficherMembre();
         if (!$mail->send()) {
             echo 'Message could not be sent.';
             echo 'Mailer Error: ' . $mail->ErrorInfo;
+            
+
         } else {
             echo nl2br ('Message has been sent to : ' . $row['prenom'] ) ."<br>" ;
         }

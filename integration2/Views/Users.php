@@ -86,7 +86,7 @@ $ListetooC= $membre->afficherMembre();
             <div class="container-fluid" >
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="product-status-wrap">
+                        <div class="product-status-wrap" style="width: 105%;">
                           <div>
                             <h4>Liste des Clients</h4>
                           </div>
@@ -123,7 +123,7 @@ $ListetooC= $membre->afficherMembre();
                             <div class="add-product">
 
                             </div>
-                            <table style="background-color:#6090;">
+                            <table style="background-color:#6090; width: 90%;" >
                                <tr style="background-color:#3B6B9A;">
 
                                     <th>CIN</th>
@@ -138,16 +138,21 @@ $ListetooC= $membre->afficherMembre();
 
 
                                 </tr>
+
+
                                 <tr>
+
 
 
                                 <?php
                                      foreach ($ListetooC as $row)
                                     {
-
-
-                                        echo '<tr style="background-color:#365D84;">';
-                                        echo '<td class="td2">'.$row['cin'].'</td>';
+                                        $now= date("m-d");
+                                        $bday=substr($row['date_naissance'], 5,5);
+                                        if ($bday == $now) { echo '<tr style="background-color:#5d95cc;">'; }
+                                        else {
+                                        echo '<tr style="background-color:#365D84;">'; }
+                                        echo '<td class="td2" >'.$row['cin'].'</td>';
                                         echo '<td class="td2">'.$row['nom'].'</td>';
                                         echo '<td class="td2">'.$row['prenom'].'</td>';
                                         echo '<td class="td2">'.$row['email'].'</td>';
@@ -155,13 +160,16 @@ $ListetooC= $membre->afficherMembre();
                                         echo '<td class="td2">'.$row['num_tel'].'</td>';
                                         echo '<td class="td2">'.$row['sexe'].'</td>';
                                         echo '<td class="td2">'.$row['date_naissance'].'</td>';
-                                       /*
-                                        echo '<td class="td2">'?> <button class="btn btn--radius btn--green" type="submit" style="color:black" onclick="location.href='modifierUsers.php?cin=<?php echo $row['cin']; ?>'"> Modifier </button> <?php '</td>';
-                                        */
-                                        echo '<td class="td2">'?> <button class="btn btn--radius btn--red" type="submit" nom="supprimer" style="color:black" onclick="location.href='supprimerUsers.php?cin=<?php echo $row['cin']; ?>'"> Supprimer </button><?php '</td>';
+                                  
+                                        echo '<td class="td2">'?> <button class="btn btn--radius btn--red" type="submit" nom="supprimer"
+                                            style="color:black; background: none; " onclick="location.href='supprimerUsers.php?cin=<?php echo $row['cin']; ?>'"> <img src="img/trash.png" style="height: 30px; width: 30px;"> </button><?php '</td>';
                                         echo '</tr>';
+
+                                           
                                     }
                                  ?>
+                                            
+
 
                                 </tr>
                             </table>

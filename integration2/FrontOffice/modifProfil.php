@@ -23,7 +23,7 @@ $membre = $m->afficherMembre($test);
     <!-- Title Page-->
     <title>Profile</title>
 
-    <script src="scripts.js"></script>
+    
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -38,6 +38,53 @@ $membre = $m->afficherMembre($test);
 
     <!-- Main CSS-->
     <link href="css/main.css" rel="stylesheet" media="all">
+
+
+
+
+    <script type="text/javascript">
+        
+
+
+function Controle2() {
+
+var password = document.getElementById("mdp").value;
+var password2 = document.getElementById("mdp2").value;
+var num = document.getElementById("num_tel").value;
+ch = num.substr(0, 1);
+
+
+if (num.length ==8 ) {
+    for (i=0;i<num.length;i++) {
+            
+            if ( num.charAt(i)<"0" || num.charAt(i)>"9" )  {
+                alert("Tel contient que des chiffres.");
+                return false;
+            }
+            else if ( (ch != "2") && (ch != "5") && (ch != "9") )  {
+                alert("Un numéro en tunisie s'il vous plait..");
+                return false;
+            }
+        }
+}
+
+if (password.length != 0 && password2.length != 0){
+
+    if (password.length < 8) {
+        alert("password too short, please enter > 8 caracters.");
+        return; 
+    }
+
+    else if (password2 != password ) {
+        alert("password don't match!");
+        return;
+    }
+}
+
+
+
+}
+    </script>
 </head>
 
 <body>
@@ -59,9 +106,15 @@ $membre = $m->afficherMembre($test);
                         </div>
 -->
                         
-
+                            <center><div class="col-2">
+                                <div class="input-group">
+                                     <input class="input--style-1" type="password" placeholder="ANCIEN MOT DE PASSE" name="amdp" id="amdp" style="text-align:center;">
+                                </div>
+                            </div></center>
                             
                        <div class="row row-space">
+
+                        
                                
                             <div class="col-2">
                                 <div class="input-group">
@@ -74,7 +127,7 @@ $membre = $m->afficherMembre($test);
                                      <input class="input--style-1" type="password" placeholder="RESAISIR MOT DE PASSE" name="mdp2" id="mdp2" >
                                 </div>
                             </div>
-                        </div>
+                        </div></br></br></br>
 
 
                         <!--
@@ -126,6 +179,7 @@ $membre = $m->afficherMembre($test);
 
     <!-- Main JS-->
     <script src="js/global.js"></script>
+    <!--<script src="js/scripts.js"></script>-->
 
 
 

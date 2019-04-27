@@ -1,6 +1,7 @@
 <?php
 
 require_once "../config.php";
+require_once "../views/PHPMailer-5.2-stable/PHPMailerAutoload.php";
 
 session_start();
 
@@ -47,6 +48,59 @@ if(isset($_POST['recup_submit'],$_POST['recup_mail'])) {
           $recup_insert->execute(array($recup_mail,$recup_code));
         }
 
+
+
+
+
+
+
+
+   
+//$produit1C=new ProduitIntC();
+//$rupture=$produit1C->RuptureStock();
+//var_dump($rupture);
+        $mail = new PHPMailer;
+        //$mail->SMTPDebug = 2;// TCP port to connect to
+        //echo $row['email'];
+        $mail->isSMTP();                            // Set mailer to use SMTP
+        $mail->Host = 'smtp.gmail.com';             // Specify main and backup SMTP servers
+        $mail->SMTPAuth = true;                     // Enable SMTP authentication
+        //$mail->Username = 'elreb7chich';          // SMTP username
+        //$mail->Password = 'plataoplomo1994';
+        $mail->Username = 'hatem.temimi@esprit.tn';          // SMTP username
+        $mail->Password = 'neverbackdownX512';// SMTP password
+        $mail->SMTPSecure = 'tls';                  // Enable TLS encryption, `ssl` also accepted
+        $mail->Port = 587;
+
+  
+        $mail->setFrom('GeoconceptDashBoardAdmin@gmail.com', 'GeoConcept');
+        $mail->addReplyTo('GeoconceptDashBoardAdmin@gmail.com', 'GeoConcept');
+        //$mail->addAddress('nour.khedher@esprit.tn ');
+        //$mail->addAddress('elreb7chich@gmail.com ');
+        $mail->addAddress($_SESSION['recup_mail'],$pseudo);// Add a recipient
+        $mail->addCC('cc@example.com');
+        $mail->addBCC('bcc@example.com');
+
+        $mail->isHTML(true);  // Set email format to HTML
+        //$mail->addAttachment('img/img.png');
+        $bodyContent = $recup_code;
+
+        $mail->Subject = "Code recuperation de mot de passe";
+        $mail->Body = "Bonjour "." ".$pseudo." "."Voici votre code: ".$bodyContent;
+
+        if (!$mail->send()) {
+            echo 'Message could not be sent.';
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+            
+
+        } else {
+            echo nl2br ('Message has been sent to : ' . $pseudo ) ."<br>" ;
+        }
+      
+
+
+/*
+
          $header="MIME-Version: 1.0\r\n";
          $header.='From:"geoconcept.com"<ashlynx1997@gmail.com>'."\n";
          $header.='Content-Type:text/html; charset="utf-8"'."\n";
@@ -85,6 +139,7 @@ if(isset($_POST['recup_submit'],$_POST['recup_mail'])) {
          ';
 
          mail($recup_mail, "Récupération de mot de passe - PrimFX.com", $message, $header);
+         */
         header('Location:recuperation.php?section=code');
 
         } else {

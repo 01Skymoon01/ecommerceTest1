@@ -103,7 +103,7 @@ border-radius: 3px;
             <div class="card card-1">
                 <div class="card-heading"></div>
                 <div class="card-body">
-                    <h2 class="title" style="text-align: center;">Votre compte</h2>
+                    <h2 class="title" style="text-align: center;">Votre compte: <?php echo $_SESSION['nom']; ?></h2>
 
 
 
@@ -113,11 +113,15 @@ border-radius: 3px;
                             <?php
 
                             if (!empty($userinfo['avatar'])) {
+
+                               
                                 ?>
                                 <div>
-                                <center><img src="membres/avatars/<?php echo $userinfo['avatar'];?>" width="200" height="200"/></center>
+                                <center><img src="membres/avatars/<?php echo $userinfo['avatar'];?>" width="200" height="200" title="Format valide: jpeg, gif,jpeg,png. Taille max = 2 octets."/></center>
+                                
                                 </div>
                             <?php
+
                             }
                             else {
                                 ?>
