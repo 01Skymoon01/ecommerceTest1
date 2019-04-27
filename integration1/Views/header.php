@@ -95,6 +95,20 @@ $var =  $_SESSION["role"];
 
                                       </ul>
                                     </li>
+                                    <li>
+                                        <a class="has-arrow"  aria-expanded="false" ><i class="fa fa-truck icon-wrap"></i> <span
+                                                    class="mini-click-non">Livraison</span></a>
+                                        <ul class="submenu-angle" aria-expanded="false">
+                                            <li><a title="Liste Produits" href="employeBACK.php"><span class="mini-sub-pro">Liste livreurs</span></a>
+                                            </li>
+                                            <li><a title="Liste Produits" href="AjouterEmployeBACK.php"><span class="mini-sub-pro">Ajouter Livreur</span></a>
+                                            </li>
+                                            <li><a title="Liste Produits" href="LivraisonBACK.php"><span class="mini-sub-pro">Liste Livraisons</span></a>
+                                            </li>
+                                            <li><a title="Liste Produits" href="AjouterLivraisonBACK.php"><span class="mini-sub-pro">Ajouter Livraison</span></a>
+                                            </li>
+                                          </ul>
+                                        </li>
                 </ul>
             </nav>
         </div>
