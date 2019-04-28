@@ -19,7 +19,7 @@ input[type=submit]:focus {
     color:#D2B48C;
 }
 </style>
-<form method="GET" action="ajouterLocation.php">
+<form method="POST" action="ajouterLocation.php">
 	<div id="fh5co-started">
 
 			<div class="row animate-box" style="  margin: auto; padding: 10px;" >
@@ -30,8 +30,8 @@ input[type=submit]:focus {
 			<div class="well well-small" style="margin-left:20% ; width:900px">
 				<h1>Liste <small class="pull-right"></small></h1>
 			<hr class="soften"/>
-
-			<table class="table table-striped" >
+<form method="POST" action="ajouterLocation.php">
+  <table class="table table-striped" >
         <thead>
          <tr>
  <th>L'article	</th>
@@ -46,29 +46,38 @@ input[type=submit]:focus {
 
        <?php
                  if(!empty($_GET['name']))
-                 {
+                 {  $id=$_GET['id'];
+                   $name=$_GET['name'];
+                   $price=(float)$_GET['price'];
 
+                    $test=$panier->addlocation($id,$name,$price);
+                    if(!empty($_SESSION["location"]))
+                    {
+                      $total = 0;
+                      foreach($_SESSION["location"] as $keys => $values)
+                    {
          ?>
 
 <tr  class="cart-row" >
-          <td><img width="100" src="images/<?php echo $_GET['id'];?>.jpg"></td>
-           <td><?php echo $_GET["name"]; ?>
-<input type="hidden" name="name" value="<?php echo $_GET["name"]; ?>">
+          <td><img width="100" src="images/<?php echo $values["item_id"]; ?>.jpg"></td>
+           <td><?php echo $values["item_name"]; ?>
            </td>
 
- <td class="priceCart"><?php echo $_GET["price"];  ?> TND
-<input type="hidden" name="price" value="<?php echo $_GET["price"]; ?>">
+ <td class="priceCart"><?php print_r($values["item_price"]); ?> TND
+
  </td>
 
- <td><input type="number" class="quantity" name="qte" style="max-width:55px" placeholder="100" size="16" id="qte" type="number" value="1"></td>
- <td><input  class="dateDebut" name="datedeb" id="datedeb" style="max-width:2	00px" placeholder="1" size="16" type="date"value="1" ></td>
- <td><input class="dateFin" name="datefin" id="datefin" style="max-width:200px" placeholder="1" size="16" type="date" value="1"></td>
+ <td><input type="number" class="quantity" name="p[qte][<?php print_r($values["item_id"]); ?>]" style="max-width:55px" placeholder="100" size="16" id="qte" type="number" value="1"></td>
+ <td><input  class="dateDebut" name="p[datedeb][<?php print_r($values["item_id"]); ?>]" id="datedeb" style="max-width:2	00px" placeholder="1" size="16" type="date"value="1" ></td>
+ <td><input class="dateFin" name="p[datefin][<?php print_r($values["item_id"]); ?>]" id="datefin" style="max-width:200px" placeholder="1" size="16" type="date" value="1"></td>
 
 </tr>
 <?php
 
 //$total = $total + $values["item_price"] ;
 
+}
+}
 }
 ?>
 

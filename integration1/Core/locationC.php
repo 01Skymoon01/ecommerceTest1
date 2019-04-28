@@ -8,12 +8,12 @@ class locationC
 {
 
 
-  		function ajouterlocationProc($location){
+  		function ajouterlocationProc($location,$idl){
 
 
 
 
-  			$sql="INSERT INTO loc (nom, prix, qte,datedeb,datefin,id_client) VALUES (:NomProduit,:PrixProduits,:QTEProduits,:dateDebut,:dateFin,:IDClient)";
+  			$sql="INSERT INTO loc (nom, prix, qte,datedeb,datefin,id_client,idLocc) VALUES (:NomProduit,:PrixProduits,:QTEProduits,:dateDebut,:dateFin,:IDClient,:idl)";
 
   			$db = config::getConnexion();
   			try{
@@ -44,6 +44,7 @@ $NomProduit=$location->get_NomProduit();
   	    	$req->bindValue(':QTEProduits',$QTEProduits);
   			$req->bindValue(':dateDebut',$dateDebut);
   				$req->bindValue(':dateFin',$dateFin);
+          $req->bindValue(':idl',$idl);
   				$req->execute();
 
   	        }
@@ -70,6 +71,22 @@ $NomProduit=$location->get_NomProduit();
 
 
   		}
+
+      function AfficherLocc(){
+
+        $sql="SELECT * FROM `locc` ";
+        $db = config::getConnexion();
+        try{
+        $liste=$db->query($sql);
+        return $liste;
+        }
+            catch (Exception $e){
+                die('Erreur: '.$e->getMessage());
+            }
+
+
+      }
+
       function SupprimerLocation($cin){
 
 
@@ -112,7 +129,7 @@ $NomProduit=$location->get_NomProduit();
 
      function RechercheLocation($haja){
 
-     	$sql="SELECT * FROM loc WHERE idloc=$haja OR id_client=$haja ";
+     	$sql="SELECT * FROM loc WHERE idLocc=$haja ";
 
 
      	$db = config::getConnexion();
@@ -127,9 +144,62 @@ $NomProduit=$location->get_NomProduit();
      }
 
       			 // header('Location: index.php');
+         function ajouterCommandeLocation($commande){
+               $nbProduit=0;
+               $prix=0;
+               $idClient=0;
 
+           		$sql="insert into Locc (id_client,totalPrix_commande,nbProduit_commande) values (:idClient,:prix,:nbProduit)";
+
+           		$db = config::getConnexion();
+           		try{
+                   $req=$db->prepare($sql);
+
+
+                   $nbProduit=$commande->get_nbProduit();
+                   $prix=$commande->get_totalPrix();
+                   $idClient=$commande->get_IDClient();
+
+           		$req->bindValue(':idClient',$idClient);
+           		$req->bindValue(':prix',$prix);
+           		$req->bindValue(':nbProduit',$nbProduit);
+
+                       $req->execute();
+
+                   }
+                   catch (Exception $e){
+                       echo 'Erreur: '.$e->getMessage();
+                   }
+
+           	}
+
+
+function afficherCommandeLEnCours($commande){
+
+  $idClient=0;
+  $idClient=$commande->get_IDClient();
+  $datas=0;
+  $sql="SELECT * FROM locc WHERE date_commande IN (SELECT max(date_commande) FROM locc  WHERE id_client=$idClient)";
+  $db = config::getConnexion();
+  try{
+  $liste=$db->query($sql);
+
+
+  foreach($liste as $row){
+$datas=$row['id_commande'];
+
+    //$liste=array($row['id_commande'],$row['date_commande'],$row['totalPrix_commande'],$row['nbProduit_commande'],$row['id_client']);
+}
+   return $datas;
+
+ }
+
+
+       catch (Exception $e){
+           die('Erreur: '.$e->getMessage());
+       }
 
 
 }
-
+}
  ?>
