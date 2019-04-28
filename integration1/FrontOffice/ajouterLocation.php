@@ -31,7 +31,10 @@ $location1C->ajouterCommandeLocation($location1);
 
 $location1C->ajouterlocationProc($location1,$idl);
 }
+
 $_SESSION["location"]=array();
+$_SESSION["location"]=array();
+  unset($_SESSION["location"]);
 header('location:LocationValide.php');
 }
 else {

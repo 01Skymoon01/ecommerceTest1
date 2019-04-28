@@ -1,5 +1,7 @@
 
 <?php require 'header.php';
+$_SESSION["page"]= array();
+$_SESSION["page"]="Louer.php";
  ?>
 
 <!-- DeBut CONSULTER PANIER ---------------------------------------------------------------------------------->
