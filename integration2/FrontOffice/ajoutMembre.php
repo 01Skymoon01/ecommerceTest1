@@ -22,7 +22,7 @@ function isFieldUnique($email)
 
 if (isset($_POST['cin']) and isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['date_naissance']) and isset($_POST['sexe']) and isset($_POST['email']) and isset($_POST['mdp']) and isset($_POST['num_tel'])){
 
-	if (isset($_POST['signup'])){
+	
 
 				$cin = $_POST['cin'];
 				$nom = $_POST['nom'];
@@ -33,6 +33,7 @@ if (isset($_POST['cin']) and isset($_POST['nom']) and isset($_POST['prenom']) an
 				$email = $_POST['email'];
 				$password = md5($_POST['mdp']);
 				$num_tel = $_POST['num_tel'];
+
 
 
 
@@ -49,9 +50,10 @@ if (isset($_POST['cin']) and isset($_POST['nom']) and isset($_POST['prenom']) an
                 
                	$membreC=new MembreC();
 				$membreC->ajouterMembre($membre);
+				
 				header('Location:CaptchaTest.php');
 
-			}
+		
 
 }  
 }

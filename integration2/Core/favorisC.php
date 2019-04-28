@@ -26,8 +26,8 @@ class favorisC
   	public function ajouterFavoris($Membre) {
 
         		$db = config::getConnexion();
-     			$sql="INSERT INTO favoris (id_client, nom_prod,id_produit)
-  							     VALUES ( :nom, :prenom, :date_naissance)";
+     			$sql="INSERT INTO favoris (id_client, nom_prod,id_produit,price)
+  							     VALUES ( :nom, :prenom, :date_naissance,:price)";
 
 
   			try{
@@ -35,12 +35,15 @@ class favorisC
           	$idClient=$Membre->get_idClient();
   			$nomProd=$Membre->get_nomProd();
   			$idProd=$Membre->get_idProd();
+        $price=$Membre->get_price();
 
   			//($Membre);
 
   	   		$req->bindValue(':nom',$idClient);
   			$req->bindValue(':prenom',$nomProd);
   			$req->bindValue(':date_naissance',$idProd);
+                $req->bindValue(':price',$price);
+
 
   			$req->execute();
 
@@ -57,6 +60,40 @@ class favorisC
           $stmt->bindValue(':cin', $cin);
           $stmt->execute();
     }
+
+    function supprimerFavorisClient($cin){
+
+
+
+  $sql="DELETE FROM favoris WHERE id_client=:cin";
+  $db = config::getConnexion();
+      $req=$db->prepare($sql);
+  $req->bindValue(':cin',$cin);
+  try{
+          $req->execute();
+         // header('Location: index.php');
+      }
+      catch (Exception $e){
+          die('Erreur: '.$e->getMessage());
+      }
+}
+
+    function supprimerCommClient($cin){
+
+
+
+  $sql="DELETE FROM commentaires WHERE pseudo=:cin";
+  $db = config::getConnexion();
+      $req=$db->prepare($sql);
+  $req->bindValue(':cin',$cin);
+  try{
+          $req->execute();
+         // header('Location: index.php');
+      }
+      catch (Exception $e){
+          die('Erreur: '.$e->getMessage());
+      }
+}
 
 }
 

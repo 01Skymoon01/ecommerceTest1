@@ -90,7 +90,7 @@ if($product->qte==0){ ?>
                         <span class="price"><?php echo number_format($product->prix,2,',',''); ?> TND</span>
 												<input type="hidden" name="desc" value="<?php echo $product->nom; ?>">
 												<input type="hidden" class="price" name="price" value="<?php echo $product->prix; ?>">
-												<p>	<a style='font-size:20px;' class="icon" href="addfavoris.php?nom=<?php echo $product->nom; ?>&id=<?php echo $product->num; ?>"> &#9734;</a></p>
+												<p>	<a style='font-size:20px;' class="icon" href="addfavoris.php?nom=<?php echo $product->nom; ?>&id=<?php echo $product->num;  ?>&price=<?php echo $product->prix; ?>"> &#9734;</a></p>
                     </div>
                 </div>
                 </div>

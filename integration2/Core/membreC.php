@@ -67,8 +67,8 @@ return $liste;
 	public function ajouterMembre($Membre) {
 
       		$db = config::getConnexion();
-	   			$sql="INSERT INTO membres (cin,nom, prenom, date_naissance, sexe, email,mdp, num_tel)
-								     VALUES (:cin, :nom, :prenom, :date_naissance, :sexe, :email, :mdp, :num_tel)";
+   			$sql="INSERT INTO membres (cin,nom, prenom, date_naissance, sexe, email,mdp, num_tel)
+							     VALUES (:cin, :nom, :prenom, :date_naissance, :sexe, :email, :mdp, :num_tel)";
 
 
 			try{
@@ -163,6 +163,8 @@ return $liste;
 	}
 
 
+
+
 		public function connexion($email,$mdp)
 		{
 		$c = config::getConnexion();
@@ -189,6 +191,8 @@ return $liste;
 			$stmt->execute();
    		}
 	*/
+
+
 
 
 

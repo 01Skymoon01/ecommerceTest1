@@ -11,10 +11,15 @@ if (isset($_SESSION['cin']) and $_SESSION['cin'] > 0 )
     $requser->execute(array($getcin));
     $userinfo = $requser->fetch();
 
-   
-   
-   
 
+
+$sql="SELECT prenom,avatar FROM membres WHERE cin != $getcin";
+        $db = config::getConnexion();
+       
+        $userinfo2=$db->query($sql);
+
+        var_dump($userinfo2->fetchAll());
+       
 }
 
 
@@ -50,14 +55,33 @@ while($c = $commentaires->fetch()) { ?>
                     <?php
 
 
-                      if (!empty($userinfo['avatar'])) {
+                      if (!empty($userinfo['avatar']) and ( $_SESSION['prenom'] == $c["pseudo"])) {
 
                           ?>
                     <a ><img src="membres/avatars/<?php echo $userinfo['avatar'];?>" style=" border-radius: 50%;  width: 40px; height: 40px;  float: left; " hspace="10" /></a>
 
                     <p style="color: #d3c89d; padding-top: 12px; margin-left: 12px; font-size: 20px;" ><?= $c['pseudo'] ?>: </p></br>
 
-                    <?php } ?>
+                    <?php } 
+
+foreach($userinfo2 as $values){
+                    
+
+                    if($c['pseudo'] == $values['prenom']) {?>
+<a ><img src="membres/avatars/<?php echo $values['avatar'];?>" style=" border-radius: 50%;  width: 40px; height: 40px;  float: left; " hspace="10" /></a>
+<p style="color: #d3c89d; padding-top: 12px; margin-left: 12px; font-size: 20px;" ><?= $c['pseudo'] ?>: </p></br>
+<?php
+                    }
+
+                    }
+
+
+                    ?>
+
+
+
+
+
 
                 </div>
 
