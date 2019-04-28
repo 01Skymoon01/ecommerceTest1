@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 28 Avril 2019 à 01:38
+-- Généré le :  Dim 28 Avril 2019 à 05:28
 -- Version du serveur :  10.1.9-MariaDB
 -- Version de PHP :  5.6.15
 
@@ -100,7 +100,8 @@ INSERT INTO `commande` (`id_commande`, `id_client`, `date_commande`, `totalPrix_
 (18, 12345678, '2018-04-26 22:00:00', 418, 5, 1),
 (19, 66666666, '2019-02-22 23:32:36', 8125, 2, 0),
 (33, 12345678, '2019-04-27 18:32:34', 4230, 2, 1),
-(34, 123546, '2019-04-27 21:35:31', 4000, 1, 0);
+(34, 123546, '2019-04-27 21:35:31', 4000, 1, 0),
+(35, 123546, '2019-04-28 03:27:36', 1030, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -149,7 +150,9 @@ INSERT INTO `commande_details` (`id_CommandeDetails`, `id_Commande`, `Nom_Produi
 (29, 13, 'chaise3', 1231564661, 1, 125),
 (49, 33, 'Table', 1231564667, 1, 230),
 (50, 33, 'chaise1236', 1231564658, 5, 800),
-(51, 34, 'chaise1236', 1231564658, 5, 800);
+(51, 34, 'chaise1236', 1231564658, 5, 800),
+(52, 35, 'chaise1236', 1231564658, 1, 800),
+(53, 35, 'Table', 1231564667, 1, 230);
 
 -- --------------------------------------------------------
 
@@ -257,7 +260,7 @@ CREATE TABLE `livraison` (
 --
 
 INSERT INTO `livraison` (`id`, `destination`, `client`, `livreur`, `localisation`, `id_livr`) VALUES
-(14, 'ariana', 5211, 25310024, 'ariana', NULL),
+(14, 'ariana', 521144, 25310024, 'ariana', NULL),
 (123, 'ariana', 5211, 25310024, 'ariana', NULL);
 
 -- --------------------------------------------------------
@@ -299,20 +302,42 @@ CREATE TABLE `loc` (
   `dateLoc` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `datedeb` date NOT NULL,
   `datefin` date NOT NULL,
-  `etat` int(11) NOT NULL DEFAULT '0',
-  `id_client` int(11) NOT NULL
+  `id_client` int(11) NOT NULL,
+  `idLocc` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `loc`
 --
 
-INSERT INTO `loc` (`idloc`, `nom`, `prix`, `qte`, `dateLoc`, `datedeb`, `datefin`, `etat`, `id_client`) VALUES
-(5, 'grand table', 123, 1, '2019-04-23 02:24:23', '2019-04-18', '2019-04-17', 1, 23548975),
-(7, 'grand table2', 500, 1, '2019-04-23 03:53:31', '2019-04-16', '2019-04-18', 0, 23548975),
-(8, 'grand table2', 500, 3, '2019-04-23 13:15:56', '2019-04-26', '2019-04-27', 0, 12345678),
-(9, 'grand table2', 500, 3, '2019-04-23 14:40:31', '2019-04-27', '2019-04-28', 0, 12345678),
-(11, 'grand table2', 500, 1, '2019-04-24 05:28:48', '2019-04-25', '2019-04-26', 0, 12345678);
+INSERT INTO `loc` (`idloc`, `nom`, `prix`, `qte`, `dateLoc`, `datedeb`, `datefin`, `id_client`, `idLocc`) VALUES
+(28, 'grand table2', 500, 5, '2019-04-28 03:01:19', '2019-04-14', '2019-04-19', 123546, 4),
+(29, 'cai chaise', 123, 5, '2019-04-28 03:01:19', '2019-04-20', '2019-04-11', 123546, 4),
+(30, 'grand table2', 500, 5, '2019-04-28 03:04:14', '2019-04-14', '2019-04-19', 123546, 5),
+(31, 'cai chaise', 123, 5, '2019-04-28 03:04:14', '2019-04-20', '2019-04-11', 123546, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `locc`
+--
+
+CREATE TABLE `locc` (
+  `id_commande` int(11) NOT NULL,
+  `id_client` int(11) NOT NULL,
+  `date_commande` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `totalPrix_commande` float NOT NULL DEFAULT '0',
+  `nbProduit_commande` int(11) NOT NULL,
+  `etat_commande` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `locc`
+--
+
+INSERT INTO `locc` (`id_commande`, `id_client`, `date_commande`, `totalPrix_commande`, `nbProduit_commande`, `etat_commande`) VALUES
+(4, 123546, '2019-04-28 03:01:19', 3115, 10, 0),
+(5, 123546, '2019-04-28 03:04:14', 3115, 10, 0);
 
 -- --------------------------------------------------------
 
@@ -556,6 +581,12 @@ ALTER TABLE `loc`
   ADD PRIMARY KEY (`idloc`);
 
 --
+-- Index pour la table `locc`
+--
+ALTER TABLE `locc`
+  ADD PRIMARY KEY (`id_commande`);
+
+--
 -- Index pour la table `membres`
 --
 ALTER TABLE `membres`
@@ -608,12 +639,12 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT pour la table `commande`
 --
 ALTER TABLE `commande`
-  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 --
 -- AUTO_INCREMENT pour la table `commande_details`
 --
 ALTER TABLE `commande_details`
-  MODIFY `id_CommandeDetails` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id_CommandeDetails` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 --
 -- AUTO_INCREMENT pour la table `demande`
 --
@@ -628,7 +659,12 @@ ALTER TABLE `favoris`
 -- AUTO_INCREMENT pour la table `loc`
 --
 ALTER TABLE `loc`
-  MODIFY `idloc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idloc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+--
+-- AUTO_INCREMENT pour la table `locc`
+--
+ALTER TABLE `locc`
+  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT pour la table `produits`
 --
