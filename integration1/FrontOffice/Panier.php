@@ -55,18 +55,21 @@ input[type=submit]:focus {
 										?>
 
 				  <tr  class="cart-row" >
-		                 <td><img width="100" src="images/<?php echo $values["item_id"]; ?>.jpg"></td>
+		                 <td><img width="100" src="images/<?php echo $values["item_id"]; ?>.jpg">
+                     </td>
 
-		                  <td><?php echo $values["item_name"]; ?></td>
+		                  <td><?php echo $values["item_name"]; ?>
+                        <?php $item_id=(int)$values["item_id"];
+                         $sql="SELECT qte FROM produits WHERE num='$item_id'";
+                                    $req=$db->prepare($sql);
+                                    $req->execute();
+                                    $liste=$req->fetchAll(PDO::FETCH_OBJ);
+                                    foreach ($liste as $product){ ?>
+                      </br><span><small>(Seulement <?php echo $product->qte; ?> reste en stock)</small></span></td>
 
 											<td class="priceCart"><?php print_r($values["item_price"]); ?> TND</td>
 
-                      <td><?php $item_id=(int)$values["item_id"];
-                       $sql="SELECT qte FROM produits WHERE num='$item_id'";
-                                  $req=$db->prepare($sql);
-                                  $req->execute();
-                                  $liste=$req->fetchAll(PDO::FETCH_OBJ);
-                                  foreach ($liste as $product){ ?>
+                      <td>
                         <input type="hidden" class="quantityVrif" value="<?php echo $product->qte; ?>">
     <?php                     }
                                   ?>

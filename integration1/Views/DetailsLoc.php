@@ -4,7 +4,7 @@
 
 include_once "../core/locationC.php";
 $location1C= new locationC();
-$liste=$location1C->AfficherLocc();
+$liste=$location1C->RechercheLocation($_GET["cin"]);
 
 
 ?>
@@ -87,15 +87,14 @@ $liste=$location1C->AfficherLocc();
                           </form>
                             <table>
                                 <tr>
-                                  <th></th>
                                   <th>n°</th>
-                                    <th>date</th>
+                                    <th>nom du produit</th>
                                     <th>prix</th>
-                                    <th>QTE</th>
-                                    <th>id client</th>
-                                    <th>etat</th>
-                                   <th>datails</th>
-
+                                    <th>date</th>
+                                    <th>date Debut</th>
+                                    <th>date de fin</th>
+                                   <th>id client</th>
+                                   <th>idloc</th>
                                 </tr>
 
 
@@ -103,44 +102,20 @@ $liste=$location1C->AfficherLocc();
 
 
                                 foreach($liste as $row){ ?>
-                                  <?PHP if($row['etat_commande'] == 0){
 
-                                    ?>
                                                                   <tr style="background-color:#3B6B9A;">
 
-                                  <?PHP } else if($row['etat_commande'] == 1) {
-                                     ?>
 
-                                                                  <tr style="background-color:#365D84;">
-                                      <?php }      ?>
-                                                                    <td>
-                                                                    <form action="supprimerLocation.php" method="GET">
-                                                                     <input type="submit" value="X" style="border: 0; background: none; font-size:16.2; font-weight: 700;">
-                                                                     <input type="hidden" value="<?PHP echo $row['id_commande']; ?>" name="cin">
-                                                                     </form>
-                                                                                                        </td>
-                                                                    <td><?PHP echo $row['id_commande']; ?></td>
-                                                                    <td><?PHP echo $row['date_commande']; ?></td>
-                                                                    <td><?PHP echo $row['totalPrix_commande']; ?> TDN</td>
-                                                                    <td><?PHP echo $row['nbProduit_commande']; ?></td>
-                                                                    <td><?PHP echo $row['id_client']; ?></td>
-                                                                    <td>
-                                                                    <form action="ModifierLocation.php" method="GET"><i class="icon nalika-edit"></i>
-                                              <input type="submit" value="<?PHP if($row['etat_commande'] == 1) echo "VALIDE" ; else echo "NON" ?>" style="border: 0px; background: none;">
-                                                                    <input type="hidden" value="<?PHP echo $row['id_commande']; ?>" name="cin">
-                                                                    <input type="hidden" value="<?PHP echo $row['etat_commande']; ?>" name="etat">
 
-                                                                    </form></td>
-                                                                                                        <td>
-                                                                    <form action="DetailsLoc.php" method="GET">
-                                                                                                        <input type="submit" value=">" style="border: 0; background: none; font-size:20px; font-weight: 900;">
-                                                                    <input type="hidden" value="<?PHP echo $row['id_commande']; ?>" name="cin">
-                                                                    <input type="hidden" value="<?PHP echo $row['date_commande']; ?>" name="date">
-                                                                    <input type="hidden" value="<?PHP echo $row['etat_commande']; ?>" name="etat">
-                                                                    <input type="hidden" value="<?PHP echo $row['id_client']; ?>" name="cinC">
-                                                                    <input type="hidden" value="<?PHP echo $row['totalPrix_commande']; ?>" name="totalTTC">
-                                                                    </form>
-                                                                                                    </td>
+                                                                    <td><?PHP echo $row['idloc']; ?></td>
+                                                                    <td><?PHP echo $row['nom']; ?></td>
+                                                                    <td><?PHP echo $row['prix']; ?> TDN</td>
+                                                                    <td><?PHP echo $row['dateLoc']; ?></td>
+                                                                    <td><?PHP echo $row['datedeb']; ?></td>
+                                                              <td><?PHP echo $row['datefin']; ?></td>
+                                                              <td><?PHP echo $row['id_client']; ?></td>
+                                                              <td><?PHP echo $row['idLocc']; ?></td>
+
                                                                 </tr>
                                 <?php }?>
                             </table>

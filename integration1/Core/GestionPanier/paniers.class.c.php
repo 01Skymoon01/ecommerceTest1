@@ -39,6 +39,7 @@ class panier{
 
 }
 
+
 public function Total_nbforheadher()
 {
  $_SESSION["commande"]=array(); //****TANSECHHHHHHHHHHHHHHHHHHH!!
@@ -153,7 +154,7 @@ public function count()
     }
   }
     //var_dump($val);
-  
+
      //var_dump($values['item_quantity']);
     //var_dump($i);
       return $total;
@@ -343,6 +344,50 @@ public function GetIDCCourant()
 {
  return $this->idCC;
 }
+
+
+
+/******************************************************************************
+*********************************************************************************
+*************************LOCATION****************************************************
+**************************************************************************************/
+
+public function addlocation($product_id,$product_name,$product_price)
+{
+
+if(isset($_SESSION["location"]))
+{
+  $item_array_id = array_column($_SESSION["location"], "item_id");
+  if(!in_array($product_id, $item_array_id))
+  {
+    $count = count($_SESSION["location"]);
+    $item_array = array(
+      'item_id'			=>	$product_id,
+      'item_name'			=>	$product_name,
+      'item_price'		=>	$product_price,
+      'item_quantity'		=>	1
+    );
+    $_SESSION["location"][$count] = $item_array;
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+else
+{
+  $item_array = array(
+    'item_id'			=>	$product_id,
+    'item_name'			=>	$product_name,
+    'item_price'		=>	$product_price,
+    'item_quantity'		=>	1
+  );
+  $_SESSION["location"][0] = $item_array;
+  return true;
+}
+}
+
 
 }
 

@@ -1,6 +1,10 @@
 
 
-<?php require 'header.php'; ?>
+<?php require 'header.php';
+$_SESSION["location"]=array();
+$_SESSION["location"]=array();
+
+?>
 
 
 <style>
