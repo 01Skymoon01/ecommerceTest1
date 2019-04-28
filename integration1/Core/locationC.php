@@ -91,7 +91,7 @@ $NomProduit=$location->get_NomProduit();
 
 
 
-      	$sql="DELETE FROM loc WHERE idloc=:cin";
+      	$sql="DELETE FROM locc WHERE 	id_commande=:cin";
       	$db = config::getConnexion();
       			$req=$db->prepare($sql);
       	$req->bindValue(':cin',$cin);
@@ -111,7 +111,7 @@ $NomProduit=$location->get_NomProduit();
 
 
 
-       $sql="update loc set etat=:etat where idloc=:cin";
+       $sql="update locc set 	etat_commande=:etat where id_commande=:cin";
        $req=$db->prepare($sql);
        $req->bindValue(':cin',$cin);
        $req->bindValue(':etat',$etat);

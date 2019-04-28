@@ -114,7 +114,7 @@ $liste=$location1C->AfficherLocc();
                                                                   <tr style="background-color:#365D84;">
                                       <?php }      ?>
                                                                     <td>
-                                                                    <form action="#supp" method="GET">
+                                                                    <form action="supprimerLocation.php" method="GET">
                                                                      <input type="submit" value="X" style="border: 0; background: none; font-size:16.2; font-weight: 700;">
                                                                      <input type="hidden" value="<?PHP echo $row['id_commande']; ?>" name="cin">
                                                                      </form>
@@ -125,7 +125,7 @@ $liste=$location1C->AfficherLocc();
                                                                     <td><?PHP echo $row['nbProduit_commande']; ?></td>
                                                                     <td><?PHP echo $row['id_client']; ?></td>
                                                                     <td>
-                                                                    <form action="#modif" method="GET"><i class="icon nalika-edit"></i>
+                                                                    <form action="ModifierLocation.php" method="GET"><i class="icon nalika-edit"></i>
                                               <input type="submit" value="<?PHP if($row['etat_commande'] == 1) echo "VALIDE" ; else echo "NON" ?>" style="border: 0px; background: none;">
                                                                     <input type="hidden" value="<?PHP echo $row['id_commande']; ?>" name="cin">
                                                                     <input type="hidden" value="<?PHP echo $row['etat_commande']; ?>" name="etat">
