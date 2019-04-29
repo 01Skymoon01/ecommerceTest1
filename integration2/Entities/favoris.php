@@ -7,14 +7,16 @@ class favoris{
 	private $idClient;
   private $nomProd;
   private $idProd;
+  private $price;
 
 
 
 
-	function __construct($idClient,$nomProd,$idProd){
+	function __construct($idClient,$nomProd,$idProd,$price){
 		$this->idClient=$idClient;
 		$this->nomProd=$nomProd;
 		$this->idProd=$idProd;
+		$this->price=$price;
 
 	}
 
@@ -29,6 +31,9 @@ class favoris{
 	}
 	function get_idProd(){
 		return $this->idProd;
+	}
+	function get_price(){
+		return $this->price;
 	}
 
 

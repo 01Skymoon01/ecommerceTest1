@@ -35,11 +35,6 @@ session_start();
     <!-- Main CSS-->
     <link href="css/main.css" rel="stylesheet" media="all">
     
-        
-       
-
-
-
 
     
 </head>
@@ -59,14 +54,17 @@ session_start();
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <input class="input--style-1" type="text" placeholder="NOM" name="nom" id="nom">
+                                    <input class="input--style-1" type="text" placeholder="NOM" name="nom" id="nom" onblur="CheckNom()">
+                                    <label id="ip" style="color:#b7a868;" ></label>
                                 </div>
+                                
+
                             </div>
 
                             <div class="col-2">
                                 <div class="input-group">
-                                    <input class="input--style-1" type="text" placeholder="PRENOM" name="prenom" id="prenom">
-                                    <label id="error"></label>
+                                    <input class="input--style-1" type="text" placeholder="PRENOM" name="prenom" id="prenom" onblur="CheckPrenom()">
+                                    <label id="labelPren" style="color:#b7a868;"></label>
                             </div>
                             </div>
 
@@ -76,8 +74,9 @@ session_start();
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <input class="input--style-1 js-datepicker" type="text" placeholder="DATE DE NAISSANCE" name="date_naissance" id="date_naissance">
-                                    <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                    <input class="input--style-1 js-datepicker" type="text" placeholder="DATE DE NAISSANCE" name="date_naissance" id="date_naissance" onblur="CheckBd()">
+                                     <label id="labelBd" style="color:#b7a868;"></label>
+                                    <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar" ></i>
                                 </div>
                             </div>
                             <div class="col-2">
@@ -96,11 +95,13 @@ session_start();
                         </div>
 
                         <div class="input-group">
-                             <input class="input--style-1" type="text" placeholder="Numéro CIN" name="cin" id="cin" >
+                             <input class="input--style-1" type="text" placeholder="Numéro CIN" name="cin" id="cin" onblur="CheckCin()">
+                              <label id="labelCin" style="color:#b7a868;"></label>
                         </div>
 
                         <div class="input-group">
-                             <input class="input--style-1" type="text" placeholder="ADRESSE EMAIL" name="email" id="email" >
+                             <input class="input--style-1" type="text" placeholder="ADRESSE EMAIL" name="email" id="email" onblur="CheckMail()">
+                             <label id="labelMail" style="color:#b7a868;"></label>
                         </div>
 
                         <div class="input-group">
@@ -109,19 +110,21 @@ session_start();
 
 
                         <div class="input-group">
-                             <input class="input--style-1" type="password" placeholder="RESAISIR LE MOT DE PASSE" name="mdp2" id="mdp2" >
+                             <input class="input--style-1" type="password" placeholder="RESAISIR LE MOT DE PASSE" name="mdp2" id="mdp2" onblur="CheckPassword2()">
+                             <label id="labelMdp" style="color:#b7a868;"></label>
                         </div>
 
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <input class="input--style-1" type="text" placeholder="+216" name="num_tel" id="num_tel" >
+                                    <input class="input--style-1" type="text" placeholder="+216" name="num_tel" id="num_tel" onblur="CheckNum()" >
+                                    <label id="labelNum" style="color:#b7a868;"></label>
                                 </div>
                             </div>
                         </div>
 
                         <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" type="submit" name ="signup" onclick="Controle();">S'inscrire</button>
+                            <button class="btn btn--radius btn--green" type="submit" name ="signup" onclick="return Controle()">S'inscrire</button>
                         </div>
 
                         <div class="membre"><a href="signin.php" class="deja">Déjà inscrit?</a></div>

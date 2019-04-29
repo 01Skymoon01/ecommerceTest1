@@ -166,7 +166,8 @@ require_once "../core/membreC.php";
                                        /*
                                         echo '<td class="td2">'?> <button class="btn btn--radius btn--green" type="submit" style="color:black" onclick="location.href='modifierUsers.php?cin=<?php echo $row['cin']; ?>'"> Modifier </button> <?php '</td>';
                                         */
-                                        echo '<td class="td2">'?> <button class="btn btn--radius btn--red" type="submit" nom="supprimer" style="color:black" onclick="location.href='supprimerUsers.php?cin=<?php echo $row['cin']; ?>'"> Supprimer </button><?php '</td>';
+                                        echo '<td class="td2">'?> <button class="btn btn--radius btn--red" type="submit" nom="supprimer"
+                                            style="color:black; background: none; " onclick="location.href='supprimerUsers.php?cin=<?php echo $row['cin']; ?>'"> <img src="img/trash.png" style="height: 30px; width: 30px;"> </button><?php '</td>';
                                         echo '</tr>';
                                     }
                                  ?>

@@ -14,7 +14,7 @@ if(empty($_SESSION['cin'])) {
   if(!empty($_SESSION['cin'])) {
     $favorisc = new favorisC();
       if(!empty($_GET['nom'])){
-    $favoris = new favoris($_SESSION['cin'],$_GET['nom'],$_GET['id']);
+    $favoris = new favoris($_SESSION['cin'],$_GET['nom'],$_GET['id'],$_GET['price']);
 
 
     $favorisc->ajouterFavoris($favoris);
@@ -60,6 +60,8 @@ if(empty($_SESSION['cin'])) {
         		                  <th>Produit</th>
         											<th>Nom</th>
 
+                                                    <th>Prix</th>
+
         					        	</tr>
         		              </thead>
         <tbody class="cart-item">
@@ -75,16 +77,16 @@ if(empty($_SESSION['cin'])) {
 
         		                  <td><?php echo $values["nom_prod"]; ?></td>
 
-
+                                  <td><?php echo $values["price"]; ?></td>
 
         											<td><a href="deleteFavoris.php?id=<?php echo $values["id_produit"]; ?>" value="supprimer"  >
                              <img src="images/delete.png" style="height: 25px; width: 25px;">
         											</a>
         										</td>
 
-                                                <td><input type="submit" id="submit" class="shopBtn pull-right" name="ajouter" value="Acheter">
+                                                <td><a href="addpanier2.php?name=<?php echo $values["nom_prod"]; ?>&id=<?php echo $values["id_produit"];  ?>&price=<?php echo $values["price"]; ?>">Acheter</a>
                         
-                                                    </a>
+                                                   
                                                 </td>
 
 
