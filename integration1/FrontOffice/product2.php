@@ -2,6 +2,19 @@
 $_SESSION["page"]=array();
 $_SESSION["page"]="product2.php"; ?>
 
+<?php
+include "../entities/commande/commande.class.php";
+include "../core/GestionCommande/commande.class.c.php";
+
+$CommandeC1=new CommandeC();
+?>
+<script>
+var bleep = new Audio();
+bleep.src = 'BienAjouter.mp3';
+var bleep2 = new Audio();
+bleep2.src = 'HorsStock.mp3';
+
+</script>
     <header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(images/Baniere3.jpg);">
         <div class="overlay"></div>
         <div class="container">
@@ -49,13 +62,19 @@ $_SESSION["page"]="product2.php"; ?>
     <?php } ?>
     <?php
     if($product->qte==0){ ?>
-    <a style="background-color:#A9A9A9;" href="Rupture de Stock" class="icon addpanier" ><i class="icon-shopping-cart"></i></a>
+    <a onmousedown="bleep2.play()" style="background-color:#A9A9A9;" href="Rupture de Stock"  onclick="alert('HORS STOCK');"  class="icon addpanier" ><i class="icon-shopping-cart"></i></a>
     <?php } ?>
                                         <a href="javascript:openModal(<?php echo $product->num; ?>)" class="icon"><i class="icon-eye"></i></a>
                                 </p>
                             </div>
                         </div>
                         <div class="desc">
+                          <?php $variable=$CommandeC1->ProduitBestSaler();
+                           foreach ($variable as $row):
+      if($row["Nom_Produit"]==$product->nom){
+                             ?>
+                            <img src="images/bestSeller.png" style="margin-top:2px;">
+                          <?php }endforeach; ?>
                             <h3><a href="javascript:openModal(<?php echo $product->num; ?>)"><?php echo $product->nom; ?> </a></h3>
                             <span class="price"><?php echo number_format($product->prix,2,',',''); ?> TND</span>
                             <input type="hidden" name="desc" value="<?php echo $product->nom; ?>">
