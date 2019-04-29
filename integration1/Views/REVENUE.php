@@ -72,66 +72,6 @@ $CommandeC1=new CommandeC();
 		============================================ -->
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
-
-
-function drawChart() {
-  var data = google.visualization.arrayToDataTable([
-    ['Jour', 'Revenue'],
-    <?php
-
-    $listeCommandeStat=$CommandeC1->RevenueParJoursGraph();
-
-    foreach($listeCommandeStat as $row){
-      echo "['".$row["datec"]."',".$row["revenue"]."],";
-    }
-
-     ?>
-
-  ]);
-
-  var options = {
-    title: '',
-    hAxis: {title: 'Par Jour',  titleTextStyle: {color: '#333'}},
-    vAxis: {minValue: 0}
-  };
-
-  var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
-  chart.draw(data, options);
-
-  var data2 = google.visualization.arrayToDataTable([
-    ['Annee', 'Revenue'],
-    <?php
-
-    $listeCommandeStat=$CommandeC1->RevenueParAnneeGraph();
-
-    foreach($listeCommandeStat as $row){
-      echo "['".$row["datec"]."',".$row["revenue"]."],";
-    }
-
-
-     ?>
-
-  ]);
-
-  var options2 = {
-    title: '',
-    hAxis: {title: 'Par Annee',  titleTextStyle: {color: '#333'}},
-    vAxis: {minValue: 0}
-  };
-
-  var chart = new google.visualization.AreaChart(document.getElementById('chart_div3'));
-  chart.draw(data2, options2);
-
-
-
-}
-
-
-</script>
 
 
 </head>
@@ -140,12 +80,119 @@ function drawChart() {
 
 <?php require 'header.php' ?>
 
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
 
+
+function drawChart() {
+var data = google.visualization.arrayToDataTable([
+['Jour', 'Revenue'],
+<?php
+
+$listeCommandeStat=$CommandeC1->RevenueParJoursGraph();
+
+foreach($listeCommandeStat as $row){
+  echo "['".$row["datec"]."',".$row["revenue"]."],";
+}
+
+ ?>
+
+]);
+
+var options = {
+title: '',
+hAxis: {title: 'Par Jour',  titleTextStyle: {color: '#333'}},
+vAxis: {minValue: 0}
+};
+
+var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+chart.draw(data, options);
+
+var data2 = google.visualization.arrayToDataTable([
+['Annee', 'Revenue'],
+<?php
+
+$listeCommandeStat=$CommandeC1->RevenueParAnneeGraph();
+
+foreach($listeCommandeStat as $row){
+  echo "['".$row["datec"]."',".$row["revenue"]."],";
+}
+
+
+ ?>
+
+]);
+
+var options2 = {
+title: '',
+hAxis: {title: 'Par Annee',  titleTextStyle: {color: '#333'}},
+vAxis: {minValue: 0}
+};
+
+var chart = new google.visualization.AreaChart(document.getElementById('chart_div3'));
+chart.draw(data2, options2);
+
+
+
+}
+
+
+</script>
+<script type="text/javascript">
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+
+  var data = google.visualization.arrayToDataTable([
+    ['Categorie', 'Revenue'],
+    <?php
+
+    $listeCommandeStat=$CommandeC1->RevenueInterieurGraph();
+
+    foreach($listeCommandeStat as $row){
+      echo "['Interieur',".$row["c"]."],";
+    }
+
+
+     ?>
+     <?php
+
+     $listeCommandeStat=$CommandeC1->RevenueExterieurGraph();
+
+     foreach($listeCommandeStat as $row){
+       echo "['Exterieur',".$row["c"]."],";
+     }
+
+
+      ?>
+  ]);
+
+  var options = {
+    title: 'Revenue Par Categorie'
+  };
+
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+  chart.draw(data, options);
+}
+</script>
 
         <div class="breadcome-list"  style="background-color:white;color:black; margin-left:100px; margin-right:100px;">
-                                        <div class="row" >
-         <div id="chart_div" style="width: 1050px; height: 500px;" ></div>
-                                        </div>
+
+                                                  <div style="flex: auto;">
+                                                    <table>
+                                                      <th></th>
+                                                      <tr>
+                                                        <td>  <div id="piechart" style="width: 500px; height: 500px;"></div></td>
+                                                        <td> <div id="chart_div" style="width: 590px; height: 500px;" ></div></td>
+                                                      </tr>
+                                                    </table>
+
+
+                                                  </div>
                                     </div>
 
                                                                 <div class="breadcome-list"  style="background-color:white;color:black; margin-left:100px; margin-right:100px;">

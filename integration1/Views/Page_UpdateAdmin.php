@@ -115,7 +115,7 @@
                             <ul id="myTab3" class="tab-review-design">
                                 <li class="active"><a href="#description"><i class="icon nalika-edit"
                                                                              aria-hidden="true"></i> Modifier Admin</a></li>
-    
+
                             </ul>
 
                             <div id="myTabContent" class="tab-content custom-product-edit">
@@ -417,7 +417,7 @@
 
 </script>
 
--->
+
 
 </body>
 

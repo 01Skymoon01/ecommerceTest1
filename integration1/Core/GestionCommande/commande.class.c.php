@@ -287,7 +287,7 @@ function RechercheCommande($haja){
 function ClientPlusFidele(){
 
 
-	$sql="select id_client ,COUNT(id_commande)c FROM commande GROUP BY id_client ORDER BY c DESC LIMIT 1  ";
+	$sql="select id_client ,SUM(totalPrix_commande)c FROM commande where etat_commande=1 GROUP BY id_client ORDER BY c DESC LIMIT 1  ";
 
 
 	$db = config::getConnexion();
@@ -303,7 +303,7 @@ function ClientPlusFidele(){
 function ProduitBestSaler(){
 
 
-	$sql="select Nom_Produit ,COUNT(id_commande) FROM commande_details GROUP BY id_produit ASC LIMIT 1   ";
+	$sql="select Nom_Produit ,SUM(Qte_Produit) FROM commande_details GROUP BY id_produit DESC limit 1   ";
 
 
 	$db = config::getConnexion();
@@ -404,6 +404,40 @@ function RevenueParAnneeGraph(){
 
 	//$sql="SELECT totalPrix_commande revenue ,DAY(date_commande) datec FROM commande WHERE etat_commande=1 ORDER BY date_commande DESC LIMIT 5 ";
 $sql="SELECT SUM(totalPrix_commande) revenue ,YEAR(date_commande) datec FROM commande WHERE etat_commande=1  GROUP BY YEAR(date_commande) ORDER BY date_commande ASC  ";
+
+	$db = config::getConnexion();
+	try{
+	$liste=$db->query($sql);
+	return $liste;
+
+	}
+			 catch (Exception $e){
+					 die('Erreur: '.$e->getMessage());
+			 }
+}
+
+function RevenueInterieurGraph(){
+
+
+	//$sql="SELECT totalPrix_commande revenue ,DAY(date_commande) datec FROM commande WHERE etat_commande=1 ORDER BY date_commande DESC LIMIT 5 ";
+$sql="select SUM(Qte_Produit*PRIX_Produit)c FROM commande_details where id_produit IN (SELECT num FROM produits WHERE cat='Interieur' ) and id_Commande in (SELECT id_Commande from commande where etat_commande=1) ";
+
+	$db = config::getConnexion();
+	try{
+	$liste=$db->query($sql);
+	return $liste;
+
+	}
+			 catch (Exception $e){
+					 die('Erreur: '.$e->getMessage());
+			 }
+}
+
+function RevenueExterieurGraph(){
+
+
+	//$sql="SELECT totalPrix_commande revenue ,DAY(date_commande) datec FROM commande WHERE etat_commande=1 ORDER BY date_commande DESC LIMIT 5 ";
+$sql="select SUM(Qte_Produit*PRIX_Produit)c FROM commande_details where id_produit IN (SELECT num FROM produits WHERE cat='Exterieur' ) and id_Commande in (SELECT id_Commande from commande where etat_commande=1) ";
 
 	$db = config::getConnexion();
 	try{
