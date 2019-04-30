@@ -5,7 +5,16 @@ include "../core/GestionCommande/commande.class.c.php";
 $CommandeC1=new CommandeC();
 
 $listeCommande=$CommandeC1->afficherTouTCommande();
+$produitparpage = 5;
+ $pagesTotales=$CommandeC1->pagetotale($produitparpage);
 
+if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GET['page'] <= $pagesTotales) {
+   $_GET['page'] = intval($_GET['page']);
+   $pageCourante = $_GET['page'];
+} else {
+   $pageCourante = 1;
+}
+$depart = ($pageCourante-1)*$produitparpage;
  ?>
 
 
@@ -180,7 +189,34 @@ $listeCommande=$CommandeC1->afficherTouTCommande();
         </div>
 <!-- Stat with graph         ----------------------------------->
 
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    client=tr[i].getElementsByTagName("td")[5];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      }
+        else  if (client) {
+      txtValue = client.textContent || client.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+    }
+  }
+}
 
+</script>
 
         <!-- HOUNII COMMANDE§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§-->
         <div class="product-status mg-b-30" style="margin-top:50px;">
@@ -194,20 +230,13 @@ $listeCommande=$CommandeC1->afficherTouTCommande();
   <form action="CommandeList.php" method="GET">
     <div style="display: flex;">
 <div class="input-group mb-3" >
-  <input type="text" class="form-control"placeholder="Search..." aria-label="" aria-describedby="basic-addon1" style="color:white;" name="search">
-</div>
-<div class=" mb-2" style="margin-left:6px; margin-top:5px;">
-   <input type="submit" name="recherche" value="OK" style="
-background-color:#6090;
-border-style: outset;
+  <div class="breadcome-heading">
+      <form role="search" class="">
+          <input id="myInput" style="color:white;"  type="text" placeholder="Search..."  onkeyup="myFunction()" class="form-control">
+      </form>
+  </div></div>
 
-border-radius: 5px;
-border-color: black;
 
-padding: 6px;
-background-color: rgb(255, 255, 255); " >
-
-</div>
 </div>
 </form>
 
@@ -215,7 +244,7 @@ background-color: rgb(255, 255, 255); " >
                             <div class="add-product">
 
                             </div>
-                            <table>
+                            <table id="myTable">
                                 <tr>
                                    <th>   </th>
                                     <th>N°</th>
@@ -240,8 +269,9 @@ if (isset($_GET["search"]) && $_GET["search"]!=""){
 	$listeCommande=$CommandeC1->RechercheCommande($_GET["search"]);
 
 }
-
-foreach($listeCommande as $row){ ?>
+$listeCommande = $CommandeC1->pagination($produitparpage,$depart);
+foreach($listeCommande as $row){
+ ?>
   <?PHP if($row['etat_commande'] == 0){
 
     ?>
@@ -285,17 +315,34 @@ foreach($listeCommande as $row){ ?>
                             </table>
 </form>
 
-                            <div class="custom-pagination">
+
+
+      <div class="custom-pagination">
 								<ul class="pagination">
-									<li class="page-item"><a class="page-link" href="CommandeList.php">Retour</a></li>
+
+                                  <?php
+                        for($i=1;$i<=$pagesTotales;$i++) {
+                           if($i == $pageCourante) {
+
+                              ?>
+									<li class="page-item"><a class="page-link" href="#"><?PHP echo $i.' ';  ?></a></li>
+                  <?PHP
+                  } else { ?>
+									<li class="page-item"><?php echo '<a href="CommandeList.php?page='.$i.'">'.$i.'</a> '; ?></li>
+                  <?php
+                     }
+                  }
+                  ?>
+
 
 								</ul>
+                            </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+
 
 
     <!-- jquery

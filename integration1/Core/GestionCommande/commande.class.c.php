@@ -449,6 +449,20 @@ $sql="select SUM(Qte_Produit*PRIX_Produit)c FROM commande_details where id_produ
 					 die('Erreur: '.$e->getMessage());
 			 }
 }
+function pagetotale($prodparpage)
+        {
+        $db = config::getConnexion();
+        $prodsTotalesReq = $db->query('SELECT id_commande FROM commande');
+        $prodsTotales = $prodsTotalesReq->rowCount();
+        $prodsTotales = ceil($prodsTotales/$prodparpage);
+        return $prodsTotales;
+        }
+        function pagination($prodparpage,$depart)
+        {
+        $db = config::getConnexion();
+        $produit = $db->query('SELECT * FROM commande ORDER BY id_commande DESC LIMIT '.$depart.','.$prodparpage);
+        return $produit;
+        }
 }
 
 ?>

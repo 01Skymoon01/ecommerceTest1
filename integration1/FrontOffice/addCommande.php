@@ -2,7 +2,9 @@
 include "../core/GestionPanier/paniers.class.c.php";
 include "../entities/commande/commande.class.php";
 include "../core/GestionCommande/commande.class.c.php";
+
 $panier= new panier();
+ $totalPrix=$panier->recalculer($_POST["panier"]["qte"]);
 if(isset($_SESSION['cin']))
 {
 
@@ -10,7 +12,7 @@ $listeC1=array();
 $listeC=array();
 if (isset($_POST["panier"]["qte"])) {
 //var_dump($_POST);
- $totalPrix=$panier->recalculer($_POST["panier"]["qte"]);
+
 
  $nbProduit=$panier->Total_nb($_POST["panier"]["qte"]);
  $totalQTE=(int)$panier->Total_QTE($_POST["panier"]["qte"]) ;
