@@ -5,7 +5,7 @@ include "../core/GestionCommande/commande.class.c.php";
 $CommandeC1=new CommandeC();
 
 $listeCommande=$CommandeC1->afficherTouTCommande();
-$produitparpage = 5;
+$produitparpage = 10;
  $pagesTotales=$CommandeC1->pagetotale($produitparpage);
 
 if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GET['page'] <= $pagesTotales) {

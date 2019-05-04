@@ -5,7 +5,7 @@ class DemandeC
 
     function afficherDemande($a)
     {
-        $sql = "SELECT * FROM demande WHERE user_id=$a";
+        $sql = "SELECT * FROM demande WHERE user_id=$a ORDER BY DATE_DEMANDE ASC";
         $db = config::getConnexion();
         $list = $db->query($sql);
         return $list;
@@ -46,7 +46,7 @@ class DemandeC
     function afficherDemandes()
     {
         //$sql="SElECT * From demande d inner join utilisateur u on d.USER_ID= u.USER_ID";
-        $sql = "SElECT d.ID_D,d.DATE_DEMANDE,d.NOM_D,d.NUM_D,d.OBJET_D,d.DETAILS_D,d.ETAT_D,u.nom,u.prenom FROM demande d INNER JOIN  membres u ON u.cin=d.user_id";
+        $sql = "SElECT d.ID_D,d.DATE_DEMANDE,d.NOM_D,d.NUM_D,d.OBJET_D,d.DETAILS_D,d.ETAT_D,u.nom,u.prenom FROM demande d INNER JOIN  membres u ON u.cin=d.user_id ORDER BY DATE_DEMANDE DESC";
         $db = config::getConnexion();
         try {
             $liste = $db->query($sql);
@@ -132,7 +132,7 @@ class DemandeC
 
     function RechercheDemande($haja){
 
-    	$sql="SELECT d.ID_D,d.DATE_DEMANDE,d.NOM_D,d.NUM_D,d.OBJET_D,d.DETAILS_D,d.ETAT_D,u.nom,u.prenom FROM demande d INNER JOIN  membres u ON u.cin=d.user_id WHERE DATE_DEMANDE LIKE '%$haja%' OR u.nom LIKE '%$haja%'  ORDER BY DATE_DEMANDE DESC";
+    	$sql="SELECT d.ID_D,d.DATE_DEMANDE,d.NOM_D,d.NUM_D,d.OBJET_D,d.DETAILS_D,d.ETAT_D,u.nom,u.prenom FROM demande d INNER JOIN  membres u ON u.cin=d.user_id WHERE DATE_DEMANDE LIKE '%$haja%' OR DATE_DEMANDE LIKE '%$haja%'  ORDER BY DATE_DEMANDE DESC";
 
 
     	$db = config::getConnexion();

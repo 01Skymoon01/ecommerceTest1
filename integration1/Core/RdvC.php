@@ -4,7 +4,7 @@ class RdvC {
 
     function afficherRDV ($a)
     {
-        $sql="SELECT * FROM rdv WHERE USER_ID=$a";
+        $sql="SELECT * FROM rdv WHERE USER_ID=$a ORDER BY DATE_RDV ASC";
         $db=config::getConnexion();
         $list=$db->query($sql);
         return $list;
@@ -41,7 +41,7 @@ class RdvC {
     function afficherRDVs()
     {
         //$sql="SElECT * From rdv s inner join utilisateur u on s.USER_ID= u.USER_ID";
-        $sql="SElECT d.ID_RDV,d.NOW_RDV,d.DATE_RDV,d.OBJET_RDV,d.ETAT_RDV,u.nom,u.prenom FROM rdv d INNER JOIN membres u ON u.cin=d.USER_ID";
+        $sql="SElECT d.ID_RDV,d.NOW_RDV,d.DATE_RDV,d.OBJET_RDV,d.ETAT_RDV,u.nom,u.prenom FROM rdv d INNER JOIN membres u ON u.cin=d.USER_ID  ORDER BY DATE_RDV ASC";
         $db = config::getConnexion();
         try{
             $liste=$db->query($sql);
@@ -134,7 +134,7 @@ function modifierRDV($Rdv,$ID_RDV)
 
 function RechercheRDV($haja){
 
-  $sql="SELECT d.ID_RDV,d.NOW_RDV,d.DATE_RDV,d.OBJET_RDV,d.ETAT_RDV,u.nom,u.prenom FROM rdv d INNER JOIN membres u ON u.cin=d.USER_ID WHERE u.nom LIKE '%$haja%' ORDER BY DATE_RDV DESC";
+  $sql="SELECT d.ID_RDV,d.NOW_RDV,d.DATE_RDV,d.OBJET_RDV,d.ETAT_RDV,u.nom,u.prenom FROM rdv d INNER JOIN membres u ON u.cin=d.USER_ID WHERE DATE_RDV LIKE '%$haja%' ORDER BY DATE_RDV DESC";
 
 
   $db = config::getConnexion();

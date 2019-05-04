@@ -66,6 +66,7 @@ th {
           <div class="display-tc animate-box" data-animate-effect="fadeIn">
             <h1>Merci pour Votre Confiance</h1>
             <h2>Commande Bien envoye</h2>
+            <h2>Un Sms Vous a été communiqué.</h2>
           </div>
         </div>
       </div>
