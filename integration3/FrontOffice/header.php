@@ -90,7 +90,7 @@ if (isset($_SESSION['cin']) and $_SESSION['cin'] > 0 )
         <div class="col-md-6 col-xs-6 text-center menu-1">
           <ul>
             <li class="has-dropdown">
-              <a href="product.php" >GeoInt</a>
+              <a href="product.php">GeoInt</a>
               <ul class="dropdown">
                 <li><a href="product.php">Consulter Produits Intérieur</a></li>
               </ul>
