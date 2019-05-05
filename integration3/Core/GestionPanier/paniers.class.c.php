@@ -352,15 +352,29 @@ public function GetIDCCourant()
 *************************LOCATION****************************************************
 **************************************************************************************/
 
-public function addlocation($product_id,$product_name,$product_price)
+
+public function deleteLocation($product_id)
 {
 
+  foreach($_SESSION["location"] as $keys => $values)
+		{
+			if($values["item_id"] == $product_id)
+			{
+				unset($_SESSION["location"][$keys]);
+				return true;
+			}
+     }
+  }
+
+
+public function addlocation($product_id,$product_name,$product_price)
+{
 if(isset($_SESSION["location"]))
 {
   $item_array_id = array_column($_SESSION["location"], "item_id");
   if(!in_array($product_id, $item_array_id))
   {
-    $count = count($_SESSION["location"]);
+    $count= count($_SESSION["location"]);
     $item_array = array(
       'item_id'			=>	$product_id,
       'item_name'			=>	$product_name,
@@ -387,6 +401,8 @@ else
   return true;
 }
 }
+
+
 
 
 }

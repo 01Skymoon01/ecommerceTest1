@@ -5,6 +5,7 @@ include "../core/locationC.php";
 $panier= new panier();
 if(isset($_SESSION['cin']))
 {
+    
   $totalPrix=0;
   $totalQTE=0;
 //var_dump($_POST["p"]["qte"]);
@@ -13,11 +14,11 @@ if(isset($_SESSION['cin']))
 {
   $totalPrix=(float)$values["item_price"]*(int)$_POST["p"]["qte"][$values["item_id"]]+$totalPrix;
 
-$totalQTE=(int)$_POST["p"]["qte"][$values["item_id"]]+$totalQTE;
+  $totalQTE=(int)$_POST["p"]["qte"][$values["item_id"]]+$totalQTE;
 }
 
-
-
+if ((date("Y-m-d") <= $_POST["p"]["datedeb"][$values["item_id"]]) and ($_POST["p"]["datefin"][$values["item_id"]]>$_POST["p"]["datedeb"][$values["item_id"]]) and ($_POST["p"]["qte"][$values["item_id"]]>=100) )
+  {
 $location1=new Locc($totalQTE,$totalPrix,$id);
 $location1C= new locationC();
 $location1C->ajouterCommandeLocation($location1);
@@ -36,6 +37,16 @@ $_SESSION["location"]=array();
 $_SESSION["location"]=array();
   unset($_SESSION["location"]);
 header('location:LocationValide.php');
+
+}
+
+else{
+  ?>
+  <script>alert("Verifier less cordonnneeess !!!");</script>
+  
+   <?php				
+}
+
 }
 else {
   $_SESSION["page"]=array();

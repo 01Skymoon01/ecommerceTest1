@@ -39,7 +39,10 @@ th {
         <div class="display-t">
           <div class="display-tc animate-box" data-animate-effect="fadeIn">
             <h1>Merci pour Votre Confiance</h1>
-            <h2>Demande de Location Bien envoye</h2>
+            <h2>Demande de Location Bien envoyeee</h2>
+						<a href="contrat.php"class="btn btn-primary btn-outline btn-lg" style="background-color:#A9A9A9;" >Votre Contrat</i></a>
+			
+
           </div>
         </div>
       </div>

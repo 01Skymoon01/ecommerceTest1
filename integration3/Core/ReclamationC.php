@@ -4,7 +4,7 @@ class ReclamationC {
 
     function afficherReclamation ($a)
     {
-        $sql="SELECT * FROM reclamation WHERE USER_ID=$a";
+        $sql="SELECT * FROM reclamation WHERE USER_ID=$a ORDER BY NOW_R ASC";
         $db=config::getConnexion();
         $list=$db->query($sql);
         return $list;
@@ -41,7 +41,7 @@ class ReclamationC {
     function afficherReclamations()
     {
         //$sql="SElECT * From rdv s inner join utilisateur u on s.USER_ID= u.USER_ID";
-        $sql="SElECT d.ID_R,d.OBJET_R,d.DETAILS_R,d.ETAT,d.NOW_R,u.nom,u.prenom FROM reclamation d INNER JOIN membres u ON u.cin=d.USER_ID";
+        $sql="SElECT d.ID_R,d.OBJET_R,d.DETAILS_R,d.ETAT,d.NOW_R,u.nom,u.prenom FROM reclamation d INNER JOIN membres u ON u.cin=d.USER_ID  ORDER BY NOW_R DESC";
         $db = config::getConnexion();
         try{
             $liste=$db->query($sql);

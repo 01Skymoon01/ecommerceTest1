@@ -89,6 +89,7 @@ $list=$reclamationc->afficherReclamation($_SESSION['cin']);
 
                 <div class="well well-small" style="margin-left:10% ; width:1200px">
                   <h1>Liste de Vos Reclamations<small class="pull-right"></small></h1>
+                  <h6> Vous ne pourrez plus modifier ou suprimer apres miniut.<small class="pull-right"></small></h6>
                 <hr class="soften"/>
 
                 <table class="table table-striped" >

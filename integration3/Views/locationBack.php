@@ -2,7 +2,9 @@
 <html class="no-js" lang="en">
 <?php
 
-include_once "../core/locationC.php";
+include "../entities/location.php";
+include "../core/locationC.php";
+
 $location1C= new locationC();
 $liste=$location1C->AfficherLocc();
 
@@ -11,7 +13,7 @@ $liste=$location1C->AfficherLocc();
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Liste des Reclamations</title>
+    <title>Liste des Locations</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -73,13 +75,67 @@ $liste=$location1C->AfficherLocc();
 
 <body>
   <?php require 'header.php' ?>
+  <div class="section-admin container-fluid res-mg-t-15" style="margin-top:10px;">
+            <div class="row admin text-center" style="margin-top:50px;">
+                <div class="col-md-12">
+                    <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" >
 
+<div class="admin-content analysis-progrebar-ctn res-mg-t-30" style="background-color:white;color:black;">
+  <div class="stats-icon pull-right">
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+          </div>
+    <h4 class="text-left text-uppercase" style="color:black; "><b> Location Non  validée</b></h4>
+    <div class="row vertical-center-box vertical-center-box-tablet">
+        <div class="col-xs-9 cus-gh-hd-pro">
+            <h2 class="text-right no-margin" style="color:red;font-size:20px; "><?php $listestat=$location1C->NombreDuCommandeNonPayees();
+            {
+              foreach($listestat as $row){
+                echo $row["nbr"];
+              }
+            }?> <span>Locations</span></h2>
+        </div>
+    </div>
+    <div class="progress progress-mini">
+        <div style="width: 100%;" class="progress-bar progress-bar-danger bg-red "></div>
+    </div>
+</div>
+</div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="product-status mg-b-30" style="margin-top:10px">
             <div class="container-fluid" style="margin-top:20px">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="product-status-wrap">
-                            <h4>Liste des reclamations</h4>
+
+                
+                            <h4>Liste des locations</h4>
+
+
+
+                            <form action="locationBack.php" method="GET">
+    <div style="display: flex;">
+<div class="input-group mb-3" >
+  <input type="text" class="form-control"placeholder="Rechercher..." aria-label="" aria-describedby="basic-addon1" style="color:white;" name="search">
+</div>
+<div class=" mb-2" style="margin-left:6px; margin-top:5px;">
+   <input type="submit" name="rechercheLocation" value="OK" style="
+background-color:#6090;
+border-style: outset;
+
+border-radius: 5px;
+border-color: black;
+
+padding: 6px;
+background-color: rgb(255, 255, 255); " >
+
+</div>
+</div>
+</form>
                             <form action="locationBack.php" method="GET">
                               <div style="display: flex;margin-bottom:10px;">
 
@@ -94,12 +150,22 @@ $liste=$location1C->AfficherLocc();
                                     <th>QTE</th>
                                     <th>id client</th>
                                     <th>etat</th>
-                                   <th>datails</th>
+                                   <th>details</th>
 
                                 </tr>
 
 
-                                <?PHP
+                                <?php
+if (isset($_GET["search"]) && $_GET["search"]!=""){
+
+//  var_dump($_GET["cin"]);
+
+	
+$liste=$location1C->RechercheLocation2($_GET["search"]);
+
+
+}
+
 
 
                                 foreach($liste as $row){ ?>
@@ -126,14 +192,14 @@ $liste=$location1C->AfficherLocc();
                                                                     <td><?PHP echo $row['id_client']; ?></td>
                                                                     <td>
                                                                     <form action="ModifierLocation.php" method="GET"><i class="icon nalika-edit"></i>
-                                              <input type="submit" value="<?PHP if($row['etat_commande'] == 1) echo "VALIDE" ; else echo "NON" ?>" style="border: 0px; background: none;">
+                                                                    <input type="submit" value="<?PHP if($row['etat_commande'] == 1) echo "VALIDE";else echo "NON"?>"style="border: 0px; background: none;">
                                                                     <input type="hidden" value="<?PHP echo $row['id_commande']; ?>" name="cin">
                                                                     <input type="hidden" value="<?PHP echo $row['etat_commande']; ?>" name="etat">
 
                                                                     </form></td>
                                                                                                         <td>
                                                                     <form action="DetailsLoc.php" method="GET">
-                                                                                                        <input type="submit" value=">" style="border: 0; background: none; font-size:20px; font-weight: 900;">
+                                                                      <input type="submit" value=">" style="border: 0; background: none; font-size:20px; font-weight: 900;">
                                                                     <input type="hidden" value="<?PHP echo $row['id_commande']; ?>" name="cin">
                                                                     <input type="hidden" value="<?PHP echo $row['date_commande']; ?>" name="date">
                                                                     <input type="hidden" value="<?PHP echo $row['etat_commande']; ?>" name="etat">

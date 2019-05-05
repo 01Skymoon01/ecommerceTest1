@@ -11,7 +11,7 @@ $liste=$location1C->RechercheLocation($_GET["cin"]);
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Liste des Reclamations</title>
+    <title>Détail  de la location</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -79,7 +79,7 @@ $liste=$location1C->RechercheLocation($_GET["cin"]);
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="product-status-wrap">
-                            <h4>Liste des reclamations</h4>
+                            <h4>Les détails de la location </h4>
                             <form action="locationBack.php" method="GET">
                               <div style="display: flex;margin-bottom:10px;">
 
@@ -104,8 +104,6 @@ $liste=$location1C->RechercheLocation($_GET["cin"]);
                                 foreach($liste as $row){ ?>
 
                                                                   <tr style="background-color:#3B6B9A;">
-
-
 
                                                                     <td><?PHP echo $row['idloc']; ?></td>
                                                                     <td><?PHP echo $row['nom']; ?></td>

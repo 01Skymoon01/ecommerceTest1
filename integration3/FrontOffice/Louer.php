@@ -54,11 +54,11 @@ var_dump($liste->fetchAll(PDO::FETCH_OBJ));*/
                             <p>
 															<?php
 															if($product->qte!=0){ ?>
-                                <a href="addLouer.php?id=<?php echo $product->num; ?>&name=<?php echo $product->nom; ?>&price=<?php echo $product->prix; ?>"   class="btn btn-primary btn-outline btn-lg" style="background-color:#A9A9A9;" >Louer</i></a>
+                                <a href="panierLouer.php?id=<?php echo $product->num; ?>&name=<?php echo $product->nom; ?>&price=<?php echo $product->prix; ?>"   class="btn btn-primary btn-outline btn-lg" style="background-color:#A9A9A9;" >Louer</i></a>
 <?php } ?>
 <?php
 if($product->qte==0){ ?>
-  <a href="addLouer.php?id=<?php echo $product->num; ?>&name=<?php echo $product->nom; ?>&price=<?php echo $product->prix; ?>"   class="btn btn-primary btn-outline btn-lg" style="background-color:#A9A9A9;" >Louer</i></a>
+  <a href="panierLouer.php?id=<?php echo $product->num; ?>&name=<?php echo $product->nom; ?>&price=<?php echo $product->prix; ?>"   class="btn btn-primary btn-outline btn-lg" style="background-color:#A9A9A9;" >Louer</i></a>
 <?php } ?>
 
                             </p>

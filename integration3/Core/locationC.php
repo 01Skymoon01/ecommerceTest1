@@ -55,7 +55,20 @@ $NomProduit=$location->get_NomProduit();
 
 
   		}
+      function Affciher($cin){
 
+        $sql="SELECT * FROM `loc`WHERE 	idLocc=:cin ";
+    		$db = config::getConnexion();
+    		try{
+    		$liste=$db->query($sql);
+    		return $liste;
+    		}
+            catch (Exception $e){
+                die('Erreur: '.$e->getMessage());
+            }
+
+
+  		}
 
       function Afficher(){
 
@@ -74,7 +87,7 @@ $NomProduit=$location->get_NomProduit();
 
       function AfficherLocc(){
 
-        $sql="SELECT * FROM `locc` ";
+        $sql="SELECT * FROM `locc`ORDER BY id_Commande DESC ";
         $db = config::getConnexion();
         try{
         $liste=$db->query($sql);
@@ -126,6 +139,37 @@ $NomProduit=$location->get_NomProduit();
 
 
      }
+     
+function NombreDuCommandeNonPayees(){
+
+
+	$sql="SELECT COUNT(id_commande) nbr FROM locc WHERE etat_commande=0 ";
+
+
+	$db = config::getConnexion();
+	try{
+	$liste=$db->query($sql);
+	return $liste;
+
+	}
+			 catch (Exception $e){
+					 die('Erreur: '.$e->getMessage());
+			 }
+}
+     function RechercheLocation2($haja){
+
+      $sql="SELECT * FROM locc WHERE  id_commande  LIKE '%$haja%' OR id_client=$haja ORDER BY id_Commande DESC";
+     
+            $db = config::getConnexion();
+            try{
+            $liste=$db->query($sql);
+            return $liste;
+     
+            }
+                 catch (Exception $e){
+                     die('Erreur: '.$e->getMessage());
+                 }
+          }
 
      function RechercheLocation($haja){
 
@@ -179,7 +223,7 @@ function afficherCommandeLEnCours($commande){
   $idClient=0;
   $idClient=$commande->get_IDClient();
   $datas=0;
-  $sql="SELECT * FROM locc WHERE date_commande IN (SELECT max(date_commande) FROM locc  WHERE id_client=$idClient)";
+  $sql="SELECT * FROM locc WHERE date_commande IN (SELECT max(date_commande) FROM locc  WHERE id_client=$idClient)  ";
   $db = config::getConnexion();
   try{
   $liste=$db->query($sql);
