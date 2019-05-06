@@ -84,23 +84,11 @@ if($product->qte==0){ ?>
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
 					<h2>Besoin d'aide ? </h2>
 					<p>Inscrivez vous pour suivre nos produits et nouveautés</p>
+						<a href="signup.php" class="btn btn-default btn-block" style="margin-left:30%; width:300px; ">	Inscrivez-Vous</a>
 				</div>
+
 			</div>
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2">
-					<form class="form-inline">
-						<div class="col-md-6 col-sm-6">
-							<div class="form-group">
-								<label for="email" class="sr-only">Email</label>
-								<input type="email" class="form-control" id="email" placeholder="Email">
-							</div>
-						</div>
-						<div class="col-md-6 col-sm-6">
-							<button type="submit" class="btn btn-default btn-block">Inscrivez-Vous</button>
-						</div>
-					</form>
-				</div>
-			</div>
+
 		</div>
 	</div>
 
