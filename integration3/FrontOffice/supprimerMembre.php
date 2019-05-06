@@ -2,9 +2,9 @@
 
 include "../core/membreC.php";
 include "../core/favorisC.php";
-include_once '../FrontOffice/afficherCommentaires.php';
+//include_once '../FrontOffice/afficherCommentaires.php';
 
-
+session_start();
 
 $favorisC=new favorisC();
 $favorisC->supprimerFavorisClient($_SESSION['cin']);

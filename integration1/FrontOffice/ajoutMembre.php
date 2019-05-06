@@ -48,7 +48,8 @@ if (isset($_POST['cin']) and isset($_POST['nom']) and isset($_POST['prenom']) an
                 alert(h);</script><?php
                	$membreC=new MembreC();
 				$membreC->ajouterMembre($membre);
-				header('Location:CaptchaTest.php');
+				var_dump($membre);
+				//header('Location:CaptchaTest.php');
 
 			}
 

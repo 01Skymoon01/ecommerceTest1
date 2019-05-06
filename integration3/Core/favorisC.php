@@ -23,9 +23,9 @@ class favorisC
 
   function listeFavoris($cin){
     $c = config::getConnexion();
-      $sql = "SELECT * FROM favoris WHERE id_client='$cin'";      
+      $sql = "SELECT * FROM favoris WHERE id_client='$cin'";
     return $c->query($sql);
-       
+
   }
 
 

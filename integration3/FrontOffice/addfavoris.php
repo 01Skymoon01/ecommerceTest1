@@ -16,10 +16,12 @@ if(empty($_SESSION['cin'])) {
       if(!empty($_GET['nom'])){
     $favoris = new favoris($_SESSION['cin'],$_GET['nom'],$_GET['id'],$_GET['price']);
 
-
+var_dump($favoris);
     $favorisc->ajouterFavoris($favoris);
 }
     $list=$favorisc->listeFavoris($_SESSION['cin']);
+    var_dump($list);
+
         ?>
 
         <?php require 'header.php';
@@ -85,8 +87,8 @@ if(empty($_SESSION['cin'])) {
         										</td>
 
                                                 <td><a href="addpanier2.php?name=<?php echo $values["nom_prod"]; ?>&id=<?php echo $values["id_produit"];  ?>&price=<?php echo $values["price"]; ?>">Acheter</a>
-                        
-                                                   
+
+
                                                 </td>
 
 

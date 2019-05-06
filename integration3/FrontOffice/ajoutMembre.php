@@ -26,14 +26,14 @@ if (isset($_POST['cin']) and isset($_POST['nom']) and isset($_POST['prenom']) an
 				$cin = $_POST['cin'];
 				$nom = $_POST['nom'];
 				$prenom = $_POST['prenom'];
-				
+
 				/*$_POST['date_naissance'] = date('y-m-d');
 				$date_naissance = $_POST['date_naissance'];*/
-				
+
 
 				$date_naissance = DateTime::createFromFormat('d/m/Y', $_POST['date_naissance'])->format('Y-m-d');
-				
-			
+
+
 
 				//var_dump($date_naissance);
 
