@@ -108,6 +108,18 @@ try{
         }
 	}
 
+	function afficher1LivreurDispo(){
+		$sql="SElECT cin From livreur where status=1 limit 1";
+		$db = config::getConnexion();
+		try{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+				catch (Exception $e){
+						die('Erreur: '.$e->getMessage());
+				}
+	}
+
 }
 
 ?>

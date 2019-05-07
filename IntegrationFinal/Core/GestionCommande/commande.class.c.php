@@ -464,6 +464,26 @@ function pagetotale($prodparpage)
         $produit = $db->query('SELECT * FROM commande ORDER BY id_commande DESC LIMIT '.$depart.','.$prodparpage);
         return $produit;
         }
+
+				function modifierEtatLivraison($idc){
+					$sql="UPDATE commande SET etat_livraison=1 WHERE id_commande=:id";
+
+					$db = config::getConnexion();
+					//$db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+			try{
+							$req=$db->prepare($sql);
+
+               $req->bindValue(':id',$idc);
+									$s=$req->execute();
+
+								 // header('Location: index.php');
+							}
+							catch (Exception $e){
+									echo " Erreur ! ".$e->getMessage();
+
+							}
+
+				}
 }
 
 ?>

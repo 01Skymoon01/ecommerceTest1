@@ -253,6 +253,7 @@ function myFunction() {
                                     <th>NOMBRE C°</th>
                                     <th>CIN CLIENT</th>
                                     <th>ETAT DE PAYMENT</th>
+                                    <th>LIVRAISON</th>
                                     <th>DETAILS</th>
 
                                 </tr>
@@ -300,11 +301,13 @@ foreach($listeCommande as $row){
                                     <input type="hidden" value="<?PHP echo $row['etat_commande']; ?>" name="etat">
 
                                     </form></td>
+                                    <td><?PHP if($row['etat_livraison'] == 1) echo "OUI" ; else echo "NON" ?></td>
                                                                         <td>
                                     <form action="DetailsCommandeList.php" method="GET">
                                                                         <input type="submit" value=">" style="border: 0; background: none; font-size:20px; font-weight: 900;">
                                     <input type="hidden" value="<?PHP echo $row['id_commande']; ?>" name="cin">
                                     <input type="hidden" value="<?PHP echo $row['date_commande']; ?>" name="date">
+                                    <input type="hidden" value="<?PHP echo $row['etat_livraison']; ?>" name="etatL">
                                     <input type="hidden" value="<?PHP echo $row['etat_commande']; ?>" name="etat">
                                     <input type="hidden" value="<?PHP echo $row['id_client']; ?>" name="cinC">
                                     <input type="hidden" value="<?PHP echo $row['totalPrix_commande']; ?>" name="totalTTC">

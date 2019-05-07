@@ -209,6 +209,13 @@ $total = 0; ?>
     	<td><?PHP echo $row['TOTAL']; ?></td>
 
     	</tr>
+       <tr style="background-color:white;">
+         <td></td>
+         <td></td>
+         <td></td>
+      <td><a  class="shopBtn pull-right" href="AjouterLivraisonFront.php?idcommande=<?PHP echo $idc; ?>"><i class="fa fa-truck icon-wrap"></i> <span
+                  class="mini-click-non">faire une Livraison</span></a></td>
+      </tr>
     	<?PHP
     }
 
@@ -217,16 +224,16 @@ $total = 0; ?>
   </table>
 <?php
     }
-   $_SESSION["panier"]=array();
-$_SESSION["commande"]=array();
+   //$_SESSION["panier"]=array();
+//$_SESSION["commande"]=array();
     ?>
 
     </tbody>
 
-
 </div>
 
 </div>
+
 
 
               <!--FIN COMMANDE -------------------------------------------------------------------------------------------->

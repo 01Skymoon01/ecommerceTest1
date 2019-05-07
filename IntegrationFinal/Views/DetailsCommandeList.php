@@ -111,6 +111,14 @@ $listeCommande=$CommandeC1->afficherDetailsCommandeEnCours($_GET["cin"]);
                             </tr>
                             <tr>
                               <td>
+                                <a><h5 style="color:black;">LIVRAISON:</h5></a>
+                              </td>
+                            <td>
+                                <a><h5 style="color:black;"><?PHP if($_GET['etatL'] == 1) echo "OUI" ; else echo "NON" ?></h5></a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
                                 <a><h5 style="color:black;">QTE_TOTAL:</h5></a>
                                 </td>
                                 <td>

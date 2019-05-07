@@ -103,6 +103,28 @@ try{
         }
 	}
 
+	function ajouterLivraisonFromFront($idcommande,$destination,$livreur){
+		$sql="INSERT INTO livraison (destination,client,livreur) VALUES (:destination, :client, :livreur)";
+		$db = config::getConnexion();
+		try{
+				$req=$db->prepare($sql);
+
+		$req->bindValue(':client',$idcommande);
+		$req->bindValue(':destination',$destination);
+		$req->bindValue(':livreur',$livreur);
+
+
+						$req->execute();
+						echo "^prod ajoute";
+
+				}
+				catch (Exception $e){
+						echo 'Erreur: '.$e->getMessage();
+						echo "erreur";
+				}
+
+	}
+
 }
 
 ?>
