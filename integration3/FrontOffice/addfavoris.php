@@ -16,7 +16,7 @@ if(empty($_SESSION['cin'])) {
       if(!empty($_GET['nom'])){
     $favoris = new favoris($_SESSION['cin'],$_GET['nom'],$_GET['id'],$_GET['price']);
 
-var_dump($favoris);
+
     $favorisc->ajouterFavoris($favoris);
 }
     $list=$favorisc->listeFavoris($_SESSION['cin']);
