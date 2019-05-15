@@ -3,6 +3,7 @@ session_start();
 include '../core/membreC.php';
 
 
+
 if(isset($_POST['SignIn'])){
     $membre = new MembreC;
 
@@ -64,6 +65,8 @@ header('Location: product.php');
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    
+    <link href="https://fontawesome.com/icons?d=gallery" rel="stylesheet" media="all">
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 
@@ -73,6 +76,46 @@ header('Location: product.php');
 
     <!-- Main CSS-->
     <link href="css/main.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+
+function myFunction() {
+  var x = document.getElementById("myInput");
+  var eye = document.getElementById("eye");
+  if (x.type === "password") {
+    x.type = "text";
+    eye.toggleClass("fa fa-eye");
+  } else {
+    x.type = "password";
+  }
+}
+
+function myFunction2() {
+  var x = document.getElementById("myInput");
+
+  
+    x.type = "password";
+ 
+  
+}
+
+    </script>
+
+    <style>
+   .fa{
+    position: absolute;
+    left:230px;
+    top:10px;
+    font-size: 18px;
+    cursor: pointer;
+    color: #999;
+   }
+   .fa.active{
+    color: dodgerblue;
+   }
+
+
+    </style>
 </head>
 
 <body>
@@ -92,8 +135,11 @@ header('Location: product.php');
                         </div>
 
                         <div class="input-group">
-                             <input class="input--style-1" type="password" placeholder="MOT DE PASSE" name="password" required>
+                             <input class="input--style-1" type="password" placeholder="MOT DE PASSE" name="password" id="myInput" required>
+                             <input class="fa fa-eye-slash" type="checkbox" onmousedown="myFunction()" onmouseup="myFunction2()" style="margin-left: 48%; margin-top: -5px;" id="eye">
+                             
                         </div>
+
                          
                         <div class="forgot"><a href="recuperation.php">Mot de passe oublié?</a></div></br>
 
