@@ -1,6 +1,7 @@
-<?php
+<?php session_start(); 
 
-session_start();
+
+
 require_once "../config.php";
 
 if (isset($_SESSION['cin']) and $_SESSION['cin'] > 0 )
@@ -22,11 +23,26 @@ $sql="SELECT prenom,avatar FROM membres WHERE cin != $getcin";
        
 }
 
-
 ?>
 
 <?php require 'header.php'; ?>
-        <div align="center">
+
+
+        <!---------------------------------------------------------------------------------------------------------------------------------->
+<body bgcolor="#d3c89d">
+        <form action="">
+
+            <div id="fh5co-started">
+
+                    <div class="row animate-box" style="  margin: auto; padding: 10px;" >
+
+                    <div class="row" >
+                    <div class="span12">
+
+
+
+
+                        <div align="center">
             <img src="images/comm.png" style="width: 90px; height: 80px; "><h1 style="padding-right:2.9%; padding-top: -18%;">Vos Feedback:</h1>
             <?php 
 
@@ -58,7 +74,7 @@ while($c = $commentaires->fetch()) { ?>
 
                         <?php } else {  echo '<img src="images/profileicon3.jpg" style=" border-radius: 50%;  width: 40px; height: 40px;  float: left; " hspace="10">'; } ?>
 
-                    <p style="color: #968a5b; padding-top: 12px; margin-left: 12px; font-size: 20px;" ><?= $c['pseudo'] ?>: </p></br>
+                    <p style="color: #968a5b; padding-top: 12px; margin-left: 12px; font-size: 17px;" ><?= $c['pseudo'] ?>: </p></br>
 
                     <?php  }
 
@@ -73,7 +89,7 @@ while($c = $commentaires->fetch()) { ?>
 
 <?php } else { echo '<img src="images/profileicon3.jpg" style=" border-radius: 50%;  width: 40px; height: 40px;  float: left; " hspace="10">'; } ?>
 
-<p style="color: #968a5b; padding-top: 12px; margin-left: 12px; font-size: 20px;" ><?= $c['pseudo'] ?>: </p></br>
+<p style="color: #968a5b; padding-top: 12px; margin-left: 12px; font-size: 17px;" ><?= $c['pseudo'] ?>: </p></br>
 <?php
                     }
 
@@ -102,9 +118,58 @@ while($c = $commentaires->fetch()) { ?>
 
                     </div>
 
-                    </td></br>
+                </td></br>
 
             <?php } ?>
-                </div align="center">
-    </body>
-</html>
+            </table>
+        </div align="center">
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+
+
+           </div>
+            </div>
+
+        </form>
+        <!-- FIN CONSULTER PANIER ----------------------------------------------------------------------------------------->
+
+
+
+
+<?php require "footer.php" ?>
+            </div>
+
+            <div class="gototop js-top">
+                <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+            </div>
+
+            <!-- jQuery -->
+            <script src="js/jquery.min.js"></script>
+            <!-- jQuery Easing -->
+            <script src="js/jquery.easing.1.3.js"></script>
+            <!-- Bootstrap -->
+            <script src="js/bootstrap.min.js"></script>
+            <!-- Waypoints -->
+            <script src="js/jquery.waypoints.min.js"></script>
+            <!-- Carousel -->
+            <script src="js/owl.carousel.min.js"></script>
+            <!-- countTo -->
+            <script src="js/jquery.countTo.js"></script>
+            <!-- Flexslider -->
+            <script src="js/jquery.flexslider-min.js"></script>
+            <!-- Main -->
+            <script src="js/main.js"></script>
+            <script type="text/javascript" src="app.js" ></script>
+
+            </body>
+
+
+

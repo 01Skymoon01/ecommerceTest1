@@ -7,7 +7,7 @@ include '../entities/membre.php';
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Send mail- Clients</title>
+    <title>Envoyer mail- Clients</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -123,7 +123,7 @@ include '../entities/membre.php';
 
           <div class="form-group">
             <div>
-              <center><button class="btn btn-lg btn-success" type="submit" name="envoi" style="background-color:  #24caa1; border:none; margin-left: 50%; margin-top: 10px;" ><i class="fa fa-envelope"></i> Send</button></center>
+              <center><button class="btn btn-lg btn-success" type="submit" name="envoi" style="background-color: #365D84; border:none; margin-left: 114%; margin-top: 10px; " ><i class="fa fa-envelope"></i> Envoyer</button></center>
 
             </div>
           </div><!-- /.form-group -->

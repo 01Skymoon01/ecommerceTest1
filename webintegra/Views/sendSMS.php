@@ -8,7 +8,7 @@ include '../entities/membre.php';
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Send SMS- Clients</title>
+    <title>Envoyer SMS- Clients</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
