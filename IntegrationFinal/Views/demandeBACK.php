@@ -208,7 +208,7 @@ background-color: rgb(255, 255, 255); " >
                                        <!-- <button data-toggle="tooltip" title="Trash" ><i class="fa fa-trash-o" aria-hidden="true" ></i></button>-->
                                        <!-- <a href="deletedemande.php?sup=<?php //echo $row['ID_D'];?>" class="fa fa-trash-o"></a>-->
                                     <td> <form method="post" action="deletedemande.php">
-                                            <button data-toggle="tooltip" title="Trash" ><i class="fa fa-trash-o" aria-hidden="true" ></i></button>
+                                            <button data-toggle="tooltip" title="Trash" class="btn btn-warning btn-sm" style="background:none;" ><i class="fa fa-trash-o" aria-hidden="true" ></i></button>
                                            <!-- <input type="submit" name="supprimer" class="nalika-delete-button" value="Supprimer">-->
                                             <input type="hidden" value="<?PHP echo $row['ID_D']; ?>" name="ID_D">
                                         </form>

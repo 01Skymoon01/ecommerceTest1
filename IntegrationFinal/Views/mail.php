@@ -42,7 +42,11 @@ if ($rupture >= 1) {
             echo 'Message could not be sent.';
             echo 'Mailer Error: ' . $mail->ErrorInfo;
         } else {
-            echo nl2br ('Message has been sent to : ' . $row['login'] ) ."<br>" ;
+            //echo nl2br ('Message has been sent to : ' . $row['login'] ) ."<br>" ;
+            echo "<script>
+alert('E-mails Envoyé(s)');
+window.location.href='Afficher_admins.php';
+</script>";
         }
     }
 

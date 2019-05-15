@@ -122,11 +122,7 @@ if($product->qte==0){ ?>
 	<div id="fh5co-started">
 		<div class="container">
 			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Vos commentaires ... </h2>
-					
 
-				</div>
 			</div>
 			<?php if(isset($_SESSION['cin'])){ ?>
 			<div class="row animate-box">
@@ -135,13 +131,13 @@ if($product->qte==0){ ?>
 						<div class="col-md-6 col-sm-6" >
 							<div class="form-group"  >
 								<textarea name="commentaire" class="form-control" placeholder="Ajouter un commentaire ..." ></textarea></br></br>
-								
+
 								<input type="submit" name="submit_commentaire" value="Poster" class="comm" style="margin-left: 113px;"></br></br></br>
 							</div>
 
-							
 
-						</div>	
+
+						</div>
 
 					</form>
 				</div>
