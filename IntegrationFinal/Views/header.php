@@ -6,7 +6,6 @@ require_once "session.php";
 $var2 = $_SESSION["username"];
 $var =  $_SESSION["role"];
 
-
 ?>
 <div class="left-sidebar-pro" >
     <nav id="sidebar" class="" style="width:210px;">
@@ -16,12 +15,12 @@ $var =  $_SESSION["role"];
         </div>
         <div class="nalika-profile" style="" >
             <div class="profile-dtl">
-                <a href="afficher_produits.php"><img class="main-logo" src="img/logosn.png" style="border:none;" /></a>
+                <a href="afficher_produits.php" class="fa fa-spin"><img class="main-logo" src="img/lola.jpg" alt="" /></a>
                 <h2 class="text-uppercase">GeoConcept.</h2>
             </div>
             <div class="profile-social-dtl">
                 <ul class="dtl-social">
-                    <li><a href="https://www.facebook.com/geoconceptgeovrde/"><i class="icon nalika-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon nalika-facebook"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -67,13 +66,11 @@ $var =  $_SESSION["role"];
                         </li>
                         <li>
                             <a class="has-arrow"  aria-expanded="false" ><i class="icon nalika-home icon-wrap"></i></i> <span
-                                        class="mini-click-non">Clients</span></a>
+                                        class="mini-click-non">Users</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
-                                <li><a title="Liste Produits" href="Users.php"><span class="mini-sub-pro">Liste Clients</span></a>
+                                <li><a title="Liste Produits" href="Users.php"><span class="mini-sub-pro">Liste Users</span></a>
                                 </li>
-                                <li><a title="Liste Produits" href="SendMailForm.php"><span class="mini-sub-pro">envoyer Mail</span></a>
-                                </li>
-                                <li><a title="Liste Produits" href="SendSMS.php"><span class="mini-sub-pro">envoyer SMS</span></a>
+                                <li><a title="Liste Produits" href="SendMailForm.php"><span class="mini-sub-pro">Send Mail</span></a>
                                 </li>
                               </ul>
                             </li>
@@ -164,7 +161,7 @@ $var =  $_SESSION["role"];
                                                     <span class="admin-name" style="font-size: 20px;text-decoration: underline;"><?php echo $var2; ?></span>
 
                                                 </a>
-                                                <a href="logout.php"><span class="icon nalika-unlocked author-log-ic"></span> Deconnexion</a>
+                                                <a href="logout.php" class="fa fa-sign-out fa-2x "><!--<span class="icon nalika-unlocked author-log-ic"></span>--> </a>
 
                                             </li>
 

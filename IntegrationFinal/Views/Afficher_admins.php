@@ -77,24 +77,66 @@ $listeAdmins=$admin1C->afficherAdmins();
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 <?php require 'header.php' ?>
+<script>
+    function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            client=tr[i].getElementsByTagName("td")[3];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                }
+                else  if (client) {
+                    txtValue = client.textContent || client.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    }
+
+</script>
+
     <div class="breadcome-area">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="breadcome-list">
                         <div class="row">
-                            
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="breadcomb-wp">
+                                    <div class="breadcomb-icon">
+                                        <i class="icon nalika-home"></i>
+                                    </div>
+                                    <div class="breadcomb-ctn">
+                                        <h2>Afficher Admins</h2>
+                                        <p>Admins<span class="bread-ntd"> GeoConcept.</span></p>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 <div class="breadcomb-report">
-                                    <form role="search" class="" method="POST" action="rechercher_admin.php">
-                                        <input name="searchadmin" type="text" placeholder="Rechercher Admins.." class="form-control" style="width: 40%;margin-left: 3%;color: white;">
-                                        <button type="submit" class="btn btn-custon-four btn-default" style="position: absolute; top: 9%; left: 40%;margin-left: 5%;border: none;" ><i class="fa fa-search"></i></button>
-                                    </form>
-                                    
-                                    <a href="TelechargerListe.php" class="button" target="_blank" >
-                                        <button  data-toggle="tooltip" data-placement="left"  title="Telecharger Liste Produits PDF" class="btn"><i class="icon nalika-download" ></i></button>
+                                    <!--<form role="search" class="" method="POST" action="rechercher_admin.php">
+                                        <input name="searchadmin" type="text" placeholder="Rechercher Admins.." class="form-control" style="width: 40%;margin-left: 40%;color: white;">
+                                        <button type="submit" class="btn btn-custon-four btn-default" style="position: absolute; top: 7%; left: 40%;margin-left: 30%;border: none;background-color:;" ><i class="fa fa-search"></i></button>
+                                    </form>-->
+                                    <div class="breadcome-heading" style="margin-left: 40%;">
+                                        <form role="search" class="">
+                                            <input id="myInput" style="color:white;"  type="text" placeholder="Search..."  onkeyup="myFunction()" class="form-control">
+                                        </form>
+                                    </div>
+                                    <a href="TelechargerListe.php" class="fa fa-download fa-2x fa-spin" target="_blank">
+                                       <!-- <button data-toggle="tooltip" data-placement="left"  title="Telecharger Liste Produits PDF" class="btn"><i class="icon nalika-download"></i></button>-->
                                     </a>
-                                   
                                 </div>
                             </div>
                         </div>
@@ -111,24 +153,26 @@ $listeAdmins=$admin1C->afficherAdmins();
                     <div class="product-status-wrap">
                         <h4>Admins :</h4>
                         <div class="add-product">
-                            <a href="admins-edit.php" >Ajouter Admins</a>
+                            <a href="mail.php" target="_blank" class="fa fa-mail-reply-all" style="margin-right: 25%;background-color: #92D29D;">  Mail</a>
+                            <a href="sms.php" class="fa fa-phone" style="margin-right: 15%;background-color: lightcoral;"> SMS</a>
+                         <a href="admins-edit.php" class="fa fa-plus-circle" style="background-color: lightgreen;">Ajouter Admins</a>
                         </div>
-                        <table >
-                            <tr >
-                                <th>ID</th>
-                                <th>LOGIN</th>
-                                <th>MDP</th>
-                                <th>EMAIL</th>
-                                <th>DEBUT SERVICE</th>
-                                <th>DATE PAYMENET</th>
-                                <th>STATUT BAN</th>
-                                <th>ROLE</th>
+                        <table class="table-bordered" id="myTable" style="background-color: #365D84">
+                            <tr>
+                                <th>Id</th>
+                                <th>Login</th>
+                                <th>Mdp</th>
+                                <th>Email</th>
+                                <th>Debut Service</th>
+                                <th>Date Payement</th>
+                                <th>Statut Ban</th>
+                                <th>Role</th>
                             </tr>
 
                             <?PHP
                             foreach($listeAdmins as $row){
                                 ?>
-                                <tr style="background-color:#3B6B9A; ">
+                                <tr>
                                     <td><?PHP echo $row['id']; ?></td>
                                     <td><?PHP echo $row['login']; ?></td>
                                     <td><?PHP echo $row['mdp']; ?></td>
@@ -137,7 +181,7 @@ $listeAdmins=$admin1C->afficherAdmins();
                                     <td><?PHP $temp =  strtotime($row['dateserv']);
                                         $var3 = $admin1C->jjg_calculate_next_month($temp);
                                         echo date("Y-m-d", $var3); ?></td>
-                                    <td><button class="pd-setting" style="background-color: #3b9953; width: 71px;" id="banstat" name="banstat" value="<?PHP echo $row['banstat']; ?>"><?PHP echo $row['banstat']; ?></button></td>
+                                    <td><button class="pd-setting" id="banstat" name="banstat" value="<?PHP echo $row['banstat']; ?>"><?PHP echo $row['banstat']; ?></button></td>
                                     <td><?PHP echo $row['role']; ?></td>
                                     <script>
                                         var temp = document.getElementsByName("banstat");
@@ -145,19 +189,19 @@ $listeAdmins=$admin1C->afficherAdmins();
                                         if (temp[i].value == "banni") {
                                                 //banstat.classList.remove('pd-setting');
                                                 //banstat.classList.add('ds-setting');
-                                                temp[i].style.background='#c64f4f';
+                                                temp[i].style.background='#000000';
                                             }
 
                                     </script>
                                     <td><form method="POST" action="supprimer_admin.php">
-                                            <input type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10" style="background:none; border:none;" name="supprimer" value="X">
+                                            <button class="btn btn-ctl-bt waves-effect waves-light m-r-10" style="font-family: FontAwesome;"><i class="fa fa-trash-o"><input type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10" name="supprimer" value=""></i>Supprimer</button>
                                             <input type="hidden" value="<?PHP echo $row['id']; ?>" name="id">
                                         </form>
                                     </td>
                                     <td><button class="btn btn-default btn-sm" style=""><i class="fa fa-edit"><a href="Page_UpdateAdmin.php?id=<?PHP echo $row['id']; ?>&amp;login=<?PHP echo $row['login']; ?>&amp;mdp=<?PHP echo $row['mdp']; ?>&amp;email=<?PHP echo $row['email']; ?>">
                                             Modifier</a></i></button></td>
                                     <td><form method="POST" action="Ban_admin.php">
-                                           <button class="btn btn-xs btn-warning"> <i class="fa fa-adjust"><input type="submit" class="btn btn-warning btn-sm" name="Ban" value="Revert Ban"></i></button>
+                                           <button class="btn btn-xs btn-warning"> <i class="fa fa-adjust"><input type="submit" class="btn btn-warning btn-sm" name="Ban" value="S/S"></i></button>
                                             <input type="hidden" value="<?PHP echo $row['id']; ?>" name="id">
                                         </form>
                                     </td>

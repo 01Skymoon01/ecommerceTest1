@@ -18,7 +18,7 @@ $listeProduits=$produit1C->afficherProduits();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
 		============================================ -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="img/geoconcept.ico">
     <!-- Google Fonts
 		============================================ -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
@@ -76,21 +76,64 @@ $listeProduits=$produit1C->afficherProduits();
 <![endif]-->
 
 <?php require 'header.php' ?>
+<script>
+    function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            client=tr[i].getElementsByTagName("td")[5];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                }
+                else  if (client) {
+                    txtValue = client.textContent || client.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    }
+
+</script>
     <div class="breadcome-area">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="breadcome-list">
                         <div class="row">
-                            
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="breadcomb-wp">
+                                    <div class="breadcomb-icon">
+                                        <i class="icon nalika-home"></i>
+                                    </div>
+                                    <div class="breadcomb-ctn">
+                                        <h2>Liste Produits</h2>
+                                        <p>Liste des Produits<span class="bread-ntd"> GeoConcept</span></p>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 <div class="breadcomb-report">
-                                    <form role="search" class="" method="POST" action="rechercher_produit.php">
-                                        <input name="search" type="text" placeholder="Rechercher Produits.." class="form-control" style="width: 40%;margin-left: 3%;color: white;">
-                                        <button type="submit" class="btn btn-custon-four btn-default" style="position: absolute; top: 9%; left: 40%;margin-left: 5%;border: none;" ><i class="fa fa-search"></i></button>
-                                    </form>
-                                    <a href="TelechargerListe.php" class="button" target="_blank">
-                                        <button data-toggle="tooltip" data-placement="left"  title="Telecharger Liste Produits PDF" class="btn"><i class="icon nalika-download"></i></button>
+                                    <!--<form role="search" class="" method="POST" action="rechercher_produit.php">
+                                        <input name="search" type="text" placeholder="Rechercher Produits.." class="form-control" style="width: 40%;margin-left: 40%;color: white;">
+                                        <button type="submit" class="btn btn-custon-four btn-default" style="position: absolute; top: 7%; left: 40%;margin-left: 30%;border: none;background-color:;" ><i class="fa fa-search"></i></button>
+                                    </form>-->
+                                    <div class="breadcome-heading" style="margin-left: 40%;">
+                                        <form role="search" class="">
+                                            <input id="myInput" style="color:white;"  type="text" placeholder="Search..."  onkeyup="myFunction()" class="form-control">
+                                        </form>
+                                    </div>
+                                    <a href="TelechargerListe.php" class="fa fa-download fa-2x fa-spin" target="_blank">
+                                        <!--<button data-toggle="tooltip" data-placement="left"  title="Telecharger Liste Produits PDF" class="btn"><i class="icon nalika-download"></i></button>-->
                                     </a>
                                 </div>
                             </div>
@@ -107,12 +150,13 @@ $listeProduits=$produit1C->afficherProduits();
                     <div class="product-status-wrap">
                         <h4>Produits :</h4>
                         <div class="add-product">
-                            <a href="mail.php" target="_blank" style="margin-right: 15%;background-color: #ffa551;">Notifier</a>
-                            <a href="product-edit.php">Ajouter Produit</a>
+                            <a href="mail.php" target="_blank" class="fa fa-mail-reply-all" style="margin-right: 25%;background-color: #92D29D;">  Mail</a>
+                            <a href="sms.php" target="_blank" class="fa fa-phone" style="margin-right: 15%;background-color: lightcoral;"> SMS</a>
+                            <a href="product-edit.php" class="fa fa-plus-circle" style="background-color: lightgreen;"> Ajouter Produit</a>
                         </div>
 
-                        <table id="example" >
-                            <tr>
+                        <table id="myTable" class="table-bordered" style="background-color: #365D84" >
+                            <tr style="background: #365D84;">
                                 <th><strong>Nom</strong></th>
                                 <th><strong>Num</strong></th>
                                 <th><strong>Prix</strong></th>
@@ -124,7 +168,7 @@ $listeProduits=$produit1C->afficherProduits();
                             <?PHP
                             foreach($listeProduits as $row){
                                 ?>
-                                <tr style="background-color:#3B6B9A; ">
+                                <tr>
                                     <td><?PHP echo $row['nom']; ?></td>
                                     <td><?PHP echo $row['num']; ?></td>
                                     <td><?PHP echo $row['prix']; ?></td>
@@ -132,7 +176,7 @@ $listeProduits=$produit1C->afficherProduits();
                                     <td><?PHP echo $row['descr']; ?></td>
                                     <td><?PHP echo $row['cat']; ?></td>
                                     <td><form method="POST" action="supprimer_produit.php">
-                                            <input type="submit" style="background:none; border:none;" class="btn btn-ctl-bt waves-effect waves-light m-r-10" name="supprimer" value="X">
+                                            <button class="btn btn-ctl-bt waves-effect waves-light m-r-10" style="font-family: FontAwesome; font-optical-sizing: auto;"><i class="fa fa-trash-o"><input type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10" name="supprimer" value=""></i>Supprimer</button>
                                             <input type="hidden" value="<?PHP echo $row['num']; ?>" name="num">
                                         </form>
                                     </td>
@@ -215,7 +259,7 @@ $listeProduits=$produit1C->afficherProduits();
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
-<!--- functional datatable script with no CSS
+<!-- functional datatable script with no CSS
 <script type="text/javascript">
     $(document).ready(function() {
        var table = $("#example").DataTable({

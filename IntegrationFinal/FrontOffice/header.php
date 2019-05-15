@@ -190,8 +190,9 @@ if (isset($_SESSION['cin']) and $_SESSION['cin'] > 0 )
                                             ?>
                                             <a href="profile.php"><img src="membres/avatars/<?php echo $userinfo['avatar'];?>" style=" border-radius: 50%;  width: 40px; height: 40px;"/></a>
 
-                                            <ul class="dropdown" style="margin-left:10px; width:80px;">
+                                            <ul class="dropdown" style="margin-left:80px; width:80px;">
                                                 <li><a href="profile.php" class="deja2">Profile</a></li>
+                                                <li><a href="livraison.php" class="deja2">livreur</a></li>
                                                 <li><a href="logout.php" class="deja2">logout</a></li>
                                             </ul>
                                             <?php
