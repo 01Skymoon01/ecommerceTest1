@@ -111,7 +111,7 @@ input[type=submit]:focus {
 
 			<a href="<?php echo $_SESSION["page"]; ?>" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Continue Shopping </a>
 
-      	<input type="submit" id="submit" class="btn btn-primary shopBtn pull-right" name="ajouter" value="Acheter" style="position: absolute;margin-left: 39%;bottom: 50px;">
+      	<input type="submit" id="submit" class="btn btn-primary shopBtn pull-right" name="ajouter" value=" Acheter  " style="width:20%;height:10%;">
 		</div>
 
 		</div>
