@@ -1,6 +1,7 @@
-<?php 
+<?php session_start(); 
 
-session_start();
+
+
 require_once "../config.php";
 
 if (isset($_SESSION['cin']) and $_SESSION['cin'] > 0 )
@@ -22,16 +23,26 @@ $sql="SELECT prenom,avatar FROM membres WHERE cin != $getcin";
        
 }
 
-
 ?>
 
+<?php require 'header.php'; ?>
 
-<html>
-    <head>
-        <title>Page HTML de test</title>
-    </head>
-    <body bgcolor="#d3c89d">
-        <div align="center">
+
+        <!---------------------------------------------------------------------------------------------------------------------------------->
+<body bgcolor="#d3c89d">
+        <form action="">
+
+            <div id="fh5co-started">
+
+                    <div class="row animate-box" style="  margin: auto; padding: 10px;" >
+
+                    <div class="row" >
+                    <div class="span12">
+
+
+
+
+                        <div align="center">
             <img src="images/comm.png" style="width: 90px; height: 80px; "><h1 style="padding-right:2.9%; padding-top: -18%;">Vos Feedback:</h1>
             <?php 
 
@@ -63,7 +74,7 @@ while($c = $commentaires->fetch()) { ?>
 
                         <?php } else {  echo '<img src="images/profileicon3.jpg" style=" border-radius: 50%;  width: 40px; height: 40px;  float: left; " hspace="10">'; } ?>
 
-                    <p style="color: #968a5b; padding-top: 12px; margin-left: 12px; font-size: 20px;" ><?= $c['pseudo'] ?>: </p></br>
+                    <p style="color: #968a5b; padding-top: 12px; margin-left: 12px; font-size: 17px;" ><?= $c['pseudo'] ?>: </p></br>
 
                     <?php  }
 
@@ -78,7 +89,7 @@ while($c = $commentaires->fetch()) { ?>
 
 <?php } else { echo '<img src="images/profileicon3.jpg" style=" border-radius: 50%;  width: 40px; height: 40px;  float: left; " hspace="10">'; } ?>
 
-<p style="color: #968a5b; padding-top: 12px; margin-left: 12px; font-size: 20px;" ><?= $c['pseudo'] ?>: </p></br>
+<p style="color: #968a5b; padding-top: 12px; margin-left: 12px; font-size: 17px;" ><?= $c['pseudo'] ?>: </p></br>
 <?php
                     }
 
@@ -110,6 +121,94 @@ while($c = $commentaires->fetch()) { ?>
                 </td></br>
 
             <?php } ?>
+            </table>
         </div align="center">
-    </body>
-</html>
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+
+
+           </div>
+            </div>
+
+        </form>
+        <!-- FIN CONSULTER PANIER ----------------------------------------------------------------------------------------->
+
+
+
+
+
+            
+<footer id="fh5co-footer" role="contentinfo">
+    <div class="container">
+        <div class="row row-pb-md">
+            <div class="col-md-4 fh5co-widget">
+                <h3>GeoConcept.</h3>
+                <p>Nous proposons un mobilier au design contomporain et moderne , Nous allions style et économie.</p>
+                <p></p>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
+                <ul class="fh5co-footer-links">
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Contact</a></li>
+
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="row copyright">
+            <div class="col-md-12 text-center">
+                <p>
+                    <small class="block">&copy; GeoConcept. All Rights Reserved.</small>
+                    <small class="block">28 <a href="http://freehtml5.co/" target="_blank">Rue Chimie</a> Megrine <a href="http://blog.gessato.com/" target="_blank">Tunis</a><a href="http://unsplash.co/" target="_blank"></a></small>
+                </p>
+                <p>
+                <ul class="fh5co-social-icons">
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="https://www.facebook.com/geoconceptgeovrde" target="_blank"><i class="icon-facebook" ></i></a></li>
+                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                </ul>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</footer>
+            
+
+            <div class="gototop js-top">
+                <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+            </div>
+
+            <!-- jQuery -->
+            <script src="js/jquery.min.js"></script>
+            <!-- jQuery Easing -->
+            <script src="js/jquery.easing.1.3.js"></script>
+            <!-- Bootstrap -->
+            <script src="js/bootstrap.min.js"></script>
+            <!-- Waypoints -->
+            <script src="js/jquery.waypoints.min.js"></script>
+            <!-- Carousel -->
+            <script src="js/owl.carousel.min.js"></script>
+            <!-- countTo -->
+            <script src="js/jquery.countTo.js"></script>
+            <!-- Flexslider -->
+            <script src="js/jquery.flexslider-min.js"></script>
+            <!-- Main -->
+            <script src="js/main.js"></script>
+            <script type="text/javascript" src="app.js" ></script>
+
+            </body>
+
+
+

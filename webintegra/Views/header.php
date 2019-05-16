@@ -84,14 +84,17 @@ $var =  $_SESSION["role"];
                         </li>
                         <li>
                             <a class="has-arrow"  aria-expanded="false" ><i class="icon nalika-home icon-wrap"></i></i> <span
-                                        class="mini-click-non">Users</span></a>
+                                        class="mini-click-non">Clients</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
-                                <li><a title="Liste Produits" href="Users.php"><span class="mini-sub-pro">Liste Users</span></a>
+                                <li><a title="Liste Produits" href="Users.php"><span class="mini-sub-pro">Liste Clients</span></a>
                                 </li>
-                                <li><a title="Liste Produits" href="SendMailForm.php"><span class="mini-sub-pro">Send Mail</span></a>
+                                <li><a title="Liste Produits" href="SendMailForm.php"><span class="mini-sub-pro">Envoyer Mail</span></a>
+                                </li>
+                                <li><a title="Liste Produits" href="SendSMS.php"><span class="mini-sub-pro">Envoyer SMS</span></a>
                                 </li>
                               </ul>
                             </li>
+                            
                             <li>
                                 <a class="has-arrow"  aria-expanded="false" ><i class="icon nalika-diamond icon-wrap"></i></i> <span
                                             class="mini-click-non">S.A.V</span></a>
@@ -166,12 +169,12 @@ $var =  $_SESSION["role"];
                                 <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                                     <div class="header-right-info">
                                         <ul class="nav navbar-nav mai-top-nav header-right-menu">
-                                            <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="icon nalika-alarm" aria-hidden="true"></i><span class="indicator-nt"></span></a>
+                                           <!-- <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="icon nalika-alarm" aria-hidden="true"></i><span class="indicator-nt"></span></a>
                                                 <div role="menu" class="notification-author dropdown-menu animated zoomIn">
                                                     <div class="notification-single-top">
-                                                        <h1>Notifications</h1>
+                                                       
                                                     </div>
-                                            </li>
+                                            </li>-->
                                             <li class="nav-item">
                                                 <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
                                                     <i class="icon nalika-user nalika-user-rounded header-riht-inf" aria-hidden="true"></i>
