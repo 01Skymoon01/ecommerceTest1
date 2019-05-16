@@ -70,6 +70,34 @@ $listerdv = $rdvC->afficherRDVs();
 
 <body>
     <?php require 'header.php' ?>
+    <script>
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        client=tr[i].getElementsByTagName("td")[5];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          }
+            else  if (client) {
+          txtValue = client.textContent || client.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+        }
+      }
+    }
+
+    </script>
     <div class="section-admin container-fluid res-mg-t-15" style="margin-top:10px;">
         <div class="row admin text-center" style="margin-top:50px;">
             <div class="col-md-12">
@@ -154,24 +182,17 @@ $listerdv = $rdvC->afficherRDVs();
 
                             <form action="RDVBACK.php" method="GET">
                               <div style="display: flex; margin-bottom:10px">
-                          <div class="input-group mb-3" >
-                            <input type="text" class="form-control"placeholder="Search..." aria-label="" aria-describedby="basic-addon1" style="color:white;" name="search">
-                          </div>
-                          <div class=" mb-2" style="margin-left:6px; margin-top:5px;">
-                             <input type="submit" name="recherche" value="OK" style="
-                          background-color:#6090;
-                          border-style: outset;
+                                <div class="input-group mb-3" >
+                                  <div class="breadcome-heading">
+                                      <form role="search" class="">
+                                          <input id="myInput" style="color:white;"  type="text" placeholder="Search..."  onkeyup="myFunction()" class="form-control">
+                                      </form>
+                                  </div></div>
 
-                          border-radius: 5px;
-                          border-color: black;
 
-                          padding: 6px;
-                          background-color: rgb(255, 255, 255); " >
-
-                          </div>
-                          </div>
+                                </div>
                           </form>
-                            <table>
+                            <table id="myTable">
                                 <tr>
                                     <th>Date depot rdv</th>
                                     <th>Date rdv</th>
