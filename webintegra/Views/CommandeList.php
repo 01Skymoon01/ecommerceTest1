@@ -5,7 +5,7 @@ include "../core/GestionCommande/commande.class.c.php";
 $CommandeC1=new CommandeC();
 
 $listeCommande=$CommandeC1->afficherTouTCommande();
-$produitparpage = 5;
+$produitparpage = 10;
  $pagesTotales=$CommandeC1->pagetotale($produitparpage);
 
 if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GET['page'] <= $pagesTotales) {
@@ -285,7 +285,7 @@ foreach($listeCommande as $row){
       <?php }      ?>
                                     <td>
                                     <form action="SupprimerCommande.php" method="GET">
-                                        <!-- i class="fa fa-trash-o" aria-hidden="true"-->  <input type="submit" value="X" style="border: 0; background: none; font-size:16.2; font-weight: 700;">
+<button type="submit" class="btn waves-effect btn-sm " name="supprimer" style="background-color:#fe5f55;"><i class="fa fa-trash-o"></i></button>
                                      <input type="hidden" value="<?PHP echo $row['id_commande']; ?>" name="cin">
                                      </form>
                                                                         </td>
@@ -295,7 +295,7 @@ foreach($listeCommande as $row){
                                     <td><?PHP echo $row['nbProduit_commande']; ?></td>
                                     <td><?PHP echo $row['id_client']; ?></td>
                                     <td>
-                                    <form action="ModifierCommande.php" method="GET"><i class="icon nalika-edit"></i>
+                                    <form action="ModifierCommande.php" method="GET"><i class="fa fa-edit"></i>
               <input type="submit" value="<?PHP if($row['etat_commande'] == 1) echo "VALIDE" ; else echo "NON" ?>" style="border: 0px; background: none;">
                                     <input type="hidden" value="<?PHP echo $row['id_commande']; ?>" name="cin">
                                     <input type="hidden" value="<?PHP echo $row['etat_commande']; ?>" name="etat">
@@ -304,7 +304,7 @@ foreach($listeCommande as $row){
                                     <td><?PHP if($row['etat_livraison'] == 1) echo "OUI" ; else echo "NON" ?></td>
                                                                         <td>
                                     <form action="DetailsCommandeList.php" method="GET">
-                                                                        <input type="submit" value=">" style="border: 0; background: none; font-size:20px; font-weight: 900;">
+<button class="btn  waves-effect btn-sm " type="submit" name="btndetail" style="background-color: #edd382;"><i class="fa fa-eye"></i></button>
                                     <input type="hidden" value="<?PHP echo $row['id_commande']; ?>" name="cin">
                                     <input type="hidden" value="<?PHP echo $row['date_commande']; ?>" name="date">
                                     <input type="hidden" value="<?PHP echo $row['etat_livraison']; ?>" name="etatL">
