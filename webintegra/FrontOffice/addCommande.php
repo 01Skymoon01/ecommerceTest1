@@ -64,7 +64,7 @@ $commande1C->ajouterDetailsCommande($commandeD1,(int)$nbProduit_commande);
 
 $panier->addCommandeVirtuelle($listeC1);
 var_dump($listeC1);
-/*
+
 ?>
 <?php
 require_once "../Views/PHPMailer-5.2-stable/PHPMailerAutoload.php";
@@ -162,7 +162,7 @@ if(curl_errno($ch)) {
     echo 'Curl error: ' . curl_error($ch);
 } else {
     echo $result;
-}*/
+}
 
 
 header('location:commande.php');

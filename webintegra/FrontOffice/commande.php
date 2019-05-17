@@ -180,7 +180,9 @@ $total = 0; ?>
   ?>
   <tr>
   <td style="background-color:white;"></td>
-       <td style="background-color:white;"><div id="paypal-button-container"></div></td>
+       <!--td style="background-color:white;"><div id="paypal-button-container"></div></td-->
+      <td><a  class="shopBtn pull-right" href="AjouterLivraisonFront.php?idcommande=<?PHP echo $idc; ?>"><i class="fa fa-truck icon-wrap"></i> <span
+                   class="mini-click-non">faire une Livraison</span></a></td>
   <tr>
 </table>
 </fieldset>
@@ -208,27 +210,21 @@ $total = 0; ?>
     	<td><?PHP echo $row['PRIX_Produit']; ?></td>
     	<td><?PHP echo $row['TOTAL']; ?></td>
 
-    	</tr>
-       <tr style="background-color:white;">
-         <td></td>
-         <td></td>
-         <td></td>
-      <td><a  class="shopBtn pull-right" href="AjouterLivraisonFront.php?idcommande=<?PHP echo $idc; ?>"><i class="fa fa-truck icon-wrap"></i> <span
-                  class="mini-click-non">faire une Livraison</span></a></td>
-      </tr>
     	<?PHP
     }
 
 ?>
 
   </table>
+
 <?php
     }
-   //$_SESSION["panier"]=array();
-//$_SESSION["commande"]=array();
+   $_SESSION["panier"]=array();
+$_SESSION["commande"]=array();
     ?>
 
     </tbody>
+
 
 </div>
 
