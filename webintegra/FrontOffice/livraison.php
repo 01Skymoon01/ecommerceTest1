@@ -3,7 +3,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Shop &mdash; Free Website Template, Free HTML5 Template by gettemplates.co</title>
+	<title>GeoConcept &mdash; Livraisons</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by gettemplates.co" />
 	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -65,8 +65,13 @@
 	<body>
 		<?php require 'header.php';
 		 ?>
+        <?PHP
+        include "../core/employeC.php";
+        $livreur1C=new LivreurC();
+        $listeLivreurs=$livreur1C->afficherLivreurs();
+        ?>
 
-	<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(images/img_bg_2.jpg);">
+	<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(images/livraison.jpg);">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row">
@@ -84,31 +89,20 @@
 
 	<div id="fh5co-product">
 		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<span>Cool Stuff</span>
-					<h2>Notre liste de Livreurs.</h2>
-					<p>Nous cooperons avec des livreurs serieux et professionels.</p>
-				</div>
-			</div>
-			<?PHP
-include "../core/employeC.php";
-$livreur1C=new LivreurC();
-$listeLivreurs=$livreur1C->afficherLivreurs();
-?>
-<table border="1">
-<tr>
-
-<td>Nom</td>
-<td>Prenom</td>
-<td>Telephonne</td>
-<td>Email</td>
-<td>Zone</td>
-<td>Disponibilite</td>
+            <fieldset style="margin-top:30px;border: #000;border-width: 5px;border-style: dashed;padding: 10px;">
+                <legend style="text-align: center;"><h2><strong>Notre liste de Livreurs.</strong></h2></h2></legend>
 
 
-<td>Contacter</td>
-<td>Notes</td>
+<table class="table">
+<tr style="background-color: #d1c286;">
+    <th>Nom</th>
+<th>Prenom</th>
+<th>Telephonne</th>
+<th>Email</th>
+<th>Zone</th>
+<th>Disponibilite</th>
+    <th>Contacter</th>
+<th>Notes</th>
 </tr>
 
 <?PHP
@@ -123,21 +117,19 @@ foreach($listeLivreurs as $row){
     <td><?PHP echo $row['zone']; ?></td>
     <td><?PHP if ($row['status']==0)
     { ?>
-         <img src="../Views/img/0.png" widght="50" height="50" >
+        <i class="icon-check2 icon" style="font-size: 30px;color: lightgreen" ></i>
         <?php
     }
     else
     { ?>
-         <img src="../Views/img/1.png" widght="50" height="50" >
+        <i class="icon-ban" style="font-size: 30px;color: lightcoral;" ></i>
         <?php
     }
     ?>
     </td>
         <td><a href="mailto:<?php echo $row['email'];?>">Contacter</a></td>
 	   <td> <form method="POST" action="note.php" name="myForm">
-                                                                     <form method="post" action="note.php">
                                                                          <input type="hidden" value="<?php echo $row['cin']; ?>" name="cin" id="cin">
-  <fieldset>
     <span class="star-cb-group">
       <input type="radio" id="rating-5" name="rating" value="5" />
       <label for="rating-5">5</label>
@@ -152,11 +144,9 @@ foreach($listeLivreurs as $row){
       <input type="radio" id="rating-0" name="rating" value="0" class="star-cb-clear" />
       <label for="rating-0">0</label>
     </span>
-  </fieldset>
-                                                                         <input type="submit" value="rate">
-                                                                         </form>
+                                                                         &nbsp;&nbsp;<button style="background: #bbd186;" type="submit" class="btn-sm" style="margin-bottom: 5px;margin-right: 5px;"><i class="icon-check"></i></button>
+
                                                                         <a href="note.php?cin=<?php echo $row['cin'] ?>&amp;rate="></a>
-                                                                        <?PHP echo $row['note']; ?>
 
 
 
@@ -167,34 +157,10 @@ foreach($listeLivreurs as $row){
 }
 ?>
 </table>
+            </fieldset>
 		</div>
 	</div>
 
-	<div id="fh5co-started">
-		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Newsletter</h2>
-					<p>Just stay tune for our latest Product. Now you can subscribe</p>
-				</div>
-			</div>
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2">
-					<form class="form-inline">
-						<div class="col-md-6 col-sm-6">
-							<div class="form-group">
-								<label for="email" class="sr-only">Email</label>
-								<input type="email" class="form-control" id="email" placeholder="Email">
-							</div>
-						</div>
-						<div class="col-md-6 col-sm-6">
-							<button type="submit" class="btn btn-default btn-block">Subscribe</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
 <?php require "footer.php" ?>
 	</div>
 

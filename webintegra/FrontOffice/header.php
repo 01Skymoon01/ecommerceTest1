@@ -43,34 +43,7 @@ if (isset($_SESSION['cin']) and $_SESSION['cin'] > 0 )
     <!-- <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i" rel="stylesheet"> -->
 
     <!-- Animate.css -->
-    <link rel="stylesheet" href="css/animate.css">
-    <!-- Icomoon Icon Fonts-->
-    <link rel="stylesheet" href="css/icomoon.css">
-    <!-- Bootstrap  -->
-    <link rel="stylesheet" href="css/bootstrap.css">
 
-    <!-- Flexslider  -->
-    <link rel="stylesheet" href="css/flexslider.css">
-    <link rel="stylesheet" href="css/modal.css">
-    <!--<link rel="stylesheet" href="../Views/css/font-awesome.min.css">-->
-    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">-->
-    <!-- Owl Carousel  -->
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-
-    <!-- Theme style  -->
-    <link rel="stylesheet" href="css/style.css">
-    <!--fontawesome -->
-    <link href="fontawesome/css/all.css" rel="stylesheet">
-    <script defer src="fontawesome/js/all.js"></script>
-
-    <!-- Modernizr JS -->
-    <script src="js/modernizr-2.6.2.min.js"></script>
-
-
-    <script src="js/modernizr-2.6.2.min.js"></script>
-    <script src="store.js" async></script>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
 
 

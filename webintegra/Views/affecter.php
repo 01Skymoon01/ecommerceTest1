@@ -42,7 +42,7 @@ $mail->Username = "mehdi.hmaidi@esprit.tn";
 $mail->Password = "23584248Aa";
 //If SMTP requires TLS encryption then set it
 $mail->SMTPSecure = "tls";
-//Set TCP port to connect to
+//Set TCP portpli to connect to
 $mail->Port = 587;
 
 $mail->From = "mehdi.hmaidi@esprit.tn";
@@ -65,7 +65,7 @@ else
     echo "Message has been sent successfully";
 
 }
-           // header('Location: index.php');
+            header('Location: /webintegra/Views/LivraisonBACK.php');
         }
 
         catch (Exception $e){

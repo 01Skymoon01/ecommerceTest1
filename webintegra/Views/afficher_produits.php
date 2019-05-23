@@ -1,5 +1,5 @@
 <?PHP
-include "../Core/ProduitIntC.php";
+include_once "../Core/ProduitIntC.php";
 //$produit=new ProduitInt('chaise',152,150,125,'chaise comfortable',1);
 $produit1C=new ProduitIntC();
 $listeProduits=$produit1C->afficherProduits();
@@ -77,7 +77,7 @@ $listeProduits=$produit1C->afficherProduits();
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<?php require 'header.php' ?>
+<?php require_once 'header.php' ?>
 
 <script>
     function myFunction() {
@@ -319,4 +319,3 @@ $listeProduits=$produit1C->afficherProduits();
 </body>
 
 </html>
-
